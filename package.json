@@ -1,0 +1,23 @@
+{
+  "name": "door-to-nikah",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "install-server": "cd server && npm install "
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SumanIslam/DoorToNikah.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/SumanIslam/DoorToNikah/issues"
+  },
+  "homepage": "https://github.com/SumanIslam/DoorToNikah#readme",
+  "devDependencies": {
+    "concurrently": "^7.2.1"
+  }
+}
