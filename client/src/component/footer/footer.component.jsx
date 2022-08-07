@@ -11,7 +11,7 @@ const Footer = () => {
 				<div className='d-flex justify-content-evenly'>
 					<p>কপিরাইট ©2022 doortonikah.com। সর্বস্বত্ব সংরক্ষিত।</p>
 					<div className='mt-3'>
-						<a href='#' className='mr-3 text-light'>
+						<a href='/privacy&policy' className='mr-3 text-light'>
 							প্রাইভেসি পলিসি
 						</a>
 						<a href='#' className='text-light'>
