@@ -1,4 +1,12 @@
-// margin
+// margin 
+// mlr means - margin left right
+.mlr-0  {
+  margin-left: 0;
+  margin-right: 0;
+}
+.mlr-5 {
+  margin: 0 5rem;
+}
 .mlr-6 {
   margin: 0 6rem;
 }
@@ -95,6 +103,10 @@
   background: #fff;
 }
 
+.bg-purple {
+  background: #522b79;
+}
+
 // color
 .text-white {
   color: #fff;
@@ -103,6 +115,10 @@
 // typography
 .text-80 {
   font-size: 80%;
+}
+
+.text-justify {
+  text-align: justify;
 }
 
 a {

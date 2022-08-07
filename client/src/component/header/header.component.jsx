@@ -31,10 +31,10 @@ const Header = () => {
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
             <li className="nav-item fw-semibold">
-              <a className="nav-link purple-color" aria-current="page" href="#">হোম</a>
+              <a className="nav-link purple-color" aria-current="page" href="/">হোম</a>
             </li>
             <li className="nav-item fw-semibold">
-              <a className="nav-link purple-color" href="#">আমাদের সম্পর্কে</a>
+              <a className="nav-link purple-color" href="/about">আমাদের সম্পর্কে</a>
             </li>
             <li className="nav-item fw-semibold">
               <a className="nav-link purple-color">প্রশ্ন ও উত্তর</a>
