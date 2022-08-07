@@ -9,7 +9,6 @@ const Header = () => {
   const [innerWidth, setInnerWidth] = useState(window.innerWidth);
 
   useEffect(() => {
-    console.log('clicked');
     function handleResize() {
       setInnerWidth(window.innerWidth);
     }
