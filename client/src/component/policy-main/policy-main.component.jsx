@@ -23,7 +23,7 @@ const PolicyMain = () => {
 			<hr />
 			<div className={`${marginLeftRight} mb-5`}>
 				<p>
-					OrdhekDeen.com is a matrimonial site focused on Islamic Sharia. Our
+					doortonikah.com is a matrimonial site focused on Islamic Sharia. Our
 					main goal is to find a suitable life partner to live according to the
 					Islamic way of life. Your privacy is significant to us. So it is
 					essential to be transparent about how we collect, use and share
