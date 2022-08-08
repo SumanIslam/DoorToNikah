@@ -14,7 +14,7 @@ const Footer = () => {
 						<a href='/privacy&policy' className='mr-3 text-light'>
 							প্রাইভেসি পলিসি
 						</a>
-						<a href='#' className='text-light'>
+						<a href='/terms' className='text-light'>
 							শর্তাবলি
 						</a>
 					</div>

@@ -4,6 +4,7 @@ import {Routes, Route}  from 'react-router-dom';
 import Homepage from './page/homepage';
 import AboutUs from './page/about-page';
 import PrivacyPolicy from './page/privacy-policy-page';
+import TermsCondition from './page/terms-page';
 
 function App() {
   return (
@@ -11,6 +12,7 @@ function App() {
 			<Route path='/' element={<Homepage />} />
 			<Route path='/about' element={<AboutUs />} />
 			<Route path='/privacy&policy' element={<PrivacyPolicy />} />
+			<Route path='/terms' element={<TermsCondition />} />;
 		</Routes>
 	);
 }
