@@ -37,7 +37,7 @@ const Header = () => {
               <a className="nav-link purple-color" href="/about">আমাদের সম্পর্কে</a>
             </li>
             <li className="nav-item fw-semibold">
-              <a className="nav-link purple-color">প্রশ্ন ও উত্তর</a>
+              <a className="nav-link purple-color" href="/faq">প্রশ্ন ও উত্তর</a>
             </li>
             <li className="nav-item fw-semibold">
               <a className="nav-link purple-color">টিউটোরিয়াল</a>
