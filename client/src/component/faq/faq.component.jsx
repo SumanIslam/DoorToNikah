@@ -68,27 +68,28 @@ const FaqComponent = () => {
 
   const marginLeftRight = innerWidth > 1206 ? "mlr-7" : "mlr-0";
   return (
-    <>
-    <br />
-    <Container>
-      <h4>সাধারণ প্রশ্ন ও উত্তর</h4>
-      {faqData.map((item, index) => (
-        <Accordion
-          expanded={expanded === `panel${item.id}`}
-          onChange={handleChange(`panel${item.id}`)}
-          index={index}
-        >
-          <AccordionSummary
-            aria-controls="panel1d-content"
-            id="panel1d-header"
-            
-          >{item.question}</AccordionSummary>
-          <AccordionDetails>{item.answer}</AccordionDetails>
-        </Accordion>
-      ))}
-    </Container>
-    </>
-  );
+		<>
+			<br />
+			<Container className='mb-5'>
+				<h4>সাধারণ প্রশ্ন ও উত্তর</h4>
+				{faqData.map((item, index) => (
+					<Accordion
+						expanded={expanded === `panel${item.id}`}
+						onChange={handleChange(`panel${item.id}`)}
+						index={index}
+					>
+						<AccordionSummary
+							aria-controls='panel1d-content'
+							id='panel1d-header'
+						>
+							{item.question}
+						</AccordionSummary>
+						<AccordionDetails>{item.answer}</AccordionDetails>
+					</Accordion>
+				))}
+			</Container>
+		</>
+	);
 };
 
 export default FaqComponent;

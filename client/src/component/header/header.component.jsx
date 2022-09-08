@@ -4,6 +4,7 @@ import '../../styles/utils.scss';
 import './header.style.scss';
 
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 const Header = () => {
   const [innerWidth, setInnerWidth] = useState(window.innerWidth);
@@ -31,13 +32,13 @@ const Header = () => {
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
             <li className="nav-item fw-semibold">
-              <a className="nav-link purple-color" aria-current="page" href="/">হোম</a>
+              <Link className="nav-link purple-color" aria-current="page" to="/">হোম</Link>
             </li>
             <li className="nav-item fw-semibold">
-              <a className="nav-link purple-color" href="/about">আমাদের সম্পর্কে</a>
+              <Link className="nav-link purple-color" to="/about">আমাদের সম্পর্কে</Link>
             </li>
             <li className="nav-item fw-semibold">
-              <a className="nav-link purple-color" href="/faq">প্রশ্ন ও উত্তর</a>
+              <Link className="nav-link purple-color" to="/faq">প্রশ্ন ও উত্তর</Link>
             </li>
             <li className="nav-item fw-semibold">
               <a className="nav-link purple-color">টিউটোরিয়াল</a>
