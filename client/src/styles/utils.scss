@@ -1,4 +1,13 @@
 // margin 
+.m-10-5 {
+  margin: 10rem 5rem;
+}
+.m-5-2 {
+  margin: 5rem 2rem;
+}
+.m-5-0 {
+  margin: 5rem 0;
+}
 // mlr means - margin left right
 .mlr-0  {
   margin-left: 0;
@@ -98,6 +107,11 @@
   margin-right: 15rem;
 }
 
+// text alignment
+.text-align-right {
+  text-align: right;
+}
+
 // bg color
 .bg-white {
   background: #fff;
@@ -105,6 +119,10 @@
 
 .bg-purple {
   background: #522b79;
+}
+
+.bg-pink {
+  background-color: #ad277c;
 }
 
 // color
