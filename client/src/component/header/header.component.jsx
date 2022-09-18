@@ -4,7 +4,7 @@ import '../../styles/utils.scss';
 import './header.style.scss';
 
 import { useEffect, useState } from "react";
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const Header = () => {
   const [innerWidth, setInnerWidth] = useState(window.innerWidth);
@@ -23,7 +23,7 @@ const Header = () => {
     <nav className="navbar navbar-expand-lg bg-white">
       <div className="container container-fluid">
         {/* navbar logo */}
-        <a className={`${marginRight} navbar-brand fs-2 fw-bold purple-color`} href="/"><span className="pink-color">DoorTo</span>Nikah</a>
+        <Link className={`${marginRight} navbar-brand fs-2 fw-bold purple-color`} to="/"><span className="pink-color">DoorTo</span>Nikah</Link>
         {/* navbar toggler */}
         <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span className="navbar-toggler-icon"></span>
