@@ -41,10 +41,10 @@ const Header = () => {
               <Link className="nav-link purple-color" to="/faq">প্রশ্ন ও উত্তর</Link>
             </li>
             <li className="nav-item fw-semibold">
-              <a className="nav-link purple-color">টিউটোরিয়াল</a>
+              <Link className="nav-link purple-color" to="/tutorial">টিউটোরিয়াল</Link>
             </li>
             <li className="nav-item fw-semibold">
-              <a className="nav-link purple-color">যোগাযোগ</a>
+              <Link className="nav-link purple-color" to="/contact">যোগাযোগ</Link>
             </li>
           </ul>
           <button type="button" className="btn btn-purple">ফ্রি রেজিষ্ট্রেশন</button>
