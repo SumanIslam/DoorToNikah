@@ -1,0 +1,32 @@
+.banner {
+  width: 100%;
+
+  span {
+    font-size: 20px;
+    border-top: 1px solid #fff;
+    padding-top: 5px;
+    position: relative;
+  }
+
+  span::before {
+    position: absolute;
+    content: '';
+    width: 8px;
+    height: 8px;
+    background: #fff;
+    left: 0;
+    top: -5px;
+    border-radius: 50%;
+  }
+  
+  span::after {
+    position: absolute;
+    content: '';
+    width: 8px;
+    height: 8px;
+    background: #fff;
+    right: 0;
+    top: -5px;
+    border-radius: 50%;
+  }
+}
