@@ -1,0 +1,19 @@
+.biodata-box {
+	width: 425px;
+	color: white;
+}
+
+.search-button {
+  // display: inline-block;
+  padding: 0.35rem 1.2rem;
+  border-radius: 5px;
+	background-color: #522b79;
+  color: #fff;
+  cursor: pointer;
+  border: none;
+  margin: 0 auto;
+
+  &:hover {
+    background-color: #522b79;
+  }
+}
