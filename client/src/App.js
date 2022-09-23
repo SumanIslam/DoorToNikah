@@ -7,6 +7,8 @@ import PrivacyPolicy from './page/privacy-policy-page';
 import TermsCondition from './page/terms-page';
 import FaqPage from './page/faq-page';
 import ContactPage from './page/contact-page';
+import TutorialPage from './page/tutorial-page';
+
 
 function App() {
   return (
@@ -16,7 +18,8 @@ function App() {
 			<Route path='/faq' element={<FaqPage />} />
 			<Route path='/privacy&policy' element={<PrivacyPolicy />} />
 			<Route path='/terms' element={<TermsCondition />} />
-			<Route path='/contact' element={<ContactPage />} />	
+			<Route path='/contact' element={<ContactPage />} />
+			<Route path='/tutorial' element={<TutorialPage />} />
 				
 		</Routes>
 		
