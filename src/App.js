@@ -8,6 +8,7 @@ import TermsCondition from './page/terms-page';
 import FaqPage from './page/faq-page';
 import ContactPage from './page/contact-page';
 import TutorialPage from './page/tutorial-page';
+import LoginPage from './page/login-page';
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
 			<Route path='/terms' element={<TermsCondition />} />
 			<Route path='/contact' element={<ContactPage />} />
 			<Route path='/tutorial' element={<TutorialPage />} />
+			<Route path='/login' element={<LoginPage />} />
 		</Routes>
 	);
 }
