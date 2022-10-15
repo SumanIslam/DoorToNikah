@@ -8,7 +8,6 @@ import TermsCondition from './page/terms-page';
 import FaqPage from './page/faq-page';
 import ContactPage from './page/contact-page';
 import TutorialPage from './page/tutorial-page';
-import BiodataUploadPage from './page/biodata-upload-page';
 
 function App() {
   return (
@@ -20,11 +19,7 @@ function App() {
 			<Route path='/terms' element={<TermsCondition />} />
 			<Route path='/contact' element={<ContactPage />} />
 			<Route path='/tutorial' element={<TutorialPage />} />
-			<Route path='/biodatas/suman/profile/edit/group/step-1' element={<BiodataUploadPage />} />
 		</Routes>
-		
-
-		
 	);
 }
 
