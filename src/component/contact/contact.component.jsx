@@ -36,7 +36,7 @@ const Contact = () => {
                   <input type="text" className='input-field' placeholder="" />
 
                   <h4>আপনার বার্তা</h4>
-                  <textarea name="text" class="input-field textarea" placeholder=""></textarea>
+                  <textarea name="text" className="input-field textarea" placeholder=""></textarea>
                   <button className='contact-button'>পাঠান</button>
                 </form>
               </div>         

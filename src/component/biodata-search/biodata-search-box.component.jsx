@@ -1,4 +1,5 @@
 import React from "react";
+import { v4 as uuidv4 } from 'uuid';
 
 // MUI
 import SearchIcon from '@mui/icons-material/Search';
@@ -18,7 +19,7 @@ const BiodataSearchBox = () => {
 		<div className='bg-pink p-4 biodata-box'>
 			<form>
 				{labelAndOptions.map((data) => (
-					<FormSelect labelAndOptions={data} />
+					<FormSelect key={uuidv4()} labelAndOptions={data} />
 				))}
 				<button type="submit" className='search-button d-flex justify-content-center align-items-center'>
 					<SearchIcon />

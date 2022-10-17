@@ -1,5 +1,6 @@
 import * as React from "react";
 import { useEffect, useState } from "react";
+import { v4 as uuidv4 } from 'uuid';
 
 // data
 import { faqData } from "./faq-data";
@@ -74,6 +75,7 @@ const FaqComponent = () => {
 				<h4>সাধারণ প্রশ্ন ও উত্তর</h4>
 				{faqData.map((item, index) => (
 					<Accordion
+            key={uuidv4()}
 						expanded={expanded === `panel${item.id}`}
 						onChange={handleChange(`panel${item.id}`)}
 						index={index}
