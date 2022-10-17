@@ -2,19 +2,13 @@ import * as React from 'react';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import Checkbox from '@mui/material/Checkbox';
-import { Link } from 'react-router-dom';
-import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 
-import './login.styles.scss'
-
-const Login = () => {
+const SignUP = () => {
 	const handleSubmit = (event) => {
 		event.preventDefault();
 		const data = new FormData(event.currentTarget);
@@ -40,7 +34,7 @@ const Login = () => {
 						<LockOutlinedIcon />
 					</Avatar>
 					<Typography component='h1' variant='h5'>
-						Sign in
+						Sign up
 					</Typography>
 					<Box
 						component='form'
@@ -52,11 +46,22 @@ const Login = () => {
 							margin='normal'
 							required
 							fullWidth
+							id='name'
+							label='Name'
+							name='name'
+							type='text'
+							autoComplete='name'
+							autoFocus
+						/>
+						<TextField
+							margin='normal'
+							required
+							fullWidth
 							id='email'
 							label='Email Address'
 							name='email'
+							type='email'
 							autoComplete='email'
-							autoFocus
 						/>
 						<TextField
 							margin='normal'
@@ -68,30 +73,24 @@ const Login = () => {
 							id='password'
 							autoComplete='current-password'
 						/>
-						{/* <FormControlLabel
-							control={<Checkbox value='remember' color='primary' />}
-							label='Remember me'
-						/> */}
+						<TextField
+							margin='normal'
+							required
+							fullWidth
+							name='confirmPassword'
+							label='Confirm Password'
+							type='password'
+							id='confirmPassword'
+							autoComplete='current-password'
+						/>
 						<Button
 							type='submit'
 							fullWidth
 							variant='contained'
 							sx={{ mt: 3, mb: 2 }}
 						>
-							Sign In
+							Sign Up
 						</Button>
-						<Grid container>
-							<Grid item xs>
-								<Link to='/' className='link'>
-									<a>Forgot password?</a>
-								</Link>
-							</Grid>
-							<Grid item>
-								<Link to='/signup' className='link'>
-									<a>Don't have an account? Sign Up</a>
-								</Link>
-							</Grid>
-						</Grid>
 					</Box>
 				</Box>
 			</Container>
@@ -99,4 +98,4 @@ const Login = () => {
 	);
 };
 
-export default Login;
+export default SignUP;
