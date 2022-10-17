@@ -74,14 +74,12 @@ const Header = () => {
 							</Link>
 						</li>
 					</ul>
-					<button type='button' className='btn btn-purple'>
-						ফ্রি রেজিষ্ট্রেশন
-					</button>
-					<button type='button' className='btn btn-pink ml-1'>
-						<Link className='nav-link purple-color' to='/login'>
-							লগইন
-						</Link>
-					</button>
+					<Link className='nav-link purple-color' to='/registration'>
+						<li className='btn btn-purple ml-1'>ফ্রি রেজিষ্ট্রেশন</li>
+					</Link>
+					<Link className='nav-link purple-color' to='/login'>
+						<li className='btn btn-pink ml-1'>লগইন</li>
+					</Link>
 				</div>
 			</div>
 		</nav>
