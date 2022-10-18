@@ -1,4 +1,3 @@
-import * as React from 'react';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
@@ -83,12 +82,12 @@ const Login = () => {
 						<Grid container>
 							<Grid item xs>
 								<Link to='/' className='link'>
-									<a>Forgot password?</a>
+									Forgot password?
 								</Link>
 							</Grid>
 							<Grid item>
 								<Link to='/signup' className='link'>
-									<a>Don't have an account? Sign Up</a>
+									Don't have an account? Sign Up
 								</Link>
 							</Grid>
 						</Grid>

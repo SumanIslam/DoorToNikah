@@ -3,7 +3,6 @@ import React from "react";
 import './select-field.styles.scss';
 
 const FormSelect = ({ labelAndOptions: { label, selected, options } }) => {
-  console.log(label, selected, options);
   return (
 		<div className='row custom-select'>
 			<div className='col-5 text-align-right'>
