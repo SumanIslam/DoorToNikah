@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { useNavigate } from 'react-router-dom';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
@@ -8,20 +9,43 @@ import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 
+// react toastify
+  import { ToastContainer, toast } from 'react-toastify';
+	import 'react-toastify/dist/ReactToastify.css';
+
+import { httpSaveUser } from '../../hooks/request';
+
 const SignUP = () => {
-	const handleSubmit = (event) => {
+	const navigate = useNavigate();
+	
+	const handleSubmit = async (event) => {
 		event.preventDefault();
 		const data = new FormData(event.currentTarget);
-		console.log({
+
+		const userData = {
+			name: data.get('name'),
 			email: data.get('email'),
 			password: data.get('password'),
-		});
+			confirmPassword: data.get('confirmPassword'),
+		};
+
+		try {
+			const user = await httpSaveUser(userData);
+			toast.success(`${user.name} Your Account is Created Successfully`)
+			setTimeout(() => {
+				navigate('/login')
+			}, 3000);
+		} catch(err) {
+			const errorMsg = err.response.data.msg
+			toast.error(errorMsg);
+		}
 	};
 
 	const theme = createTheme();
 	return (
 		<ThemeProvider theme={theme}>
 			<Container component='main' maxWidth='xs'>
+				<ToastContainer />
 				<Box
 					sx={{
 						marginTop: 8,
