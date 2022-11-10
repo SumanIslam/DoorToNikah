@@ -10,10 +10,10 @@ import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 
 // react toastify
-  import { ToastContainer, toast } from 'react-toastify';
-	import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
-import { httpSaveUser } from '../../hooks/request';
+import { httpSignupUser } from '../../hooks/request';
 
 const SignUP = () => {
 	const navigate = useNavigate();
@@ -30,7 +30,7 @@ const SignUP = () => {
 		};
 
 		try {
-			const user = await httpSaveUser(userData);
+			const user = await httpSignupUser(userData);
 			toast.success(`${user.name} Your Account is Created Successfully`)
 			setTimeout(() => {
 				navigate('/login')
