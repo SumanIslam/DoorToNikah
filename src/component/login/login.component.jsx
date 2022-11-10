@@ -1,8 +1,7 @@
+import { useNavigate } from 'react-router-dom';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import Checkbox from '@mui/material/Checkbox';
 import { Link } from 'react-router-dom';
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
@@ -11,22 +10,44 @@ import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 
+// styles
 import './login.styles.scss'
 
+// request
+import { httpLoginUser } from '../../hooks/request';
+
+// react toastify
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 const Login = () => {
-	const handleSubmit = (event) => {
+	const navigate = useNavigate();
+
+	const handleSubmit = async (event) => {
 		event.preventDefault();
 		const data = new FormData(event.currentTarget);
-		console.log({
+		const userData = {
 			email: data.get('email'),
 			password: data.get('password'),
-		});
+		};
+		try {
+			const user = await httpLoginUser(userData);
+			console.log(user);
+			toast.success(`${user.userName ? user.userName : 'congratulations'}, You are logged in`)
+			setTimeout(() => {
+				navigate('/')
+			}, 3000);
+		} catch(err) {
+			const errorMsg = err.response.data.msg
+			toast.error(errorMsg);
+		}
 	};
 
 	const theme = createTheme();
 	return (
 		<ThemeProvider theme={theme}>
 			<Container component='main' maxWidth='xs'>
+				<ToastContainer />
 				<Box
 					sx={{
 						marginTop: 8,
