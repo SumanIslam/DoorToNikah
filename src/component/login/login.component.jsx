@@ -1,27 +1,33 @@
-import { useNavigate } from 'react-router-dom';
-import Avatar from '@mui/material/Avatar';
-import Button from '@mui/material/Button';
-import TextField from '@mui/material/TextField';
-import { Link } from 'react-router-dom';
-import Grid from '@mui/material/Grid';
-import Box from '@mui/material/Box';
+import { useContext } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+
+// mui
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
-import Typography from '@mui/material/Typography';
+import Avatar from '@mui/material/Avatar';
+import Box from '@mui/material/Box';
+import Button from '@mui/material/Button';
 import Container from '@mui/material/Container';
+import Grid from '@mui/material/Grid';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import TextField from '@mui/material/TextField';
+import Typography from '@mui/material/Typography';
+
+// auth context
+import { AuthContext } from '../../context/auth.context';
 
 // styles
-import './login.styles.scss'
+import './login.styles.scss';
 
 // request
 import { httpLoginUser } from '../../hooks/request';
 
 // react toastify
-import { ToastContainer, toast } from 'react-toastify';
+import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 const Login = () => {
 	const navigate = useNavigate();
+	const { setAuth } = useContext(AuthContext);
 
 	const handleSubmit = async (event) => {
 		event.preventDefault();
@@ -32,13 +38,20 @@ const Login = () => {
 		};
 		try {
 			const user = await httpLoginUser(userData);
-			console.log(user);
-			toast.success(`${user.userName ? user.userName : 'congratulations'}, You are logged in`)
+			const accessToken = user.accessToken;
+			const roles = user.roles;
+			setAuth({...userData, accessToken, roles})
+			toast.success(
+				`${
+					user.userName ? user.userName : 'congratulations'
+				}, You are logged in`
+			);
+
 			setTimeout(() => {
-				navigate('/')
+				navigate('/');
 			}, 3000);
-		} catch(err) {
-			const errorMsg = err.response.data.msg
+		} catch (err) {
+			const errorMsg = err.response.data.msg;
 			toast.error(errorMsg);
 		}
 	};
