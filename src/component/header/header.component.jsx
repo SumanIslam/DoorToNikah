@@ -75,10 +75,10 @@ const Header = () => {
 						</li>
 					</ul>
 					<Link className='nav-link purple-color' to='/registration'>
-						<li className='btn btn-purple ml-1'>ফ্রি রেজিষ্ট্রেশন</li>
+						<li className='btn btn-purple space'>ফ্রি রেজিষ্ট্রেশন</li>
 					</Link>
 					<Link className='nav-link purple-color' to='/login'>
-						<li className='btn btn-pink ml-1'>লগইন</li>
+						<li className='btn btn-pink space'>লগইন</li>
 					</Link>
 				</div>
 			</div>

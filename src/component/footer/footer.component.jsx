@@ -9,7 +9,7 @@ const Footer = () => {
 		<div className='bg-purple' id='footer'>
 			<div className='container pt-5'>
 				<hr />
-				<div className='d-flex justify-content-evenly'>
+				<div className='d-flex justify-content-evenly responsive'>
 					<p>কপিরাইট ©2022 doortonikah.com। সর্বস্বত্ব সংরক্ষিত।</p>
 					<div className='mt-3'>
 						<Link to='/privacy&policy' className='mr-3 text-light'>

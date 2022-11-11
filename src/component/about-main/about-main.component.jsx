@@ -6,6 +6,7 @@ import { aboutMainData } from "./about-main-data";
 
 // style
 import '../../styles/utils.scss';
+import './about-main.style.scss';
 
 const AboutMain = () => {
   const [innerWidth, setInnerWidth] = useState(window.innerWidth);
@@ -20,14 +21,18 @@ const AboutMain = () => {
   const marginLeftRight = innerWidth > 1206 ? 'mlr-7' : 'mlr-0';
 
   return (
-		<div className='container pt-4 pb-5'>
-			<hr />
-			<div className={`${marginLeftRight} mb-5`}>
-				{aboutMainData.map((data) => (
-					<p key ={uuidv4()} className="text-justify fw-normal">{data.text}</p>
-				))}
+		<div className='about-main'>
+			<div className='container pt-4 pb-5'>
+				<hr />
+				<div className={`${marginLeftRight} mb-5`}>
+					{aboutMainData.map((data) => (
+						<p key={uuidv4()} className='fw-normal text-align-justify'>
+							{data.text}
+						</p>
+					))}
+				</div>
+				<hr />
 			</div>
-      <hr/>
 		</div>
 	);
 }

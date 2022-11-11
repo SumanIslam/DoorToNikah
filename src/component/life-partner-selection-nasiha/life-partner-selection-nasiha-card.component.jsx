@@ -9,11 +9,11 @@ const LifePartnerSelectionNasihaCard = () => {
 		<div className='card bg-grayish'>
 			<div className='container'>
 				<div className='container-xl'>
-					<div className='container-xxl'>
+					<div className='container-xxl text-align-justify'>
 						<h2 className='title mt-4 mb-4'>
 							জীবনসঙ্গী নির্বাচনে ইসলামের নির্দেশনা{' '}
 						</h2>
-						<p className="fw-normal">
+						<p className='fw-normal'>
 							পাত্র-পাত্রী নির্বাচন খুব গুরুত্বপূর্ণ একটি বিষয়। যে মানুষটির
 							সাথে সারা জীবন অতিবাহিত করতে হবে সেই মানুষটির চারিত্রিক ও নৈতিক
 							বৈশিষ্ট্য তার জীবনসঙ্গীর উপর অনেক প্রভাব বিস্তার করে। এ ব্যাপারে
@@ -52,7 +52,7 @@ const LifePartnerSelectionNasihaCard = () => {
 							</strong>{' '}
 							- (ইবনে মাজাহ)
 						</p>
-						<p className="fw-normal mb-5">
+						<p className='fw-normal mb-5'>
 							উপরিউক্ত হাদিস সমূহের শিক্ষা হল, পাত্র-পাত্রী নির্বাচনে দ্বীনদারী
 							ও সচ্চরিত্রকে সর্বাগ্রে রাখতে হবে। সৌন্দর্য, অর্থ-সম্পদ ও বংশীয়
 							সমতাও বিচার্য বটে, কিন্তু সবই দ্বীনদারীর পরবর্তী স্তরে। দ্বীনদারী

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 // style
 import '../../styles/utils.scss';
-import "./contact.css";
+import "./contact.scss";
 
 
 
@@ -24,8 +24,8 @@ const Contact = () => {
               <div className='contact_paragraph'>
               <p className='contact-para'>আপনার যে কোন জিজ্ঞাসা নিম্নোক্ত ফর্মে পূরণ করে আমাদের কাছে পাঠিয়ে দিন। আমরা শীঘ্রই আপনার সাথে যোগাযোগ করবো ইন শা আল্লাহ।</p>
               </div>
-              <div className='contact-from-div'>
-                <form>
+              <div className='contact-form-div'>
+                <form className="contact-form">
                   <h4>নাম</h4>
                   <input type="text" className='input-field' placeholder="" />
 
