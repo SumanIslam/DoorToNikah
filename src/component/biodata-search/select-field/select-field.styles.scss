@@ -18,12 +18,12 @@
     border: none;
     outline: none;
   }
+
+  @media screen and (max-width: 992px) and (min-width: 768px)  {
+    width: 11rem;
+  }
 }
 
 .custom-select label {
   font-size: 1.125rem;
-}
-
-input {
-  width: 13rem !important;
 }

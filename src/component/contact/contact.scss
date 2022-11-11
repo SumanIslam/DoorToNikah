@@ -8,7 +8,7 @@
   color: rgb(212, 209, 209);
 }
 
-.contact-from-div{
+.contact-form-div{
   margin: auto;
   width: 55%;
 }
@@ -20,7 +20,7 @@
   box-shadow: 0 0 20px 0 #999;
 }
 
-form {
+.contact-form {
   margin: 25px;
 }
 
@@ -48,8 +48,8 @@ form {
   box-sizing: border-box;
 }
 
-input[type="text"],
-input[type="email"] {
+.contact-form input[type="text"],
+.contact-form input[type="email"] {
   /* margin-top: 1px; */
   margin-bottom: 10px;
   width: 100% !important;

@@ -25,3 +25,10 @@
 		color: #fff;
 	}
 }
+.space {
+	margin-left: 0.5rem;
+	@media screen and (max-width: 992px) {
+		margin-left: 0;
+		margin-bottom: 0.5rem;
+	}
+}

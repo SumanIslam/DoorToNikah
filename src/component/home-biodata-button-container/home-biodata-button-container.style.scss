@@ -1,21 +1,27 @@
 .button-container {
-  margin: 5rem auto;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+	margin: 5rem auto;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
 
-  .biodata-btn-1 {
-    background-color: #522b79;
-    color: #fff;
-    font-size: 1.8rem;
-    padding: 20px 50px;
-    margin-bottom: 3rem;
-  }
-  .biodata-btn-2 {
-    background-color: #761753;
-    color: #fff;
-    font-size: 1.15rem;
-    padding: 20px 35px 20px 35px;
-  }
+	.biodata-btn-1 {
+		background-color: #522b79;
+		color: #fff;
+		font-size: 1.8rem;
+		padding: 20px 50px;
+		margin-bottom: 3rem;
+		@media (max-width: 576px) {
+			font-size: 1.2rem;
+		}
+	}
+	.biodata-btn-2 {
+		background-color: #761753;
+		color: #fff;
+		font-size: 1.15rem;
+		padding: 20px 35px 20px 35px;
+		@media (max-width: 576px) {
+			font-size: 1.2rem;
+		}
+	}
 }
