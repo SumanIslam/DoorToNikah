@@ -1,5 +1,146 @@
 .link {
-  color: #1976d2;
-  font-size: 95%;
-  text-decoration: underline;
+	color: #1976d2;
+	font-size: 95%;
+	text-decoration: underline;
 }
+
+.login {
+	height: 100%;
+	width: 100%;
+	margin: 5rem 0;
+}
+
+.wrapper {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	@media screen and (max-width: 992px) {
+		flex-direction: column;
+	}
+}
+
+.left {
+	margin-left: -12rem;
+	margin-top: -4rem;
+	@media screen and (max-width: 992px) {
+		margin: 0;
+		margin-top: -4.5rem;
+	}
+}
+
+.right {
+	margin-left: 4rem;
+	margin-top: 3rem;
+  @media screen and (max-width: 992px) {
+		margin: 0;
+		margin-top: 2rem;
+	}
+}
+
+.or {
+	border: 2px solid lightgray;
+	border-radius: 50%;
+	padding: 10px;
+	color: gray;
+	background-color: white;
+	font-weight: bold;
+	position: relative;
+}
+
+.or::before {
+	content: '';
+	width: 1.5px;
+	height: 20rem;
+	position: absolute;
+	top: -8.5rem;
+	left: 50%;
+	background-color: lightgray;
+	z-index: -1;
+	@media screen and (max-width: 992px) {
+    width: 22rem;
+    height: 1.5px;
+		top: 50%;
+		left: -9.5rem;
+	}
+}
+
+.loginButton {
+	width: 250px;
+	padding: 15px 75px;
+	border-radius: 5px;
+	color: white;
+	display: flex;
+	align-items: center;
+	font-weight: bold;
+	margin-bottom: 20px;
+	cursor: pointer;
+}
+
+.google {
+	background-color: #df4930;
+}
+.facebook {
+	background-color: #507cc0;
+}
+.github {
+	background-color: black;
+}
+
+// .left {
+//   margin-right: -15rem;
+//   margin-top: -5rem;
+// }
+// .right {
+
+// }
+
+.icon {
+	width: 20px;
+	height: 20px;
+	margin-right: 10px;
+}
+
+.loginTitle {
+	text-align: center;
+	margin-bottom: 2rem;
+}
+
+.link {
+	color: inherit;
+	text-decoration: none;
+}
+
+// @media screen and (max-width: 992px) {
+//   .card {
+//     width: 100%;
+//     margin-bottom: 50px;
+//   }
+
+//   .wrapper {
+//     width: 65%;
+//     height: 90%;
+//     flex-direction: column;
+//   }
+
+//   .loginTitle {
+//     display: none;
+//   }
+
+//   .center {
+//     width: 100%;
+//     position: relative;
+//   }
+
+//   .left {
+//     padding: 20px;
+//   }
+
+//   .right {
+//     padding: 20px;
+//   }
+
+//   .line {
+//     height: 0.5px;
+//     width: 300px;
+//   }
+// }
