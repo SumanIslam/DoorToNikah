@@ -45,7 +45,8 @@ const Login = () => {
 			const user = await httpLoginUser(userData);
 			const accessToken = user.accessToken;
 			const roles = user.roles;
-			setAuth({ ...userData, accessToken, roles });
+			const userId = user.userId;
+			setAuth({ ...userData, accessToken, roles, userId });
 			toast.success(
 				`${
 					user.userName ? user.userName : 'congratulations'
@@ -62,6 +63,7 @@ const Login = () => {
 	};
 
 	const theme = createTheme();
+
 	return (
 		<div className='login'>
 			<h1 className='loginTitle'>Choose a Login Method</h1>
