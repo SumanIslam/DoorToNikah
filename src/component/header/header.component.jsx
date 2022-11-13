@@ -1,13 +1,22 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React from "react";
-import '../../styles/utils.scss';
-import './header.style.scss';
-
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
+// styles
+import '../../styles/utils.scss';
+import './header.style.scss';
+
+// components
+import ProfileDropdown from "../profile-dropdown/profile-dropdown.component";
+
+// auth context
+import useAuth from '../../hooks/useAuth';
+
 const Header = () => {
   const [innerWidth, setInnerWidth] = useState(window.innerWidth);
+	const { auth }  = useAuth();
+	const user = auth.userId;
 
   useEffect(() => {
     function handleResize() {
@@ -74,11 +83,15 @@ const Header = () => {
 							</Link>
 						</li>
 					</ul>
+					{user ? (
+						<ProfileDropdown className='space' />
+					) : (
+						<Link className='nav-link purple-color' to='/login'>
+							<li className='btn btn-pink space'>লগইন</li>
+						</Link>
+					)}
 					<Link className='nav-link purple-color' to='/registration'>
 						<li className='btn btn-purple space'>ফ্রি রেজিষ্ট্রেশন</li>
-					</Link>
-					<Link className='nav-link purple-color' to='/login'>
-						<li className='btn btn-pink space'>লগইন</li>
 					</Link>
 				</div>
 			</div>

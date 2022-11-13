@@ -18,7 +18,7 @@ import Github from '../../asset/github.png';
 import Google from '../../asset/google.png';
 
 // auth context
-import { AuthContext } from '../../context/auth.context';
+import useAuth from '../../hooks/useAuth';
 
 // styles
 import './login.styles.scss';
@@ -32,7 +32,7 @@ import 'react-toastify/dist/ReactToastify.css';
 
 const Login = () => {
 	const navigate = useNavigate();
-	const { setAuth } = useContext(AuthContext);
+	const { setAuth, auth } = useAuth();
 
 	const handleSubmit = async (event) => {
 		event.preventDefault();
