@@ -1,8 +1,9 @@
 // mui icons
 import PersonIcon from '@mui/icons-material/Person';
 
+import { httpLogOutUser } from '../../hooks/request';
+
 // styles
-import '../../styles/utils.scss';
 import './profile-dropdown.style.scss'
 
 const ProfileDropdown = () => {
@@ -33,7 +34,7 @@ const ProfileDropdown = () => {
 					</a>
 				</li>
 				<li>
-					<a className='dropdown-item' href='#'>
+					<a className='dropdown-item' href='#' onClick={httpLogOutUser}>
 						Logout
 					</a>
 				</li>
