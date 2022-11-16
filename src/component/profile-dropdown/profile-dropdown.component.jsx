@@ -1,12 +1,22 @@
 // mui icons
 import PersonIcon from '@mui/icons-material/Person';
 
+// api request handler
 import { httpLogOutUser } from '../../hooks/request';
 
 // styles
 import './profile-dropdown.style.scss'
 
+// auth
+import useAuth from '../../hooks/useAuth';
+
 const ProfileDropdown = () => {
+	const { setAuth } = useAuth();
+
+	const handleLogout = () => {
+		setAuth('');
+		httpLogOutUser();
+	}
 	return (
 		<div className='dropdown space'>
 			<button
@@ -34,7 +44,7 @@ const ProfileDropdown = () => {
 					</a>
 				</li>
 				<li>
-					<a className='dropdown-item' href='#' onClick={httpLogOutUser}>
+					<a className='dropdown-item' href='#' onClick={handleLogout}>
 						Logout
 					</a>
 				</li>
