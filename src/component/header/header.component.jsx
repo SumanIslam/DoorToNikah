@@ -16,7 +16,8 @@ import useAuth from '../../hooks/useAuth';
 const Header = () => {
   const [innerWidth, setInnerWidth] = useState(window.innerWidth);
 	const { auth }  = useAuth();
-	const user = auth.userId;
+	const userId = auth?.userId;
+	// console.log(auth, userId);
 
   useEffect(() => {
     function handleResize() {
@@ -83,7 +84,7 @@ const Header = () => {
 							</Link>
 						</li>
 					</ul>
-					{user ? (
+					{userId ? (
 						<ProfileDropdown className='space' />
 					) : (
 						<Link className='nav-link purple-color' to='/login'>

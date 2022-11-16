@@ -1,4 +1,3 @@
-import { useContext } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 
 // mui
@@ -32,7 +31,7 @@ import 'react-toastify/dist/ReactToastify.css';
 
 const Login = () => {
 	const navigate = useNavigate();
-	const { setAuth, auth } = useAuth();
+	const { setAuth } = useAuth();
 
 	const handleSubmit = async (event) => {
 		event.preventDefault();
@@ -47,6 +46,12 @@ const Login = () => {
 			const roles = user.roles;
 			const userId = user.userId;
 			setAuth({ ...userData, accessToken, roles, userId });
+
+			// set userId and roles in local storage
+			// localStorage.setItem('auth', JSON.stringify({
+			// 	userId, roles
+			// }));
+			
 			toast.success(
 				`${
 					user.userName ? user.userName : 'congratulations'
@@ -55,7 +60,7 @@ const Login = () => {
 
 			setTimeout(() => {
 				navigate('/');
-			}, 3000);
+			}, 2000);
 		} catch (err) {
 			const errorMsg = err.response.data.msg;
 			toast.error(errorMsg);
