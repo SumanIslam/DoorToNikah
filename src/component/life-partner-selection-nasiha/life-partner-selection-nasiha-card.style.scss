@@ -1,11 +1,23 @@
+.custom-container {
+  max-width: 800px;
+  margin: auto;
+
+  // media query
+  @media screen and (max-width: 992px){
+    max-width: 700px;
+  }
+  @media screen and (max-width: 768px){
+    max-width: 500px;
+  }
+  @media screen and (max-width: 576px){
+    max-width: 350px;
+  }
+}
+
 .title {
   text-align: center;
 }
 .bg-grayish {
   background-color: transparent;
   background-image: linear-gradient(0deg, #FFFFFF 0%, #F5F5F5 0%);
-}
-
-p {
-  margin: 1.3rem 0;
 }
