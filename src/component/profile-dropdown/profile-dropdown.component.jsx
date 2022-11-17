@@ -14,8 +14,8 @@ const ProfileDropdown = () => {
 	const { setAuth } = useAuth();
 
 	const handleLogout = () => {
-		setAuth('');
 		httpLogOutUser();
+		setAuth('');
 	}
 	return (
 		<div className='dropdown space'>

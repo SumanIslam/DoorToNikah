@@ -42,15 +42,7 @@ const Login = () => {
 		};
 		try {
 			const user = await httpLoginUser(userData);
-			const accessToken = user.accessToken;
-			const roles = user.roles;
-			const userId = user.userId;
-			setAuth({ ...userData, accessToken, roles, userId });
-
-			// set userId and roles in local storage
-			// localStorage.setItem('auth', JSON.stringify({
-			// 	userId, roles
-			// }));
+			setAuth({ ...userData, ...user });
 			
 			toast.success(
 				`${
