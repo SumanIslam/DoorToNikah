@@ -11,16 +11,11 @@ import FormSelect from "./select-field/select-field.component";
 import '../../styles/utils.scss';
 import './biodata-search-box.styles.scss';
 
-// data
-import { labelAndOptions } from "./selectOptionData";
-
 const BiodataSearchBox = () => {
   return (
 		<div className='bg-pink p-4 biodata-box'>
 			<form>
-				{labelAndOptions.map((data) => (
-					<FormSelect key={uuidv4()} labelAndOptions={data} />
-				))}
+				<FormSelect />
 				<button type="submit" className='search-button d-flex justify-content-center align-items-center'>
 					<SearchIcon />
 					বায়োডাটা খুঁজুন
