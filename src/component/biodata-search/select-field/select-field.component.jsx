@@ -5,6 +5,7 @@ import {
 	searchingFor,
 	maritalStatus,
 	allDivision,
+	allDistrict,
 	district,
 } from '../selectOptionData';
 
@@ -75,22 +76,46 @@ const FormSelect = () => {
 				</select>
 			</div>
 			{/* district select field depending on division */}
-			<div className='col-4 col-md-5 text-align-right'>
-				<label className='form-label mt-1'>জেলা</label>
-			</div>
-			<div className='col-8 col-md-7'>
-				<select>
-					<option defaultValue={districtData.selected}>
-						{districtData.selected}
-					</option>
-					{districtData.options.map((item) => (
-						<option key={item} value={item}>
-							{' '}
-							{item}{' '}
-						</option>
-					))}
-				</select>
-			</div>
+			{districtData ? (
+				<>
+					<div className='col-4 col-md-5 text-align-right'>
+						<label className='form-label mt-1'>জেলা</label>
+					</div>
+					<div className='col-8 col-md-7'>
+						<select>
+							<option defaultValue={districtData.selected}>
+								{districtData.selected}
+							</option>
+							{districtData.options.map((item) => (
+								<option key={item} value={item}>
+									{' '}
+									{item}{' '}
+								</option>
+							))}
+						</select>
+					</div>
+				</>
+			) : (
+				<>
+					<div className='col-4 col-md-5 text-align-right'>
+						<label className='form-label mt-1'>জেলা</label>
+					</div>
+					<div className='col-8 col-md-7'>
+						<select>
+							<option defaultValue={allDistrict.selected}>
+								{allDistrict.selected}
+							</option>
+							{allDistrict.options.map((item) => (
+								<option key={item} value={item}>
+									{' '}
+									{item}{' '}
+								</option>
+							))}
+						</select>
+					</div>
+				</>
+			)}
+
 			{/* biodata no text field */}
 			<div className='col-4 col-md-5 text-align-right'>
 				<label className='form-label mt-1'>বায়োডাটা নং</label>
