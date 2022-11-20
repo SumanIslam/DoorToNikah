@@ -1,22 +1,27 @@
+import { useState } from 'react';
 // mui icons
 import PersonIcon from '@mui/icons-material/Person';
 
-// api request handler
-import { httpLogOutUser } from '../../hooks/request';
-
 // styles
-import './profile-dropdown.style.scss'
+import './profile-dropdown.style.scss';
 
-// auth
-import useAuth from '../../hooks/useAuth';
+// component
+import LogoutConsent from '../logout-consent/logout-consent.component';
 
 const ProfileDropdown = () => {
-	const { setAuth } = useAuth();
+	const [open, setOpen] = useState(false);
+	const [selectedValue, setSelectedValue] = useState('No');
 
-	const handleLogout = () => {
-		httpLogOutUser();
-		setAuth('');
-	}
+	const handleClose = (value) => {
+		console.log(value);
+		setOpen(false);
+		setSelectedValue(value);
+	};
+
+	const handleClickOpen = () => {
+		setOpen(true);
+	};
+	
 	return (
 		<div className='dropdown space'>
 			<button
@@ -44,10 +49,15 @@ const ProfileDropdown = () => {
 					</a>
 				</li>
 				<li>
-					<a className='dropdown-item' href='#' onClick={handleLogout}>
+					<a className='dropdown-item' href='#' onClick={handleClickOpen}>
 						Logout
 					</a>
 				</li>
+				<LogoutConsent
+					selectedValue={selectedValue}
+					open={open}
+					onClose={handleClose}
+				/>
 			</ul>
 		</div>
 	);
