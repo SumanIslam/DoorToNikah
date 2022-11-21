@@ -91,7 +91,7 @@ const Header = () => {
 							<li className='btn btn-pink space'>লগইন</li>
 						</Link>
 					)}
-					<Link className='nav-link purple-color' to='/registration'>
+					<Link className='nav-link purple-color' to='/biodata/registration'>
 						<li className='btn btn-purple space'>ফ্রি রেজিষ্ট্রেশন</li>
 					</Link>
 				</div>
