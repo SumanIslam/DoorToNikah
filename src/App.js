@@ -10,10 +10,15 @@ import ContactPage from './page/contact-page';
 import TutorialPage from './page/tutorial-page';
 import LoginPage from './page/login-page';
 import SignUpPage from './page/signup-page';
+import RegistrationPage1 from './page/registration-page.component';
+
+// require auth
+import RequireAuth from './services/requireAuth';
 
 function App() {
   return (
 		<Routes>
+			{/* public routes */}
 			<Route path='/' element={<Homepage />} />
 			<Route path='/about' element={<AboutUs />} />
 			<Route path='/faq' element={<FaqPage />} />
@@ -23,6 +28,10 @@ function App() {
 			<Route path='/tutorial' element={<TutorialPage />} />
 			<Route path='/login' element={<LoginPage />} />
 			<Route path='/signup' element={<SignUpPage />} />
+			{/* protected routes */}
+			<Route path='/biodata' element={<RequireAuth />}>
+				<Route path='registration' element={<RegistrationPage1 />} />
+			</Route>
 		</Routes>
 	);
 }

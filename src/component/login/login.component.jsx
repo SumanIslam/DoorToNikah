@@ -23,7 +23,7 @@ import useAuth from '../../hooks/useAuth';
 import './login.styles.scss';
 
 // request
-import { httpLoginUser } from '../../hooks/request';
+import { httpLoginUser } from '../../services/request';
 
 // react toastify
 import { toast, ToastContainer } from 'react-toastify';

@@ -1,6 +1,8 @@
 import { useNavigate } from 'react-router-dom';
 
 // mui dialogue
+import CancelIcon from '@mui/icons-material/Cancel';
+import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import Avatar from '@mui/material/Avatar';
 import { blue, red } from '@mui/material/colors';
 import Dialog from '@mui/material/Dialog';
@@ -10,11 +12,9 @@ import ListItem from '@mui/material/ListItem';
 import ListItemAvatar from '@mui/material/ListItemAvatar';
 import ListItemText from '@mui/material/ListItemText';
 import PropTypes from 'prop-types';
-import CheckCircleIcon from '@mui/icons-material/CheckCircle';
-import CancelIcon from '@mui/icons-material/Cancel';
 
 // api request handler
-import { httpLogOutUser } from '../../hooks/request';
+import { httpLogOutUser } from '../../services/request';
 
 // auth
 import useAuth from '../../hooks/useAuth';
