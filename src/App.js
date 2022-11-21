@@ -30,7 +30,7 @@ function App() {
 			<Route path='/signup' element={<SignUpPage />} />
 			{/* protected routes */}
 			<Route path='/biodata' element={<RequireAuth />}>
-				<Route path='registration' element={<RegistrationPage1 />} />
+				<Route path='registration/step1' element={<RegistrationPage1 />} />
 			</Route>
 		</Routes>
 	);
