@@ -5,10 +5,10 @@ import AccountCircleRoundedIcon from '@mui/icons-material/AccountCircleRounded';
 
 // styles
 import './biodata-no-container.style.scss';
-import '../../../styles/utils.scss'
+import '../../../../styles/utils.scss'
 
 // auth
-import useAuth from '../../../hooks/useAuth'
+import useAuth from '../../../../hooks/useAuth'
 
 // copy to clipboard
 import { CopyToClipboard } from 'react-copy-to-clipboard';
@@ -20,8 +20,6 @@ const BiodataNoContainer = () => {
   const handleCopy = () => {
     setCopied(true);
   }
-
-  console.log(copied);
   return (
 		<div className='biodata-no-container bg-purple'>
 			<div className='biodata-no-container-body'>
