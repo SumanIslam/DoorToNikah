@@ -41,6 +41,7 @@ li.list-item {
 }
 
 li.current {
+  color: #fff;
   background-color: #522b79;
   &::before {
     border-left: 10px solid #522b79;
@@ -48,5 +49,8 @@ li.current {
   
   a {
     color: #fff;
+    &:hover {
+      color: #fff;
+    }
   }
 }
