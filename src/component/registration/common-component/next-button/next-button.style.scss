@@ -1,0 +1,23 @@
+.next-button {
+  font-size: 85%;
+  border-radius: 5px;
+  background-color: #ad277c;
+  color: #fff;
+  border: 2px solid #ad277c;
+  padding: 3px 14px;
+  margin-left: 1rem;
+  cursor: pointer;
+
+  a:hover {
+    color: #fff;
+  }
+}
+
+.disabled-button {
+  cursor: no-drop;
+  margin-left: 1rem;
+}
+
+.custom-tooltip {
+  --bs-tooltip-bg: #888;
+}
