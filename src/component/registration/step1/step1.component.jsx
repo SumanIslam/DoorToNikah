@@ -1,7 +1,7 @@
 import React from 'react';
 
 // component
-import BiodataNoContainer from './biodata-no-container/biodata-no-container.component';
+import BiodataNoContainer from '../common-component/biodata-no-container/biodata-no-container.component';
 import Step1FormContainer from './step1-form-container/step1-form-container.component';
 
 // styles

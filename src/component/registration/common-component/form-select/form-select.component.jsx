@@ -5,22 +5,27 @@ import { v4 as uuidv4 } from 'uuid';
 import './form-select.style.scss';
 import '../../../../styles/utils.scss';
 
-const RegistrationFormSelect = ({title, select, data, selected, guideText, placeholder}) => {
+const RegistrationFormSelect = ({ title, options, selected, dropdown, guideText, placeholder, handleSelect }) => {
   return (
 		<>
 			<fieldset className='border pl-1 custom-input-container'>
 				<legend className='float-none w-auto'>{title}</legend>
 				<div className='mt-1'>
-					{select ? (
-						<select defaultValue={selected} className='full-width'>
-							{data.map((item) => (
+					{dropdown ? (
+						<select onChange={handleSelect} className='full-width'>
+							<option value={selected}>{selected}</option>
+							{options && options.map((item) => (
 								<option key={uuidv4()} value={item}>
 									{item}
 								</option>
 							))}
 						</select>
 					) : (
-						<input type='text' className='full-width' placeholder={placeholder} />
+						<input
+							type='text'
+							className='full-width'
+							placeholder={placeholder}
+						/>
 					)}
 					{guideText && <p className='guide-text'>{guideText}</p>}
 				</div>

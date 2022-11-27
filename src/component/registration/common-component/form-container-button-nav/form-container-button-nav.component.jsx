@@ -11,11 +11,11 @@ const FormContainerButtonNav = ({ current }) => {
   const titleArray = [
 		{
 			title: 'নাম',
-			url: '#',
+			url: '/biodata/registration/step1',
 		},
 		{
 			title: 'সাধারণ তথ্য',
-			url: '#',
+			url: '/biodata/registration/step2',
 		},
 		{
 			title: 'ঠিকানা',
@@ -52,7 +52,7 @@ const FormContainerButtonNav = ({ current }) => {
 		{
 			title: 'যোগাযোগ',
 			url: '#',
-		}
+		},
 	];
   return (
 		<div className='button-nav-container'>

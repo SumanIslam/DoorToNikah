@@ -10,7 +10,8 @@ import ContactPage from './page/contact-page';
 import TutorialPage from './page/tutorial-page';
 import LoginPage from './page/login-page';
 import SignUpPage from './page/signup-page';
-import RegistrationPage1 from './page/registration-page.component';
+import RegistrationPage1 from './page/registration/registration-page1.component';
+import RegistrationPage2 from './page/registration/registration-page2.component';
 
 // require auth
 import RequireAuth from './services/requireAuth';
@@ -31,6 +32,7 @@ function App() {
 			{/* protected routes */}
 			<Route path='/biodata' element={<RequireAuth />}>
 				<Route path='registration/step1' element={<RegistrationPage1 />} />
+				<Route path='registration/step2' element={<RegistrationPage2 />} />
 			</Route>
 		</Routes>
 	);
