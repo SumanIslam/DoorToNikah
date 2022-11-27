@@ -1,0 +1,31 @@
+ul.item-nav {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		list-style: none;
+    height: 40px;
+		margin: 0;
+		padding: 0;
+		width: 100%;
+		li {
+      a {
+        color: #fff;
+        &.view {
+          padding: 8px 20px;
+          border-top-left-radius: 5px;
+          background-color: #522b79;
+        }
+        &.biodata-approve {
+          padding: 8px 20px;
+          border-bottom-left-radius: 5px;
+          border-bottom-right-radius: 5px;
+          background-color: #ad277c;
+			  }
+        &.edit {
+          padding: 8px 20px;
+          border-top-right-radius: 5px;
+          background-color: #522b79;
+			  }
+      }
+		}
+	}

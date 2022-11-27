@@ -196,7 +196,7 @@ export const moymonsinghDistrict = {
 // create district Map
 export const district = new Map();
 
-district.set('সকল জেলা', allDistrict);
+district.set('সকল বিভাগ', allDistrict);
 district.set('ঢাকা বিভাগ', dhakaDistrict);
 district.set('চট্টগ্রাম বিভাগ', chittagongDistrict);
 district.set('রাজশাহী বিভাগ', rajshahiDistrict);

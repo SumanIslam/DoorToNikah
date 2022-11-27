@@ -83,7 +83,7 @@ const FormSelect = () => {
 					</div>
 					<div className='col-8 col-md-7'>
 						<select>
-							<option defaultValue={districtData.selected}>
+							<option defaultValue={districtData.selected} value={districtData.selected}>
 								{districtData.selected}
 							</option>
 							{districtData.options.map((item) => (
