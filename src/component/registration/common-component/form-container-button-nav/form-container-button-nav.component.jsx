@@ -19,39 +19,39 @@ const FormContainerButtonNav = ({ current }) => {
 		},
 		{
 			title: 'ঠিকানা',
-			url: '#',
+			url: '/biodata/registration/step3',
 		},
 		{
 			title: 'শিক্ষাগত যোগ্যতা',
-			url: '#',
+			url: '/biodata/registration/step4',
 		},
 		{
 			title: 'পারিবারিক তথ্য',
-			url: '#',
+			url: '/biodata/registration/step5',
 		},
 		{
 			title: 'ব্যক্তিগত তথ্য',
-			url: '#',
+			url: '/biodata/registration/step6',
 		},
 		{
 			title: 'বিয়ে সংক্রান্ত তথ্য',
-			url: '#',
+			url: '/biodata/registration/step7',
 		},
 		{
 			title: 'অন্যান্য তথ্য',
-			url: '#',
+			url: '/biodata/registration/step8',
 		},
 		{
 			title: 'যেমন জীবনসঙ্গী আশা করেন',
-			url: '#',
+			url: '/biodata/registration/step9',
 		},
 		{
 			title: 'কর্তৃপক্ষের জিজ্ঞাসা',
-			url: '#',
+			url: '/biodata/registration/step10',
 		},
 		{
 			title: 'যোগাযোগ',
-			url: '#',
+			url: '/biodata/registration/step11',
 		},
 	];
   return (
