@@ -14,7 +14,7 @@ export const maritalStatus = {
 
 export const birthYear = {
 	title: 'জন্মসন (আসল)*',
-	selected: '২০০০',
+	selected: '----',
 	optionsValue: [
 		{
 			option: '১৯৬০',
@@ -291,7 +291,7 @@ export const skinColor = {
 
 export const height = {
 	title: 'উচ্চতা*',
-	selected: '৫\'০"',
+	selected: '----',
 	options: [
 		'৪\'০"',
 		'৪\'১"',
@@ -346,7 +346,7 @@ export const height = {
 
 export const weight = {
 	title: 'ওজন (কেজি)*',
-	selected: '৬০ কেজি',
+	selected: '----',
 	options: [
 		'৩০ কেজি',
 		'৩১ কেজি',
