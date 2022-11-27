@@ -1,4 +1,11 @@
-.step2-container {
+.step {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 3rem 0;
+}
+
+.step-container {
 	width: 760px;
 	height: auto;
 	padding-bottom: 3rem;

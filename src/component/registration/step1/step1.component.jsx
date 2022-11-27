@@ -2,14 +2,14 @@ import React from 'react';
 
 // component
 import BiodataNoContainer from '../common-component/biodata-no-container/biodata-no-container.component';
-import Step1FormContainer from './step1-form-container/step1-form-container.component';
+import Step1FormContainer from './step1-form-container.component';
 
 // styles
-import './step1.styles.scss'
+import '../common-styles/Form.style.scss'
 
 const Step1 = () => {
   return (
-    <div className='step1'>
+    <div className='step'>
       <BiodataNoContainer />
       <Step1FormContainer />
     </div>

@@ -1,18 +1,23 @@
 import { useState } from 'react';
 
-// styles
-import './step2-form-container.style.scss';
-
 // component
-import FormContainerButtonNav from '../../common-component/form-container-button-nav/form-container-button-nav.component';
-import FormContainerNav from '../../common-component/form-container-nav/form-container-nav.component';
-import RegistrationFormSelect from '../../common-component/form-select/form-select.component';
-import NextButton from '../../common-component/next-button/next-button.component';
-import SaveChangesButton from '../../common-component/save-changes-button/save-changes-button.component';
+import FormContainerButtonNav from '../common-component/form-container-button-nav/form-container-button-nav.component';
+import FormContainerNav from '../common-component/form-container-nav/form-container-nav.component';
+import NextButton from '../common-component/next-button/next-button.component';
+import SaveChangesButton from '../common-component/save-changes-button/save-changes-button.component';
 
 // data
-import { district, allDivision, allDistrict } from '../../../biodata-search/selectOptionData';
-import { biodataType, maritalStatus, birthYear, skinColor, height, weight, bloodGroup } from './data';
+import { allDistrict, allDivision, district } from '../../biodata-search/selectOptionData';
+
+import { 
+	biodataType,
+	birthYear,
+	bloodGroup,
+	height,
+	maritalStatus,
+	skinColor,
+	weight
+} from './data';
 
 const Step2FormContainer = () => {
 	const [permanentDivision, setPermanentDivision] = useState('');
@@ -32,7 +37,7 @@ const Step2FormContainer = () => {
 	}
 
 	return (
-		<div className='step2-container'>
+		<div className='step-container'>
 			<FormContainerNav />
 			<div className='mlr-2'>
 				<FormContainerButtonNav current={2} />
