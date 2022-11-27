@@ -4,9 +4,6 @@ import FormContainerNav from '../common-component/form-container-nav/form-contai
 import NextButton from '../common-component/next-button/next-button.component';
 import SaveChangesButton from '../common-component/save-changes-button/save-changes-button.component';
 
-// data
-// import { numberOfSisters, numberOfBrothers } from './data';
-
 const Step6FormContainer = () => {
 	return (
 		<div className='step-container'>
