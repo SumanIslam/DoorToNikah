@@ -7,7 +7,7 @@ import SaveChangesButton from '../common-component/save-changes-button/save-chan
 // data
 import { bool } from './data';
 
-const Step9FormContainer = () => {
+const Step10FormContainer = () => {
 	return (
 		<div className='step-container'>
 			<FormContainerNav />
@@ -73,4 +73,4 @@ const Step9FormContainer = () => {
 	);
 };
 
-export default Step9FormContainer;
+export default Step10FormContainer;
