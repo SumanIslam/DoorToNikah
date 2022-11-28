@@ -22,6 +22,7 @@ import RegistrationPage7 from './page/registration/registration-page7.component'
 import RegistrationPage8 from './page/registration/registration-page8.component';
 import RegistrationPage9 from './page/registration/registration-page9.component';
 import RegistrationPage10 from './page/registration/registration-page10.component';
+import RegistrationPage11 from './page/registration/registration-page11.component';
 
 // require auth
 import RequireAuth from './services/requireAuth';
@@ -51,6 +52,7 @@ function App() {
 				<Route path='registration/step8' element={<RegistrationPage8 />} />
 				<Route path='registration/step9' element={<RegistrationPage9 />} />
 				<Route path='registration/step10' element={<RegistrationPage10 />} />
+				<Route path='registration/step11' element={<RegistrationPage11 />} />
 			</Route>
 		</Routes>
 	);
