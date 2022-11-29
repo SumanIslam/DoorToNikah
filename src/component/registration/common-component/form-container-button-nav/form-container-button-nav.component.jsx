@@ -2,7 +2,7 @@ import React from 'react'
 import { v4 as uuidv4 } from 'uuid';
 
 // component
-import FormContainerButton from '../form-container-button/form-container-button.component';
+import NavButton from '../nav-button/nav-button.component';
 
 // styles
 import './form-container-button-nav.style.scss'
@@ -58,7 +58,7 @@ const FormContainerButtonNav = ({ current }) => {
 		<div className='button-nav-container'>
 			<ul className='button-nav'>
 				{titleArray.map((item, index) => (
-					<FormContainerButton
+					<NavButton
 						title={item.title}
 						url={item.url}
 						current={index + 1 === current}

@@ -12,6 +12,7 @@ const Step1FormContainer = () => {
 		e.preventDefault();
 		setName(e.target.value)
 	}
+	
   return (
 		<div className='step-container'>
 			<FormContainerNav />

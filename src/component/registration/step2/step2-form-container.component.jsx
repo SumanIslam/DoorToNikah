@@ -3,10 +3,9 @@ import { useState } from 'react';
 // component
 import FormContainerButtonNav from '../common-component/form-container-button-nav/form-container-button-nav.component';
 import FormContainerNav from '../common-component/form-container-nav/form-container-nav.component';
-import NextButton from '../common-component/next-button/next-button.component';
-import SaveChangesButton from '../common-component/save-changes-button/save-changes-button.component';
 import SelectField from '../common-component/select-field/select-field.component';
-import InputField from '../common-component/input-field/input-field.component'
+import InputField from '../common-component/input-field/input-field.component';
+import FormButtonContainer from '../common-component/form-button-container/form-button-container.component';
 
 // data
 import { allDistrict, allDivision, district } from '../../biodata-search/selectOptionData';
@@ -209,10 +208,7 @@ const Step2FormContainer = () => {
 					/>
 				</div>
 				{/* buttons */}
-				<div className='d-flex justify-content-between width'>
-					<SaveChangesButton />
-					<NextButton disabled={true} />
-				</div>
+				<FormButtonContainer states={generalInfo} url='/biodata/registration/step3' />
 			</div>
 		</div>
 	);
