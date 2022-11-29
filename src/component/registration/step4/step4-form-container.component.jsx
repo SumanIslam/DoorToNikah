@@ -21,7 +21,6 @@ const Step4FormContainer = () => {
 		setEducationalQualification({...educationalQualification, [e.target.name] : e.target.value})
 	}
 
-	console.log(educationalQualification);
 	return (
 		<div className='step-container'>
 			<FormContainerNav />
