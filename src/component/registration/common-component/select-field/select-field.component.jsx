@@ -15,6 +15,7 @@ const SelectField = ({title, selected, options, name, guideText, required, handl
 					</option>
 				))}
 			</select>
+			{guideText && (<p className='guide-text'>{guideText}</p>)}
 		</fieldset>
 	);
 }
