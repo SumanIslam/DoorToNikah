@@ -2,8 +2,6 @@ import { useState } from 'react';
 // component
 import FormContainerButtonNav from '../common-component/form-container-button-nav/form-container-button-nav.component';
 import FormContainerNav from '../common-component/form-container-nav/form-container-nav.component';
-import NextButton from '../common-component/next-button/next-button.component';
-import SaveChangesButton from '../common-component/save-changes-button/save-changes-button.component';
 import FormButtonContainer from '../common-component/form-button-container/form-button-container.component';
 import InputField from '../common-component/input-field/input-field.component';
 
