@@ -1,9 +1,9 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
 // styles
-import './form-container-button.style.scss'
+import './nav-button.style.scss'
 
-const FormContainerButton = ({ title, url, current }) => {
+const NavButton = ({ title, url, current }) => {
   return (
     <>
     <li className={`list-item ${current && 'current'}`}>
@@ -13,4 +13,4 @@ const FormContainerButton = ({ title, url, current }) => {
   )
 }
 
-export default FormContainerButton;
+export default NavButton;
