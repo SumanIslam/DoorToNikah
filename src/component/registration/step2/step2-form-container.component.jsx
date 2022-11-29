@@ -5,11 +5,13 @@ import FormContainerButtonNav from '../common-component/form-container-button-na
 import FormContainerNav from '../common-component/form-container-nav/form-container-nav.component';
 import NextButton from '../common-component/next-button/next-button.component';
 import SaveChangesButton from '../common-component/save-changes-button/save-changes-button.component';
+import SelectField from '../common-component/select-field/select-field.component';
+import InputField from '../common-component/input-field/input-field.component'
 
 // data
 import { allDistrict, allDivision, district } from '../../biodata-search/selectOptionData';
 
-import { 
+import {
 	biodataType,
 	birthYear,
 	bloodGroup,
@@ -20,20 +22,36 @@ import {
 } from './data';
 
 const Step2FormContainer = () => {
-	const [permanentDivision, setPermanentDivision] = useState('');
-	const [presentDivision, setPresentDivision] = useState('');
+	const [generalInfo, setGeneralInfo] = useState({
+		biodataType: 'সকল বায়োডাটা',
+		maritalStatus: 'সকল',
+		permanentDivision: 'সকল বিভাগ',
+		permanentDistrict: 'সকল জেলা',
+		presentDivision: 'সকল বিভাগ',
+		presentDistrict: 'সকল জেলা',
+		birthYear: {},
+		skinColor: 'কালো',
+		height: '',
+		weight: '',
+		bloodGroup: '',
+		occupation: '',
+		monthlyIncome: '',
+	});
 
-	const permanentDistrictData = district.get(permanentDivision);
-	const presentDistrictData = district.get(presentDivision);
+	const permanentDistrictData = district.get(generalInfo.permanentDivision);
+	const presentDistrictData = district.get(generalInfo.presentDivision);
 
 	const handleSelect = (e) => {
 		e.preventDefault();
-		setPermanentDivision(e.target.value);
-	};
-
-	const handleSelect2 = (e) => {
+		setGeneralInfo({...generalInfo, [e.target.name]: e.target.value})
+	}
+	const handleBirthYear = (e) => {
 		e.preventDefault();
-		setPresentDivision(e.target.value);
+		const option = Array.from(e.target.options).find(option => option.selected).text
+		setGeneralInfo({...generalInfo, birthYear: {
+			value: e.target.value,
+			option: option,
+		}})
 	}
 
 	return (
@@ -43,151 +61,83 @@ const Step2FormContainer = () => {
 				<FormContainerButtonNav current={2} />
 				<div className='form-container'>
 					{/* for biodata type */}
-					<fieldset className='border pl-1 custom-input-container mt-1'>
-						<legend className='float-none w-auto'>{biodataType.title}</legend>
-						<select>
-							<option defaultValue={biodataType.selected}>
-								{biodataType.selected}
-							</option>
-							{biodataType.options.map((item) => (
-								<option key={item} value={item}>
-									{' '}
-									{item}{' '}
-								</option>
-							))}
-						</select>
-					</fieldset>
+					<SelectField
+						title={biodataType.title}
+						selected={biodataType.selected}
+						options={biodataType.options}
+						name='biodataType'
+						handleSelect={handleSelect}
+					/>
 
 					{/* for marital status */}
-					<fieldset className='border pl-1 custom-input-container mt-1'>
-						<legend className='float-none w-auto'>{maritalStatus.title}</legend>
-						<select>
-							<option defaultValue={maritalStatus.selected}>
-								{maritalStatus.selected}
-							</option>
-							{maritalStatus.options.map((item) => (
-								<option key={item} value={item}>
-									{' '}
-									{item}{' '}
-								</option>
-							))}
-						</select>
-					</fieldset>
+					<SelectField
+						title={maritalStatus.title}
+						selected={maritalStatus.selected}
+						options={maritalStatus.options}
+						name='maritalStatus'
+						handleSelect={handleSelect}
+					/>
 
 					{/* for permanent address - division */}
-					<fieldset className='border pl-1 custom-input-container mt-1'>
-						<legend className='float-none w-auto'>
-							স্থায়ী ঠিকানা (বিভাগ)*
-						</legend>
-						<select onChange={handleSelect}>
-							<option defaultValue={allDivision.selected}>
-								{allDivision.selected}
-							</option>
-							{allDivision.options.map((item) => (
-								<option key={item} value={item}>
-									{' '}
-									{item}{' '}
-								</option>
-							))}
-						</select>
-					</fieldset>
+					<SelectField
+						title='স্থায়ী ঠিকানা (বিভাগ)*'
+						selected={allDivision.selected}
+						options={allDivision.options}
+						name='permanentDivision'
+						handleSelect={handleSelect}
+					/>
 
 					{/* for permanent address - district */}
 					{permanentDistrictData ? (
-						<fieldset className='border pl-1 custom-input-container mt-1'>
-							<legend className='float-none w-auto'>
-								স্থায়ী ঠিকানা (জেলা)*
-							</legend>
-							<select>
-								<option defaultValue={permanentDistrictData.selected}>
-									{permanentDistrictData.selected}
-								</option>
-								{permanentDistrictData.options.map((item) => (
-									<option key={item} value={item}>
-										{' '}
-										{item}{' '}
-									</option>
-								))}
-							</select>
-						</fieldset>
+						<SelectField
+							title='স্থায়ী ঠিকানা (জেলা)*'
+							selected={permanentDistrictData.selected}
+							options={permanentDistrictData.options}
+							name='permanentDistrict'
+							handleSelect={handleSelect}
+						/>
 					) : (
-						<fieldset className='border pl-1 custom-input-container mt-1'>
-							<legend className='float-none w-auto'>
-								স্থায়ী ঠিকানা (জেলা)*
-							</legend>
-							<select>
-								<option defaultValue={allDistrict.selected}>
-									{allDistrict.selected}
-								</option>
-								{allDistrict.options.map((item) => (
-									<option key={item} value={item}>
-										{' '}
-										{item}{' '}
-									</option>
-								))}
-							</select>
-						</fieldset>
+						<SelectField
+							title='স্থায়ী ঠিকানা (জেলা)*'
+							selected={allDistrict.selected}
+							options={allDistrict.options}
+							name='permanentDistrict'
+							handleSelect={handleSelect}
+						/>
 					)}
 
 					{/* for permanent address - division */}
-					<fieldset className='border pl-1 custom-input-container mt-1'>
-						<legend className='float-none w-auto'>
-							বর্তমান ঠিকানা (বিভাগ)*
-						</legend>
-						<select onChange={handleSelect2}>
-							<option defaultValue={allDivision.selected}>
-								{allDivision.selected}
-							</option>
-							{allDivision.options.map((item) => (
-								<option key={item} value={item}>
-									{' '}
-									{item}{' '}
-								</option>
-							))}
-						</select>
-					</fieldset>
+					<SelectField
+						title='বর্তমান ঠিকানা (বিভাগ)*'
+						selected={allDivision.selected}
+						options={allDivision.options}
+						name='presentDivision'
+						handleSelect={handleSelect}
+					/>
 
 					{/* for permanent address - district */}
 					{presentDistrictData ? (
-						<fieldset className='border pl-1 custom-input-container mt-1'>
-							<legend className='float-none w-auto'>
-								বর্তমান ঠিকানা (জেলা)*
-							</legend>
-							<select>
-								<option defaultValue={presentDistrictData.selected}>
-									{presentDistrictData.selected}
-								</option>
-								{presentDistrictData.options.map((item) => (
-									<option key={item} value={item}>
-										{' '}
-										{item}{' '}
-									</option>
-								))}
-							</select>
-						</fieldset>
+						<SelectField
+							title='বর্তমান ঠিকানা (জেলা)*'
+							selected={presentDistrictData.selected}
+							options={presentDistrictData.options}
+							name='presentDistrict'
+							handleSelect={handleSelect}
+						/>
 					) : (
-						<fieldset className='border pl-1 custom-input-container mt-1'>
-							<legend className='float-none w-auto'>
-								বর্তমান ঠিকানা (জেলা)*
-							</legend>
-							<select>
-								<option defaultValue={allDistrict.selected}>
-									{allDistrict.selected}
-								</option>
-								{allDistrict.options.map((item) => (
-									<option key={item} value={item}>
-										{' '}
-										{item}{' '}
-									</option>
-								))}
-							</select>
-						</fieldset>
+						<SelectField
+							title='বর্তমান ঠিকানা (জেলা)*'
+							selected={allDistrict.selected}
+							options={allDistrict.options}
+							name='presentDistrict'
+							handleSelect={handleSelect}
+						/>
 					)}
 
 					{/* for birth year */}
 					<fieldset className='border pl-1 custom-input-container mt-1'>
 						<legend className='float-none w-auto'>{birthYear.title}</legend>
-						<select>
+						<select onChange={handleBirthYear}>
 							<option defaultValue={birthYear.selected}>
 								{birthYear.selected}
 							</option>
@@ -202,84 +152,61 @@ const Step2FormContainer = () => {
 					</fieldset>
 
 					{/* for skin color */}
-					<fieldset className='border pl-1 custom-input-container mt-1'>
-						<legend className='float-none w-auto'>{skinColor.title}</legend>
-						<select>
-							<option defaultValue={skinColor.selected}>
-								{skinColor.selected}
-							</option>
-							{skinColor.options.map((item) => (
-								<option key={item} value={item}>
-									{' '}
-									{item}{' '}
-								</option>
-							))}
-						</select>
-					</fieldset>
+					<SelectField
+						title={skinColor.title}
+						selected={skinColor.selected}
+						options={skinColor.options}
+						name='skinColor'
+						handleSelect={handleSelect}
+					/>
 
 					{/* for height */}
-					<fieldset className='border pl-1 custom-input-container mt-1'>
-						<legend className='float-none w-auto'>{height.title}</legend>
-						<select>
-							<option defaultValue={height.selected}>{height.selected}</option>
-							{height.options.map((item) => (
-								<option key={item} value={item}>
-									{' '}
-									{item}{' '}
-								</option>
-							))}
-						</select>
-					</fieldset>
+					<SelectField
+						title={height.title}
+						selected={height.selected}
+						options={height.options}
+						name='height'
+						handleSelect={handleSelect}
+					/>
 
 					{/* for weight */}
-					<fieldset className='border pl-1 custom-input-container mt-1'>
-						<legend className='float-none w-auto'>{weight.title}</legend>
-						<select>
-							<option defaultValue={weight.selected}>{weight.selected}</option>
-							{weight.options.map((item) => (
-								<option key={item} value={item}>
-									{' '}
-									{item}{' '}
-								</option>
-							))}
-						</select>
-					</fieldset>
+					<SelectField
+						title={weight.title}
+						selected={weight.selected}
+						options={weight.options}
+						name='weight'
+						handleSelect={handleSelect}
+					/>
 
 					{/* for blood groups */}
-					<fieldset className='border pl-1 custom-input-container mt-1'>
-						<legend className='float-none w-auto'>{bloodGroup.title}</legend>
-						<select>
-							<option defaultValue={bloodGroup.selected}>
-								{bloodGroup.selected}
-							</option>
-							{bloodGroup.options.map((item) => (
-								<option key={item} value={item}>
-									{' '}
-									{item}{' '}
-								</option>
-							))}
-						</select>
-					</fieldset>
+					<SelectField
+						title={bloodGroup.title}
+						selected={bloodGroup.selected}
+						options={bloodGroup.options}
+						name='bloodGroup'
+						handleSelect={handleSelect}
+					/>
 
 					{/* for occupation */}
-					<fieldset className='border pl-1 custom-input-container mt-1'>
-						<legend className='float-none w-auto'>পেশা*</legend>
-						<input type='text' className='full-width' />
-						<p className='guide-text'>
-							সর্বোচ্চ ৩ শব্দে শুধু পদবী লিখবেন। পেশা সম্পর্কে বিস্তারিত লিখার
-							জন্য সামনে প্রশ্ন আছে।{' '}
-						</p>
-					</fieldset>
+					<InputField
+						variant='input'
+						title='পেশা*'
+						value={generalInfo.occupation}
+						name='occupation'
+						required={true}
+						guideText='সর্বোচ্চ ৩ শব্দে শুধু পদবী লিখবেন। পেশা সম্পর্কে বিস্তারিত লিখার জন্য সামনে প্রশ্ন আছে।'
+						handleChange={handleSelect}
+					/>
 
 					{/* for monthly income */}
-					<fieldset className='border pl-1 custom-input-container mt-1'>
-						<legend className='float-none w-auto'>মাসিক আয়</legend>
-						<input type='text' className='full-width' />
-						<p className='guide-text'>
-							জানাতে অনিচ্ছুক হলে ঘরটি ফাঁকা রাখুন। জানাতে চাইলে এভাবে লিখবেনঃ
-							৩০ হাজার
-						</p>
-					</fieldset>
+					<InputField
+						variant='input'
+						title='মাসিক আয়'
+						value={generalInfo.monthlyIncome}
+						name='monthlyIncome'
+						guideText='জানাতে অনিচ্ছুক হলে ঘরটি ফাঁকা রাখুন। জানাতে চাইলে এভাবে লিখবেনঃ ৩০ হাজার'
+						handleChange={handleSelect}
+					/>
 				</div>
 				{/* buttons */}
 				<div className='d-flex justify-content-between width'>
