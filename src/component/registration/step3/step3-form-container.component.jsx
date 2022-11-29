@@ -1,10 +1,24 @@
+import { useState } from 'react';
 // component
 import FormContainerButtonNav from '../common-component/form-container-button-nav/form-container-button-nav.component';
 import FormContainerNav from '../common-component/form-container-nav/form-container-nav.component';
-import NextButton from '../common-component/next-button/next-button.component';
-import SaveChangesButton from '../common-component/save-changes-button/save-changes-button.component';
+import InputField from '../common-component/input-field/input-field.component';
+import FormButtonContainer from '../common-component/form-button-container/form-button-container.component';
 
 const Step3FormContainer = () => {
+	const [address, setAddress] = useState({
+		permanentAddress: '',
+		presentAddress: '',
+		broughtUpPlace: ''
+	});
+
+	const handleAddress = (e) => {
+		e.preventDefault();
+
+		setAddress({...address, [e.target.name] : e.target.value})
+	}
+
+	console.log(address);
 	return (
 		<div className='step-container'>
 			<FormContainerNav />
@@ -12,32 +26,37 @@ const Step3FormContainer = () => {
 				<FormContainerButtonNav current={3} />
 				<div className='form-container'>
 					{/* for permanent address */}
-					<fieldset className='border pl-1 custom-input-container mt-1'>
-						<legend className='float-none w-auto'>স্থায়ী ঠিকানা*</legend>
-						<input type='text' className='full-width' />
-						<p className='guide-text'>
-							বাসার নাম্বার না দিয়ে এলাকা সহ ঠিকানা লিখুন। যেমনঃ উত্তরা-৬,ঢাকা।
-						</p>
-					</fieldset>
-          {/* for present address */}
-					<fieldset className='border pl-1 custom-input-container mt-1'>
-						<legend className='float-none w-auto'>বর্তমান ঠিকানা*</legend>
-						<input type='text' className='full-width' />
-						<p className='guide-text'>
-							বাসার নাম্বার না দিয়ে এলাকা সহ ঠিকানা লিখুন। যেমনঃ উত্তরা-৬,ঢাকা।
-						</p>
-					</fieldset>
-          {/* for where you brought up */}
-					<fieldset className='border pl-1 custom-input-container mt-1'>
-						<legend className='float-none w-auto'>কোথায় বড় হয়েছেন?*</legend>
-						<input type='text' className='full-width' />
-					</fieldset>
+					<InputField
+						variant='input'
+						title='স্থায়ী ঠিকানা*'
+						value={address.permanentAddress}
+						name='permanentAddress'
+						required={true}
+						guideText='বাসার নাম্বার না দিয়ে এলাকা সহ ঠিকানা লিখুন। যেমনঃ উত্তরা-৬,ঢাকা।'
+						handleChange={handleAddress}
+					/>
+					{/* for present address */}
+					<InputField
+						variant='input'
+						title='বর্তমান ঠিকানা*'
+						value={address.presentAddress}
+						name='presentAddress'
+						required={true}
+						guideText='বাসার নাম্বার না দিয়ে এলাকা সহ ঠিকানা লিখুন। যেমনঃ উত্তরা-৬,ঢাকা।'
+						handleChange={handleAddress}
+					/>
+					{/* for where you brought up */}
+					<InputField
+						variant='input'
+						title='কোথায় বড় হয়েছেন?*'
+						value={address.broughtUpPlace}
+						name='broughtUpPlace'
+						required={true}
+						handleChange={handleAddress}
+					/>
 				</div>
-        {/* buttons */}
-				<div className='d-flex justify-content-between width'>
-					<SaveChangesButton />
-					<NextButton disabled={true} />
-				</div>
+				{/* buttons */}
+				<FormButtonContainer states={address} url='/biodata/registration/step4' />
 			</div>
 		</div>
 	);
