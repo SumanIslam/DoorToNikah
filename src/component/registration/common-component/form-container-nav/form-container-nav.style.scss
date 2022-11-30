@@ -8,8 +8,10 @@ ul.item-nav {
 		padding: 0;
 		width: 100%;
 		li {
-      a {
+      a, button {
         color: #fff;
+        border: none;
+        outline: none;
         &.view {
           padding: 8px 20px;
           border-top-left-radius: 5px;
@@ -29,3 +31,9 @@ ul.item-nav {
       }
 		}
 	}
+
+  .list-group-item {
+    svg {
+      font-size: 2rem;
+    }
+  }

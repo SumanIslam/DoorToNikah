@@ -1,5 +1,3 @@
-import React, { useEffect, useState } from 'react';
-
 // data
 import { termsWithTitle } from './terms-main-data';
 
@@ -7,21 +5,14 @@ import { termsWithTitle } from './terms-main-data';
 import GeneralText from './general-text/general-text.component';
 import BulletText from './bullet-text/bullet-text.component';
 
+// styles
+import './terms-main.style.scss'
+
 const TermsMain = () => {
-	const [innerWidth, setInnerWidth] = useState(window.innerWidth);
-
-	useEffect(() => {
-		function handleResize() {
-			setInnerWidth(window.innerWidth);
-		}
-		window.addEventListener('resize', handleResize);
-	}, []);
-
-	const marginLeftRight = innerWidth > 1206 ? 'mlr-10' : 'mlr-0';
 	return (
 		<div className='container pt-4 pb-5'>
 			<hr />
-			<div className={`${marginLeftRight} mb-5`}>
+			<div className='mlr-lg mb-5'>
 				<GeneralText />
 				{termsWithTitle
 					.filter((item) => item.id <= 4)

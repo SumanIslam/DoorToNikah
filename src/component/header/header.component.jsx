@@ -1,6 +1,4 @@
-/* eslint-disable jsx-a11y/anchor-is-valid */
 import React from "react";
-import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
 // styles
@@ -14,19 +12,8 @@ import ProfileDropdown from "../profile-dropdown/profile-dropdown.component";
 import useAuth from '../../hooks/useAuth';
 
 const Header = () => {
-  const [innerWidth, setInnerWidth] = useState(window.innerWidth);
 	const { auth }  = useAuth();
 	const userId = auth?.userId;
-	// console.log(auth, userId);
-
-  useEffect(() => {
-    function handleResize() {
-      setInnerWidth(window.innerWidth);
-    }
-    window.addEventListener('resize', handleResize)
-  }, [])
-
-  const marginRight = innerWidth > 1205 ? 'mr-30' : 'mr-5';
 
   return (
 		// white background navbar
@@ -34,10 +21,10 @@ const Header = () => {
 			<div className='container container-fluid text'>
 				{/* navbar logo */}
 				<Link
-					className={`${marginRight} navbar-brand fs-2 fw-bold purple-color`}
+					className='navbar-brand fs-2 fw-bold purple-color mr-lg'
 					to='/'
 				>
-					<span className='pink-color'>DoorTo</span>Nikah
+					<span className='pink-color cinzel-font'>DoorTo</span>Nikah
 				</Link>
 				{/* navbar toggler */}
 				<button
@@ -91,7 +78,10 @@ const Header = () => {
 							<li className='btn btn-pink space'>লগইন</li>
 						</Link>
 					)}
-					<Link className='nav-link purple-color' to='/biodata/registration/step1'>
+					<Link
+						className='nav-link purple-color'
+						to='/biodata/registration/step1'
+					>
 						<li className='btn btn-purple space'>ফ্রি রেজিষ্ট্রেশন</li>
 					</Link>
 				</div>
