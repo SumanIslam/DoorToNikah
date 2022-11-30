@@ -26,7 +26,6 @@ const Step5FormContainer = () => {
 		setFamilyInfo({ ...familyInfo, [e.target.name]: e.target.value });
 	}
 
-	console.log(familyInfo);
 	return (
 		<div className='step-container'>
 			<FormContainerNav />

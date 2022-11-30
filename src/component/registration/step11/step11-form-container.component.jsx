@@ -20,7 +20,7 @@ const Step11FormContainer = () => {
 
 		setContactInfo({ ...contactInfo, [e.target.name]: e.target.value });
 	};
-	console.log(contactInfo);
+
 	return (
 		<div className='step-container'>
 			<FormContainerNav />

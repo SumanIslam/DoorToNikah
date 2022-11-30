@@ -1,27 +1,15 @@
-import React, { useState, useEffect } from "react";
-
 // data
-import { policyData } from "./policiy-main-data";
+import { policyData } from "./policy-main-data";
 
 // styles
 import '../../styles/utils.scss'
+import './policy-main.style.scss'
 
 const PolicyMain = () => {
-  const [innerWidth, setInnerWidth] = useState(window.innerWidth);
-
-  useEffect(() => {
-    function handleResize() {
-      setInnerWidth(window.innerWidth);
-    }
-    window.addEventListener('resize', handleResize);
-  }, []);
-
-  const marginLeftRight = innerWidth > 1206 ? 'mlr-7' : 'mlr-0';
-
   return (
 		<div className='container pt-4 pb-5'>
 			<hr />
-			<div className={`${marginLeftRight} mb-5`}>
+			<div className='mlr-lg mb-5'>
 				<p>
 					doortonikah.com is a matrimonial site focused on Islamic Sharia. Our
 					main goal is to find a suitable life partner to live according to the
@@ -40,7 +28,10 @@ const PolicyMain = () => {
 					We may change this Privacy Policy from time to time based on your
 					choices or the policy of our company. If you have any questions
 					regarding our Privacy Policy, please write to{' '}
-					<a href="/contact" className="text-purple fw-bold">doortonikah.com/contact</a>.
+					<a href='/contact' className='text-purple fw-bold'>
+						doortonikah.com/contact
+					</a>
+					.
 				</p>
 			</div>
 			<hr />

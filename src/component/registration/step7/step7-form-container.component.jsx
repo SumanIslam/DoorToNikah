@@ -16,7 +16,6 @@ const Step7FormContainer = () => {
 		setMarriageInfo({ ...marriageInfo, [e.target.name]: e.target.value });
 	};
 
-	console.log(marriageInfo);
 	return (
 		<div className='step-container'>
 			<FormContainerNav />

@@ -1,8 +1,13 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative&display=swap');
 .text {
 	font-size: 0.9rem !important;
 }
 .purple-color {
 	color: #522b79;
+}
+
+.cinzel-font {
+	font-family: 'Cinzel Decorative', cursive;
 }
 
 .pink-color {
@@ -32,3 +37,11 @@
 		margin-bottom: 0.5rem;
 	}
 }
+
+.mr-lg {
+	margin-right: 2.5rem;
+	@media screen and (min-width: 1200px) {
+		margin-right: 15rem;
+	}
+}
+

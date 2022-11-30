@@ -1,26 +1,13 @@
-import React, { useEffect, useState } from "react";
 // style
 import '../../styles/utils.scss';
-import './tutorial.css';
+import './tutorial.style.scss';
 
 
 
 const Tutorial = () => {
-    const [innerWidth, setInnerWidth] = useState(window.innerWidth);
-  
-    useEffect(() => {
-      function handleResize() {
-        setInnerWidth(window.innerWidth);
-      }
-      window.addEventListener('resize', handleResize);
-    }, []);
-  
-    const marginLeftRight = innerWidth > 1206 ? 'mlr-7' : 'mlr-0';
-  
     return (
 			<div className='container pt-4 pb-5'>
-				{/* <hr className="top-line" /> */}
-				<div className={`${marginLeftRight} mb-5`}>
+				<div className='mlr-lg mb-5'>
 					{}
 					<div className='video-main-div'>
 						<div>
@@ -75,7 +62,6 @@ const Tutorial = () => {
 						</div>
 					</div>
 				</div>
-				{/* <hr/> */}
 			</div>
 		);
   }

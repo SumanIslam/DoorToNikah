@@ -24,7 +24,6 @@ const Step9FormContainer = () => {
 		setPartnerCharacteristics({...partnersCharacteristics ,[e.target.name] : e.target.value});
 	};
 
-	console.log(partnersCharacteristics);
 	return (
 		<div className='step-container'>
 			<FormContainerNav />
