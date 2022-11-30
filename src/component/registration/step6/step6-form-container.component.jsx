@@ -28,8 +28,7 @@ const Step6FormContainer = () => {
 		e.preventDefault();
 		setPersonalInfo({ ...personalInfo, [e.target.name]: e.target.value });
 	};
-
-	console.log(personalInfo);
+	
 	return (
 		<div className='step-container'>
 			<FormContainerNav />
