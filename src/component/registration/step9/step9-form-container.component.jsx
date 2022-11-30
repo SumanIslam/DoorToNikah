@@ -1,89 +1,144 @@
+import { useState } from 'react';
 // component
 import FormContainerButtonNav from '../common-component/form-container-button-nav/form-container-button-nav.component';
 import FormContainerNav from '../common-component/form-container-nav/form-container-nav.component';
-import NextButton from '../common-component/next-button/next-button.component';
-import SaveChangesButton from '../common-component/save-changes-button/save-changes-button.component';
+import FormButtonContainer from '../common-component/form-button-container/form-button-container.component';
+import InputField from '../common-component/input-field/input-field.component';
 
 const Step9FormContainer = () => {
+	const [partnersCharacteristics, setPartnerCharacteristics] = useState({
+		partnersAge: '',
+		partnersSkinColor: '',
+		partnersMinimumHeight: '',
+		partnersMinimumEducationalQualification: '',
+		partnersDistrict: '',
+		partnersMaritalStatus: '',
+		partnersOccupation: '',
+		partnersFinancialCondition: '',
+		partnersFamilyCondition: '',
+		partnersDesirableCharacteristics: ''
+	})
+
+	const handlePartnersCharacteristics= (e) => {
+		e.preventDefault();
+		setPartnerCharacteristics({...partnersCharacteristics ,[e.target.name] : e.target.value});
+	};
+
+	console.log(partnersCharacteristics);
 	return (
 		<div className='step-container'>
 			<FormContainerNav />
 			<div className='mlr-2'>
 				<FormContainerButtonNav current={9} />
 				<div className='form-container'>
-					{/* for age */}
-					<fieldset className='border pl-1 custom-input-container mt-1'>
-						<legend className='float-none w-auto'>বয়স*</legend>
-						<input type='text' className='full-width' />
-					</fieldset>
+					{/* partners age */}
+					<InputField
+						title='বয়স*'
+						variant='input'
+						value={partnersCharacteristics.partnersAge}
+						required={true}
+						name='partnersAge'
+						handleChange={handlePartnersCharacteristics}
+					/>
 
-					{/* for skin color */}
-					<fieldset className='border pl-1 custom-input-container mt-1'>
-						<legend className='float-none w-auto'>গাত্রবর্ণ*</legend>
-						<input type='text' className='full-width' />
-					</fieldset>
+					{/* partners skin color */}
+					<InputField
+						title='গাত্রবর্ণ*'
+						variant='input'
+						value={partnersCharacteristics.partnersSkinColor}
+						required={true}
+						name='partnersSkinColor'
+						handleChange={handlePartnersCharacteristics}
+					/>
 
-					{/* for minimum height*/}
-					<fieldset className='border pl-1 custom-input-container mt-1'>
-						<legend className='float-none w-auto'>নূন্যতম উচ্চতা*</legend>
-						<input type='text' className='full-width' />
-					</fieldset>
+					{/* partners minimum height*/}
+					<InputField
+						title='নূন্যতম উচ্চতা*'
+						variant='input'
+						value={partnersCharacteristics.partnersMinimumHeight}
+						required={true}
+						name='partnersMinimumHeight'
+						handleChange={handlePartnersCharacteristics}
+					/>
 
-					{/* for minimum educational qualifications */}
-					<fieldset className='border pl-1 custom-input-container mt-1'>
-						<legend className='float-none w-auto'>
-							নূন্যতম শিক্ষাগত যোগ্যতা*
-						</legend>
-						<input type='text' className='full-width' />
-					</fieldset>
+					{/* partners minimum educational qualifications */}
+					<InputField
+						title='নূন্যতম শিক্ষাগত যোগ্যতা*'
+						variant='input'
+						value={
+							partnersCharacteristics.partnersMinimumEducationalQualification
+						}
+						required={true}
+						name='partnersMinimumEducationalQualification'
+						handleChange={handlePartnersCharacteristics}
+					/>
 
-					{/* for district */}
-					<fieldset className='border pl-1 custom-input-container mt-1'>
-						<legend className='float-none w-auto'>জেলা*</legend>
-						<input type='text' className='full-width' />
-					</fieldset>
+					{/* partners district */}
+					<InputField
+						title='জেলা*'
+						variant='input'
+						value={partnersCharacteristics.partnersDistrict}
+						required={true}
+						name='partnersDistrict'
+						handleChange={handlePartnersCharacteristics}
+					/>
 
-					{/* for marital condition */}
-					<fieldset className='border pl-1 custom-input-container mt-1'>
-						<legend className='float-none w-auto'>বৈবাহিক অবস্থা *</legend>
-						<input type='text' className='full-width' />
-					</fieldset>
+					{/* partners marital condition */}
+					<InputField
+						title='বৈবাহিক অবস্থা*'
+						variant='input'
+						value={partnersCharacteristics.partnersMaritalStatus}
+						required={true}
+						name='partnersMaritalStatus'
+						handleChange={handlePartnersCharacteristics}
+					/>
 
-					{/* for occupation */}
-					<fieldset className='border pl-1 custom-input-container mt-1'>
-						<legend className='float-none w-auto'>পেশা*</legend>
-						<input type='text' className='full-width' />
-					</fieldset>
+					{/* partners occupation */}
+					<InputField
+						title='পেশা*'
+						variant='input'
+						value={partnersCharacteristics.partnersOccupation}
+						required={true}
+						name='partnersOccupation'
+						handleChange={handlePartnersCharacteristics}
+					/>
 
-					{/* for financial condition */}
-					<fieldset className='border pl-1 custom-input-container mt-1'>
-						<legend className='float-none w-auto'>অর্থনৈতিক অবস্থা*</legend>
-						<input type='text' className='full-width' />
-					</fieldset>
+					{/* partners financial condition */}
+					<InputField
+						title='অর্থনৈতিক অবস্থা*'
+						variant='input'
+						value={partnersCharacteristics.partnersFinancialCondition}
+						required={true}
+						name='partnersFinancialCondition'
+						handleChange={handlePartnersCharacteristics}
+					/>
 
-					{/* for family condition */}
-					<fieldset className='border pl-1 custom-input-container mt-1'>
-						<legend className='float-none w-auto'>পারিবারিক অবস্থা*</legend>
-						<input type='text' className='full-width' />
-					</fieldset>
+					{/* partners family condition */}
+					<InputField
+						title='পারিবারিক অবস্থা*'
+						variant='input'
+						value={partnersCharacteristics.partnersFamilyCondition}
+						required={true}
+						name='partnersFamilyCondition'
+						handleChange={handlePartnersCharacteristics}
+					/>
 
-					{/* for characteristics of partner */}
-					<fieldset className='border pl-1 custom-input-container mt-1'>
-						<legend className='float-none w-auto'>
-							জীবনসঙ্গীর যে বৈশিষ্ট্য বা গুণাবলী আশা করেন
-						</legend>
-						<textarea rows={5} className='full-width' />
-						<p className='guideText'>
-							এই পয়েন্ট অনেক গুরুত্বপূর্ণ। সময় নিয়ে বিস্তারিত লিখুন। কোন বিশেষ
-							শর্ত থাকলে তা-ও লিখতে পারেন।
-						</p>
-					</fieldset>
+					{/* characteristics of partner */}
+					<InputField
+						title='পেশা*'
+						variant='textarea'
+						value={partnersCharacteristics.partnersDesirableCharacteristics}
+						required={true}
+						name='partnersDesirableCharacteristics'
+						guideText='এই পয়েন্ট অনেক গুরুত্বপূর্ণ। সময় নিয়ে বিস্তারিত লিখুন। কোন বিশেষ শর্ত থাকলে তা-ও লিখতে পারেন।'
+						handleChange={handlePartnersCharacteristics}
+					/>
 				</div>
 				{/* buttons */}
-				<div className='d-flex justify-content-between width'>
-					<SaveChangesButton />
-					<NextButton disabled={true} />
-				</div>
+				<FormButtonContainer
+					states={partnersCharacteristics}
+					url='/biodata/registration/step10'
+				/>
 			</div>
 		</div>
 	);
