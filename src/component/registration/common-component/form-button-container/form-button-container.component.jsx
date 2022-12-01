@@ -11,18 +11,35 @@ import KeyboardDoubleArrowLeftIcon from '@mui/icons-material/KeyboardDoubleArrow
 import './form-button-container.style.scss';
 import '../../../../styles/utils.scss'
 
-const FormButtonContainer = ({ states, nextUrl, backUrl }) => {
+const FormButtonContainer = ({ states, nextUrl, backUrl, validated, handleError, objectKey }) => {
+	console.log(objectKey);
   const [loading, setLoading] = useState(false);
-  const [saved, setSaved] = useState(true);
+  const [saved, setSaved] = useState(false);
 
   const { candidatesInfo, setCandidatesInfo } = useRegistration();
 
   // console.log(states);
-  // console.log(candidatesInfo);
+  console.log(candidatesInfo);
+	const handleClick = (e) => {
+		e.preventDefault();
+
+		if(validated) {
+			setLoading(true);
+			setCandidatesInfo({...candidatesInfo, [objectKey]: {...states}})
+			setTimeout(() => {
+				setLoading(false);
+				setSaved(true);
+			}, 2000);
+		} else {
+			handleError('Please fill out all the required field');
+		}
+
+		
+	}
   return (
 		<div className='d-flex justify-content-between width'>
 			{loading ? (
-				<button class='small-button' type='button' disabled>
+				<button className='small-button' type='button' disabled>
 					<span
 						className='spinner-border spinner-border-sm'
 						role='status'
@@ -33,7 +50,9 @@ const FormButtonContainer = ({ states, nextUrl, backUrl }) => {
 			) : saved ? (
 				<button className='small-button'>Saved</button>
 			) : (
-				<button className='small-button'>Save Changes</button>
+				<button className='small-button' onClick={handleClick}>
+					Save Changes
+				</button>
 			)}
 			<div>
 				{backUrl && (
