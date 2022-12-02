@@ -285,8 +285,8 @@ export const birthYear = {
 
 export const skinColor = {
 	title: 'গাত্রবর্ণ*',
-	selected: 'কালো',
-	options: ['শ্যামলা', 'উজ্জ্বল শ্যামলা', 'ফর্সা', 'উজ্জ্বল ফর্সা'],
+	selected: '----',
+	options: ['কালো','শ্যামলা', 'উজ্জ্বল শ্যামলা', 'ফর্সা', 'উজ্জ্বল ফর্সা'],
 };
 
 export const height = {

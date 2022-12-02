@@ -7,6 +7,13 @@ import SelectField from '../common-component/select-field/select-field.component
 import InputField from '../common-component/input-field/input-field.component';
 import FormButtonContainer from '../common-component/form-button-container/form-button-container.component';
 
+// react toastify
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
+import { handleError } from '../../../services/handleFormError';
+import { Step2Validation } from './step2-validation';
+
 // data
 import { allDistrict, allDivision, district } from '../../biodata-search/selectOptionData';
 
@@ -29,7 +36,7 @@ const Step2FormContainer = () => {
 		presentDivision: 'সকল বিভাগ',
 		presentDistrict: 'সকল জেলা',
 		birthYear: {},
-		skinColor: 'কালো',
+		skinColor: '----',
 		height: '',
 		weight: '',
 		bloodGroup: '',
@@ -53,8 +60,23 @@ const Step2FormContainer = () => {
 		}})
 	}
 
+	const validated = Step2Validation(generalInfo);
+
 	return (
 		<div className='step-container'>
+			{/* ToastContainer */}
+			<ToastContainer
+				position='top-center'
+				autoClose={3000}
+				hideProgressBar={false}
+				newestOnTop={false}
+				closeOnClick
+				rtl={false}
+				pauseOnFocusLoss
+				draggable
+				pauseOnHover
+				theme='colored'
+			/>
 			<FormContainerNav />
 			<div className='mlr-2'>
 				<FormContainerButtonNav current={2} />
@@ -208,7 +230,14 @@ const Step2FormContainer = () => {
 					/>
 				</div>
 				{/* buttons */}
-				<FormButtonContainer states={generalInfo} url='/biodata/registration/step3' />
+				<FormButtonContainer
+					states={generalInfo}
+					validated={validated}
+					objectKey='generalInfo'
+					handleError={handleError}
+					nextUrl='/biodata/registration/step3'
+					backUrl='/biodata/registration/step1'
+				/>
 			</div>
 		</div>
 	);
