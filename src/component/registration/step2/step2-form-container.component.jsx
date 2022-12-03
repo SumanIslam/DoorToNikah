@@ -11,13 +11,15 @@ import FormButtonContainer from '../common-component/form-button-container/form-
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-import { handleError } from '../../../services/handleFormError';
-import { Step2Validation } from './step2-validation';
+// registration context
+import useRegistration from '../../../hooks/useRegistration';
 
-// data
-import { allDistrict, allDivision, district } from '../../biodata-search/selectOptionData';
+// import { Step2Validation } from './step2-validation';
 
 import {
+	allDistrict,
+	allDivision,
+	district,
 	biodataType,
 	birthYear,
 	bloodGroup,
@@ -29,14 +31,14 @@ import {
 
 const Step2FormContainer = () => {
 	const [generalInfo, setGeneralInfo] = useState({
-		biodataType: 'সকল বায়োডাটা',
-		maritalStatus: 'সকল',
-		permanentDivision: 'সকল বিভাগ',
-		permanentDistrict: 'সকল জেলা',
-		presentDivision: 'সকল বিভাগ',
-		presentDistrict: 'সকল জেলা',
+		biodataType: '',
+		maritalStatus: '',
+		permanentDivision: '',
+		permanentDistrict: '',
+		presentDivision: '',
+		presentDistrict: '',
 		birthYear: {},
-		skinColor: '----',
+		skinColor: '',
 		height: '',
 		weight: '',
 		bloodGroup: '',
@@ -44,23 +46,50 @@ const Step2FormContainer = () => {
 		monthlyIncome: '',
 	});
 
+	// registration context
+	const { candidatesInfo, setCandidatesInfo } = useRegistration();
+
+	const [loading, setLoading] = useState(false);
+	const [saved, setSaved] = useState(false);
+
 	const permanentDistrictData = district.get(generalInfo.permanentDivision);
 	const presentDistrictData = district.get(generalInfo.presentDivision);
 
 	const handleSelect = (e) => {
 		e.preventDefault();
-		setGeneralInfo({...generalInfo, [e.target.name]: e.target.value})
-	}
+		setGeneralInfo({ ...generalInfo, [e.target.name]: e.target.value });
+	};
 	const handleBirthYear = (e) => {
 		e.preventDefault();
-		const option = Array.from(e.target.options).find(option => option.selected).text
-		setGeneralInfo({...generalInfo, birthYear: {
-			value: e.target.value,
-			option: option,
-		}})
-	}
+		const option = Array.from(e.target.options).find(
+			(option) => option.selected
+		).text;
+		setGeneralInfo({
+			...generalInfo,
+			birthYear: {
+				value: Number(e.target.value),
+				option: option,
+			},
+		});
+	};
 
-	const validated = Step2Validation(generalInfo);
+	console.log(generalInfo);
+
+	const handleSubmit = (e) => {
+		e.preventDefault();
+		console.log('submitted');
+		setLoading(true);
+		setCandidatesInfo({
+			...candidatesInfo,
+			generalInfo: { ...generalInfo },
+		});
+		setTimeout(() => {
+			setLoading(false);
+			setSaved(true);
+		}, 2000);
+	};
+
+	// const validated = Step2Validation(generalInfo);
 
 	return (
 		<div className='step-container'>
@@ -81,163 +110,186 @@ const Step2FormContainer = () => {
 			<div className='mlr-2'>
 				<FormContainerButtonNav current={2} />
 				<div className='form-container'>
-					{/* for biodata type */}
-					<SelectField
-						title={biodataType.title}
-						selected={biodataType.selected}
-						options={biodataType.options}
-						name='biodataType'
-						handleSelect={handleSelect}
-					/>
-
-					{/* for marital status */}
-					<SelectField
-						title={maritalStatus.title}
-						selected={maritalStatus.selected}
-						options={maritalStatus.options}
-						name='maritalStatus'
-						handleSelect={handleSelect}
-					/>
-
-					{/* for permanent address - division */}
-					<SelectField
-						title='স্থায়ী ঠিকানা (বিভাগ)*'
-						selected={allDivision.selected}
-						options={allDivision.options}
-						name='permanentDivision'
-						handleSelect={handleSelect}
-					/>
-
-					{/* for permanent address - district */}
-					{permanentDistrictData ? (
+					<form onSubmit={handleSubmit}>
+						{/* for biodata type */}
 						<SelectField
-							title='স্থায়ী ঠিকানা (জেলা)*'
-							selected={permanentDistrictData.selected}
-							options={permanentDistrictData.options}
-							name='permanentDistrict'
+							title={biodataType.title}
+							selected={biodataType.selected}
+							options={biodataType.options}
+							name='biodataType'
+							required={true}
 							handleSelect={handleSelect}
 						/>
-					) : (
+
+						{/* for marital status */}
 						<SelectField
-							title='স্থায়ী ঠিকানা (জেলা)*'
-							selected={allDistrict.selected}
-							options={allDistrict.options}
-							name='permanentDistrict'
+							title={maritalStatus.title}
+							selected={maritalStatus.selected}
+							options={maritalStatus.options}
+							name='maritalStatus'
+							required={true}
 							handleSelect={handleSelect}
 						/>
-					)}
 
-					{/* for permanent address - division */}
-					<SelectField
-						title='বর্তমান ঠিকানা (বিভাগ)*'
-						selected={allDivision.selected}
-						options={allDivision.options}
-						name='presentDivision'
-						handleSelect={handleSelect}
-					/>
-
-					{/* for permanent address - district */}
-					{presentDistrictData ? (
+						{/* for permanent address - division */}
 						<SelectField
-							title='বর্তমান ঠিকানা (জেলা)*'
-							selected={presentDistrictData.selected}
-							options={presentDistrictData.options}
-							name='presentDistrict'
+							title='স্থায়ী ঠিকানা (বিভাগ)*'
+							selected={allDivision.selected}
+							options={allDivision.options}
+							name='permanentDivision'
+							required={true}
 							handleSelect={handleSelect}
 						/>
-					) : (
+
+						{/* for permanent address - district */}
+						{generalInfo.permanentDivision && (
+							<>
+								{permanentDistrictData ? (
+									<SelectField
+										title='স্থায়ী ঠিকানা (জেলা)*'
+										selected={permanentDistrictData.selected}
+										options={permanentDistrictData.options}
+										name='permanentDistrict'
+										required={true}
+										handleSelect={handleSelect}
+									/>
+								) : (
+									<SelectField
+										title='স্থায়ী ঠিকানা (জেলা)*'
+										selected={allDistrict.selected}
+										options={allDistrict.options}
+										name='permanentDistrict'
+										required={true}
+										handleSelect={handleSelect}
+									/>
+								)}
+							</>
+						)}
+
+						{/* for permanent address - division */}
 						<SelectField
-							title='বর্তমান ঠিকানা (জেলা)*'
-							selected={allDistrict.selected}
-							options={allDistrict.options}
-							name='presentDistrict'
+							title='বর্তমান ঠিকানা (বিভাগ)*'
+							selected={allDivision.selected}
+							options={allDivision.options}
+							name='presentDivision'
+							required={true}
 							handleSelect={handleSelect}
 						/>
-					)}
 
-					{/* for birth year */}
-					<fieldset className='border pl-1 custom-input-container mt-1'>
-						<legend className='float-none w-auto'>{birthYear.title}</legend>
-						<select onChange={handleBirthYear}>
-							<option defaultValue={birthYear.selected}>
-								{birthYear.selected}
-							</option>
-							{birthYear.optionsValue.map((item) => (
-								<option key={item.value} value={item.value}>
-									{' '}
-									{item.option}{' '}
+						{/* for permanent address - district */}
+						{generalInfo.permanentDivision && (
+							<>
+								{presentDistrictData ? (
+									<SelectField
+										title='বর্তমান ঠিকানা (জেলা)*'
+										selected={presentDistrictData.selected}
+										options={presentDistrictData.options}
+										name='presentDistrict'
+										required={true}
+										handleSelect={handleSelect}
+									/>
+								) : (
+									<SelectField
+										title='বর্তমান ঠিকানা (জেলা)*'
+										selected={allDistrict.selected}
+										options={allDistrict.options}
+										name='presentDistrict'
+										required={true}
+										handleSelect={handleSelect}
+									/>
+								)}
+							</>
+						)}
+
+						{/* for birth year */}
+						<fieldset className='border pl-1 custom-input-container mt-1'>
+							<legend className='float-none w-auto'>{birthYear.title}</legend>
+							<select onChange={handleBirthYear} required>
+								<option value={birthYear.selected.value}>
+									{birthYear.selected.option}
 								</option>
-							))}
-						</select>
-						<p className='guide-text'>অবশ্যই সত্যটা দিবেন। সার্টিফিকেটের নয়।</p>
-					</fieldset>
+								{birthYear.optionsValue.map((item) => (
+									<option key={item.value} value={item.value}>
+										{' '}
+										{item.option}{' '}
+									</option>
+								))}
+							</select>
+							<p className='guide-text'>
+								অবশ্যই সত্যটা দিবেন। সার্টিফিকেটের নয়।
+							</p>
+						</fieldset>
 
-					{/* for skin color */}
-					<SelectField
-						title={skinColor.title}
-						selected={skinColor.selected}
-						options={skinColor.options}
-						name='skinColor'
-						handleSelect={handleSelect}
-					/>
+						{/* for skin color */}
+						<SelectField
+							title={skinColor.title}
+							selected={skinColor.selected}
+							options={skinColor.options}
+							name='skinColor'
+							required={true}
+							handleSelect={handleSelect}
+						/>
 
-					{/* for height */}
-					<SelectField
-						title={height.title}
-						selected={height.selected}
-						options={height.options}
-						name='height'
-						handleSelect={handleSelect}
-					/>
+						{/* for height */}
+						<SelectField
+							title={height.title}
+							selected={height.selected}
+							options={height.options}
+							name='height'
+							required={true}
+							handleSelect={handleSelect}
+						/>
 
-					{/* for weight */}
-					<SelectField
-						title={weight.title}
-						selected={weight.selected}
-						options={weight.options}
-						name='weight'
-						handleSelect={handleSelect}
-					/>
+						{/* for weight */}
+						<SelectField
+							title={weight.title}
+							selected={weight.selected}
+							options={weight.options}
+							name='weight'
+							required={true}
+							handleSelect={handleSelect}
+						/>
 
-					{/* for blood groups */}
-					<SelectField
-						title={bloodGroup.title}
-						selected={bloodGroup.selected}
-						options={bloodGroup.options}
-						name='bloodGroup'
-						handleSelect={handleSelect}
-					/>
+						{/* for blood groups */}
+						<SelectField
+							title={bloodGroup.title}
+							selected={bloodGroup.selected}
+							options={bloodGroup.options}
+							name='bloodGroup'
+							required={true}
+							handleSelect={handleSelect}
+						/>
 
-					{/* for occupation */}
-					<InputField
-						variant='input'
-						title='পেশা*'
-						value={generalInfo.occupation}
-						name='occupation'
-						required={true}
-						guideText='সর্বোচ্চ ৩ শব্দে শুধু পদবী লিখবেন। পেশা সম্পর্কে বিস্তারিত লিখার জন্য সামনে প্রশ্ন আছে।'
-						handleChange={handleSelect}
-					/>
+						{/* for occupation */}
+						<InputField
+							variant='input'
+							title='পেশা*'
+							value={generalInfo.occupation}
+							name='occupation'
+							required={true}
+							guideText='সর্বোচ্চ ৩ শব্দে শুধু পদবী লিখবেন। পেশা সম্পর্কে বিস্তারিত লিখার জন্য সামনে প্রশ্ন আছে।'
+							handleChange={handleSelect}
+						/>
 
-					{/* for monthly income */}
-					<InputField
-						variant='input'
-						title='মাসিক আয়'
-						value={generalInfo.monthlyIncome}
-						name='monthlyIncome'
-						guideText='জানাতে অনিচ্ছুক হলে ঘরটি ফাঁকা রাখুন। জানাতে চাইলে এভাবে লিখবেনঃ ৩০ হাজার'
-						handleChange={handleSelect}
-					/>
+						{/* for monthly income */}
+						<InputField
+							variant='input'
+							title='মাসিক আয়'
+							value={generalInfo.monthlyIncome}
+							name='monthlyIncome'
+							guideText='জানাতে অনিচ্ছুক হলে ঘরটি ফাঁকা রাখুন। জানাতে চাইলে এভাবে লিখবেনঃ ৩০ হাজার'
+							handleChange={handleSelect}
+						/>
+
+						{/* buttons */}
+						<FormButtonContainer
+							nextUrl='/biodata/registration/step3'
+							backUrl='/biodata/registration/step1'
+							loading={loading}
+							saved={saved}
+						/>
+					</form>
 				</div>
-				{/* buttons */}
-				<FormButtonContainer
-					states={generalInfo}
-					validated={validated}
-					objectKey='generalInfo'
-					handleError={handleError}
-					nextUrl='/biodata/registration/step3'
-					backUrl='/biodata/registration/step1'
-				/>
 			</div>
 		</div>
 	);
