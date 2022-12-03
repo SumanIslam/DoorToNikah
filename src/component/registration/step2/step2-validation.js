@@ -1,5 +1,5 @@
 export const Step2Validation = (states) => {
-  const { biodataType, birthYear, bloodGroup, height, maritalStatus, occupation, permanentDistrict, permanentDivision, presentDistrict, presentDivision, skinColor, weight} = states;
+  const { biodataType, birthYear, bloodGroup, height, maritalStatus, occupation, permanentDistrict, permanentDivision, presentDistrict, presentDivision, skinColor, weight } = states;
   return biodataType !== 'সকল বায়োডাটা' &&
 		birthYear !== '----' &&
 		bloodGroup !== 'জানা নেই' &&

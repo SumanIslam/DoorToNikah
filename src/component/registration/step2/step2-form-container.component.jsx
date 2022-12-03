@@ -7,14 +7,8 @@ import SelectField from '../common-component/select-field/select-field.component
 import InputField from '../common-component/input-field/input-field.component';
 import FormButtonContainer from '../common-component/form-button-container/form-button-container.component';
 
-// react toastify
-import { ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
-
 // registration context
 import useRegistration from '../../../hooks/useRegistration';
-
-// import { Step2Validation } from './step2-validation';
 
 import {
 	allDistrict,
@@ -73,11 +67,8 @@ const Step2FormContainer = () => {
 		});
 	};
 
-	console.log(generalInfo);
-
 	const handleSubmit = (e) => {
 		e.preventDefault();
-		console.log('submitted');
 		setLoading(true);
 		setCandidatesInfo({
 			...candidatesInfo,
@@ -89,23 +80,8 @@ const Step2FormContainer = () => {
 		}, 2000);
 	};
 
-	// const validated = Step2Validation(generalInfo);
-
 	return (
 		<div className='step-container'>
-			{/* ToastContainer */}
-			<ToastContainer
-				position='top-center'
-				autoClose={3000}
-				hideProgressBar={false}
-				newestOnTop={false}
-				closeOnClick
-				rtl={false}
-				pauseOnFocusLoss
-				draggable
-				pauseOnHover
-				theme='colored'
-			/>
 			<FormContainerNav />
 			<div className='mlr-2'>
 				<FormContainerButtonNav current={2} />

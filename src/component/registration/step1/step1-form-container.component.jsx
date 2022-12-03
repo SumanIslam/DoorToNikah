@@ -5,10 +5,6 @@ import FormContainerButtonNav from '../common-component/form-container-button-na
 import FormContainerNav from '../common-component/form-container-nav/form-container-nav.component';
 import InputField from '../common-component/input-field/input-field.component';
 
-// react toastify
-import { ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
-
 // registration context
 import useRegistration from '../../../hooks/useRegistration';
 
@@ -30,34 +26,19 @@ const Step1FormContainer = () => {
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
-			setLoading(true);
-			setCandidatesInfo({
-				...candidatesInfo,
-				candidatesName: { ...candidatesName },
-			});
-			setTimeout(() => {
-				setLoading(false);
-				setSaved(true);
-			}, 2000);
-		}
-
-		console.log(candidatesInfo);
+		setLoading(true);
+		setCandidatesInfo({
+			...candidatesInfo,
+			candidatesName: { ...candidatesName },
+		});
+		setTimeout(() => {
+			setLoading(false);
+			setSaved(true);
+		}, 2000);
+	}
 	
   return (
 		<div className='step-container'>
-			{/* ToastContainer */}
-			<ToastContainer
-				position='top-center'
-				autoClose={3000}
-				hideProgressBar={false}
-				newestOnTop={false}
-				closeOnClick
-				rtl={false}
-				pauseOnFocusLoss
-				draggable
-				pauseOnHover
-				theme='colored'
-			/>
 			<FormContainerNav />
 			<div className='mlr-2'>
 				<FormContainerButtonNav current={1} />
