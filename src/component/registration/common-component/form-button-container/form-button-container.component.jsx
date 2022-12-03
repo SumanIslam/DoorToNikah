@@ -1,7 +1,4 @@
-import { useState } from 'react';
 import { Link } from 'react-router-dom';
-// registration context
-import useRegistration from '../../../../hooks/useRegistration';
 
 // mui
 import DoubleArrowIcon from '@mui/icons-material/DoubleArrow';
@@ -24,10 +21,7 @@ const FormButtonContainer = ({ nextUrl, backUrl, loading, saved }) => {
 					></span>{' '}
 					saving...
 				</button>
-			) : saved ? (
-				<button className='small-button'>Saved</button>
 			) : (
-				//  onClick={handleClick}
 				<button type='submit' className='small-button'>
 					Save Changes
 				</button>
