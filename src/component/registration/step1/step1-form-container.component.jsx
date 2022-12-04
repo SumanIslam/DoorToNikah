@@ -1,63 +1,65 @@
 import { useState } from 'react';
 // component
+import FormButtonContainer from '../common-component/form-button-container/form-button-container.component';
 import FormContainerButtonNav from '../common-component/form-container-button-nav/form-container-button-nav.component';
 import FormContainerNav from '../common-component/form-container-nav/form-container-nav.component';
-import FormButtonContainer from '../common-component/form-button-container/form-button-container.component';
 import InputField from '../common-component/input-field/input-field.component';
 
-// react toastify
-import { ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
-import { handleError } from '../../../services/handleFormError';
+// registration context
+import useRegistration from '../../../hooks/useRegistration';
 
 const Step1FormContainer = () => {
 	const [candidatesName, setCandidatesName] = useState({
 		name: ''
 	});
 
+	// registration context
+	const { candidatesInfo, setCandidatesInfo } = useRegistration();
+
+	const [loading, setLoading] = useState(false);
+	const [saved, setSaved] = useState(false);
+
 	const handleChange = (e) => {
 		e.preventDefault();
 		setCandidatesName({ [e.target.name]: e.target.value });
 	}
 
-	const validated = candidatesName.name !== '';
+	const handleSubmit = (e) => {
+		e.preventDefault();
+		setLoading(true);
+		setCandidatesInfo({
+			...candidatesInfo,
+			candidatesName: { ...candidatesName },
+		});
+		setTimeout(() => {
+			setLoading(false);
+			setSaved(true);
+		}, 2000);
+	}
 	
   return (
 		<div className='step-container'>
-			{/* ToastContainer */}
-			<ToastContainer
-				position='top-center'
-				autoClose={3000}
-				hideProgressBar={false}
-				newestOnTop={false}
-				closeOnClick
-				rtl={false}
-				pauseOnFocusLoss
-				draggable
-				pauseOnHover
-				theme='colored'
-			/>
 			<FormContainerNav />
 			<div className='mlr-2'>
 				<FormContainerButtonNav current={1} />
 				<div className='form-container'>
-					<InputField
-						variant='input'
-						title='সম্পূর্ণ নাম*'
-						value={candidatesName.name}
-						name='name'
-						guideText='নাম নেয়া হচ্ছে ভেরিফিকেশনের জন্য, পূর্ণ নাম লিখবেন। আপনার নাম পাবলিকলি প্রকাশ করা হবে না।'
-						handleChange={handleChange}
-						required={true}
-					/>
+					<form onSubmit={handleSubmit}>
+						<InputField
+							variant='input'
+							title='সম্পূর্ণ নাম*'
+							value={candidatesName.name}
+							name='name'
+							guideText='নাম নেয়া হচ্ছে ভেরিফিকেশনের জন্য, পূর্ণ নাম লিখবেন। আপনার নাম পাবলিকলি প্রকাশ করা হবে না।'
+							handleChange={handleChange}
+							required={true}
+						/>
+						<FormButtonContainer
+							nextUrl='/biodata/registration/step2'
+							loading={loading}
+							saved={saved}
+						/>
+					</form>
 				</div>
-				<FormButtonContainer
-					states={candidatesName}
-					objectKey='candidatesName'
-					nextUrl='/biodata/registration/step2'
-					validated={validated}
-					handleError={handleError}
-				/>
 			</div>
 		</div>
 	);

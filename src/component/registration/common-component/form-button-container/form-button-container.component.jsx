@@ -1,7 +1,4 @@
-import { useState } from 'react';
 import { Link } from 'react-router-dom';
-// registration context
-import useRegistration from '../../../../hooks/useRegistration';
 
 // mui
 import DoubleArrowIcon from '@mui/icons-material/DoubleArrow';
@@ -11,35 +8,12 @@ import KeyboardDoubleArrowLeftIcon from '@mui/icons-material/KeyboardDoubleArrow
 import './form-button-container.style.scss';
 import '../../../../styles/utils.scss'
 
-const FormButtonContainer = ({ states, nextUrl, backUrl, validated, handleError, objectKey }) => {
-	console.log(objectKey);
-  const [loading, setLoading] = useState(false);
-  const [saved, setSaved] = useState(false);
+const FormButtonContainer = ({ nextUrl, backUrl, loading, saved }) => {
 
-  const { candidatesInfo, setCandidatesInfo } = useRegistration();
-
-  // console.log(states);
-  console.log(candidatesInfo);
-	const handleClick = (e) => {
-		e.preventDefault();
-
-		if(validated) {
-			setLoading(true);
-			setCandidatesInfo({...candidatesInfo, [objectKey]: {...states}})
-			setTimeout(() => {
-				setLoading(false);
-				setSaved(true);
-			}, 2000);
-		} else {
-			handleError('Please fill out all the required field');
-		}
-
-		
-	}
   return (
 		<div className='d-flex justify-content-between width'>
 			{loading ? (
-				<button className='small-button' type='button' disabled>
+				<button className='small-button' type='button'>
 					<span
 						className='spinner-border spinner-border-sm'
 						role='status'
@@ -47,10 +21,8 @@ const FormButtonContainer = ({ states, nextUrl, backUrl, validated, handleError,
 					></span>{' '}
 					saving...
 				</button>
-			) : saved ? (
-				<button className='small-button'>Saved</button>
 			) : (
-				<button className='small-button' onClick={handleClick}>
+				<button type='submit' className='small-button'>
 					Save Changes
 				</button>
 			)}
@@ -62,17 +34,7 @@ const FormButtonContainer = ({ states, nextUrl, backUrl, validated, handleError,
 						</Link>
 					</button>
 				)}
-				{!saved ? (
-					<button
-						className='disabled-button'
-						disabled
-						title='Save the changes first'
-					>
-						<Link to={nextUrl}>
-							Next <DoubleArrowIcon />
-						</Link>
-					</button>
-				) : (
+				{nextUrl && saved && (
 					<button className='next-button'>
 						<Link to={nextUrl}>
 							Next <DoubleArrowIcon />
