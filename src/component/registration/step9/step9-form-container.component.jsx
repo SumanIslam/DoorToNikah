@@ -9,21 +9,31 @@ import InputField from '../common-component/input-field/input-field.component';
 import useRegistration from '../../../hooks/useRegistration';
 
 const Step9FormContainer = () => {
-	const [partnersCharacteristics, setPartnerCharacteristics] = useState({
-		partnersAge: '',
-		partnersSkinColor: '',
-		partnersMinimumHeight: '',
-		partnersMinimumEducationalQualification: '',
-		partnersDistrict: '',
-		partnersMaritalStatus: '',
-		partnersOccupation: '',
-		partnersFinancialCondition: '',
-		partnersFamilyCondition: '',
-		partnersDesirableCharacteristics: '',
-	});
-
-	// registration context
 	const { candidatesInfo, setCandidatesInfo } = useRegistration();
+
+	const [partnersCharacteristics, setPartnerCharacteristics] = useState({
+		partnersAge: candidatesInfo.partnersCharacteristics?.partnersAge || '',
+		partnersSkinColor:
+			candidatesInfo.partnersCharacteristics?.partnersSkinColor || '',
+		partnersMinimumHeight:
+			candidatesInfo.partnersCharacteristics?.partnersMinimumHeight || '',
+		partnersMinimumEducationalQualification:
+			candidatesInfo.partnersCharacteristics?.partnersAge || '',
+		partnersDistrict:
+			candidatesInfo.partnersCharacteristics
+				?.partnersMinimumEducationalQualification || '',
+		partnersMaritalStatus:
+			candidatesInfo.partnersCharacteristics?.partnersMaritalStatus || '',
+		partnersOccupation:
+			candidatesInfo.partnersCharacteristics?.partnersOccupation || '',
+		partnersFinancialCondition:
+			candidatesInfo.partnersCharacteristics?.partnersFinancialCondition || '',
+		partnersFamilyCondition:
+			candidatesInfo.partnersCharacteristics?.partnersFamilyCondition || '',
+		partnersDesirableCharacteristics:
+			candidatesInfo.partnersCharacteristics
+				?.partnersDesirableCharacteristics || '',
+	});
 
 	const [loading, setLoading] = useState(false);
 	const [saved, setSaved] = useState(false);
@@ -31,10 +41,20 @@ const Step9FormContainer = () => {
 	const handleSubmit = (e) => {
 		e.preventDefault();
 		setLoading(true);
+		// save data to registrationContext
 		setCandidatesInfo({
 			...candidatesInfo,
 			partnersCharacteristics: { ...partnersCharacteristics },
 		});
+
+		// save data to local storage
+		localStorage.setItem(
+			'candidatesInfo',
+			JSON.stringify({
+				...candidatesInfo,
+				partnersCharacteristics: { ...partnersCharacteristics },
+			})
+		);
 		setTimeout(() => {
 			setLoading(false);
 			setSaved(true);
@@ -161,8 +181,8 @@ const Step9FormContainer = () => {
 
 						{/* buttons */}
 						<FormButtonContainer
-							nextUrl='/biodata/registration/step9'
-							backUrl='/biodata/registration/step7'
+							nextUrl='/biodata/registration/step10'
+							backUrl='/biodata/registration/step8'
 							loading={loading}
 							saved={saved}
 						/>

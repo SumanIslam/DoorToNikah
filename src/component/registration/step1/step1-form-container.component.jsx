@@ -9,12 +9,11 @@ import InputField from '../common-component/input-field/input-field.component';
 import useRegistration from '../../../hooks/useRegistration';
 
 const Step1FormContainer = () => {
-	const [candidatesName, setCandidatesName] = useState({
-		name: ''
-	});
-
-	// registration context
 	const { candidatesInfo, setCandidatesInfo } = useRegistration();
+
+	const [candidatesName, setCandidatesName] = useState({
+		name: candidatesInfo.candidatesName?.name || '',
+	});
 
 	const [loading, setLoading] = useState(false);
 	const [saved, setSaved] = useState(false);
@@ -22,22 +21,33 @@ const Step1FormContainer = () => {
 	const handleChange = (e) => {
 		e.preventDefault();
 		setCandidatesName({ [e.target.name]: e.target.value });
-	}
+	};
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
 		setLoading(true);
+
+		// save data to registrationContext
 		setCandidatesInfo({
 			...candidatesInfo,
 			candidatesName: { ...candidatesName },
 		});
+		
+		// save data to local storage
+		localStorage.setItem(
+			'candidatesInfo',
+			JSON.stringify({
+				...candidatesInfo,
+				candidatesName: { ...candidatesName },
+			})
+		);
 		setTimeout(() => {
 			setLoading(false);
 			setSaved(true);
 		}, 2000);
-	}
-	
-  return (
+	};
+
+	return (
 		<div className='step-container'>
 			<FormContainerNav />
 			<div className='mlr-2'>

@@ -24,24 +24,23 @@ import {
 } from './data';
 
 const Step2FormContainer = () => {
-	const [generalInfo, setGeneralInfo] = useState({
-		biodataType: '',
-		maritalStatus: '',
-		permanentDivision: '',
-		permanentDistrict: '',
-		presentDivision: '',
-		presentDistrict: '',
-		birthYear: {},
-		skinColor: '',
-		height: '',
-		weight: '',
-		bloodGroup: '',
-		occupation: '',
-		monthlyIncome: '',
-	});
-
-	// registration context
 	const { candidatesInfo, setCandidatesInfo } = useRegistration();
+
+	const [generalInfo, setGeneralInfo] = useState({
+		biodataType: candidatesInfo.generalInfo?.biodataType || '',
+		maritalStatus: candidatesInfo.generalInfo?.maritalStatus || '',
+		permanentDivision: candidatesInfo.generalInfo?.permanentDivision || '',
+		permanentDistrict: candidatesInfo.generalInfo?.permanentDistrict || '',
+		presentDivision: candidatesInfo.generalInfo?.presentDivision || '',
+		presentDistrict: candidatesInfo.generalInfo?.presentDistrict || '',
+		birthYear: candidatesInfo.generalInfo?.birthYear || {},
+		skinColor: candidatesInfo.generalInfo?.skinColor || '',
+		height: candidatesInfo.generalInfo?.height || '',
+		weight: candidatesInfo.generalInfo?.weight || '',
+		bloodGroup: candidatesInfo.generalInfo?.bloodGroup || '',
+		occupation: candidatesInfo.generalInfo?.occupation || '',
+		monthlyIncome: candidatesInfo.generalInfo?.monthlyIncome || '',
+	});
 
 	const [loading, setLoading] = useState(false);
 	const [saved, setSaved] = useState(false);
@@ -70,10 +69,18 @@ const Step2FormContainer = () => {
 	const handleSubmit = (e) => {
 		e.preventDefault();
 		setLoading(true);
+		// save data to registrationContext
 		setCandidatesInfo({
 			...candidatesInfo,
 			generalInfo: { ...generalInfo },
 		});
+
+		// save data to local storage
+		localStorage.setItem(
+			'candidatesInfo',
+			JSON.stringify({ ...candidatesInfo, generalInfo: { ...generalInfo } })
+		);
+
 		setTimeout(() => {
 			setLoading(false);
 			setSaved(true);
@@ -94,6 +101,7 @@ const Step2FormContainer = () => {
 							options={biodataType.options}
 							name='biodataType'
 							required={true}
+							defaultValue={generalInfo.biodataType}
 							handleSelect={handleSelect}
 						/>
 
@@ -104,6 +112,7 @@ const Step2FormContainer = () => {
 							options={maritalStatus.options}
 							name='maritalStatus'
 							required={true}
+							defaultValue={generalInfo.maritalStatus}
 							handleSelect={handleSelect}
 						/>
 
@@ -114,6 +123,7 @@ const Step2FormContainer = () => {
 							options={allDivision.options}
 							name='permanentDivision'
 							required={true}
+							defaultValue={generalInfo.permanentDivision}
 							handleSelect={handleSelect}
 						/>
 
@@ -127,6 +137,7 @@ const Step2FormContainer = () => {
 										options={permanentDistrictData.options}
 										name='permanentDistrict'
 										required={true}
+										defaultValue={generalInfo.permanentDistrict}
 										handleSelect={handleSelect}
 									/>
 								) : (
@@ -136,6 +147,7 @@ const Step2FormContainer = () => {
 										options={allDistrict.options}
 										name='permanentDistrict'
 										required={true}
+										defaultValue={generalInfo.permanentDistrict}
 										handleSelect={handleSelect}
 									/>
 								)}
@@ -149,6 +161,7 @@ const Step2FormContainer = () => {
 							options={allDivision.options}
 							name='presentDivision'
 							required={true}
+							defaultValue={generalInfo.presentDivision}
 							handleSelect={handleSelect}
 						/>
 
@@ -162,6 +175,7 @@ const Step2FormContainer = () => {
 										options={presentDistrictData.options}
 										name='presentDistrict'
 										required={true}
+										defaultValue={generalInfo.presentDistrict}
 										handleSelect={handleSelect}
 									/>
 								) : (
@@ -171,6 +185,7 @@ const Step2FormContainer = () => {
 										options={allDistrict.options}
 										name='presentDistrict'
 										required={true}
+										defaultValue={generalInfo.presentDistrict}
 										handleSelect={handleSelect}
 									/>
 								)}
@@ -180,7 +195,11 @@ const Step2FormContainer = () => {
 						{/* for birth year */}
 						<fieldset className='border pl-1 custom-input-container mt-1'>
 							<legend className='float-none w-auto'>{birthYear.title}</legend>
-							<select onChange={handleBirthYear} required>
+							<select
+								onChange={handleBirthYear}
+								required
+								defaultValue={`${generalInfo.birthYear.value}`}
+							>
 								<option value={birthYear.selected.value}>
 									{birthYear.selected.option}
 								</option>
@@ -203,6 +222,7 @@ const Step2FormContainer = () => {
 							options={skinColor.options}
 							name='skinColor'
 							required={true}
+							defaultValue={generalInfo.skinColor}
 							handleSelect={handleSelect}
 						/>
 
@@ -213,6 +233,7 @@ const Step2FormContainer = () => {
 							options={height.options}
 							name='height'
 							required={true}
+							defaultValue={generalInfo.height}
 							handleSelect={handleSelect}
 						/>
 
@@ -223,6 +244,7 @@ const Step2FormContainer = () => {
 							options={weight.options}
 							name='weight'
 							required={true}
+							defaultValue={generalInfo.weight}
 							handleSelect={handleSelect}
 						/>
 
@@ -233,6 +255,7 @@ const Step2FormContainer = () => {
 							options={bloodGroup.options}
 							name='bloodGroup'
 							required={true}
+							defaultValue={generalInfo.bloodGroup}
 							handleSelect={handleSelect}
 						/>
 

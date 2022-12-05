@@ -9,14 +9,13 @@ import FormButtonContainer from '../common-component/form-button-container/form-
 import useRegistration from '../../../hooks/useRegistration';
 
 const Step3FormContainer = () => {
-	const [address, setAddress] = useState({
-		permanentAddress: '',
-		presentAddress: '',
-		broughtUpPlace: '',
-	});
-
-	// registration context
 	const { candidatesInfo, setCandidatesInfo } = useRegistration();
+
+	const [address, setAddress] = useState({
+		permanentAddress: candidatesInfo.address?.permanentAddress || '',
+		presentAddress: candidatesInfo.address?.presentAddress || '',
+		broughtUpPlace: candidatesInfo.address?.broughtUpPlace || '',
+	});
 
 	const [loading, setLoading] = useState(false);
 	const [saved, setSaved] = useState(false);
@@ -30,10 +29,19 @@ const Step3FormContainer = () => {
 	const handleSubmit = (e) => {
 		e.preventDefault();
 		setLoading(true);
+		// save data to registrationContext
 		setCandidatesInfo({
 			...candidatesInfo,
 			address: { ...address },
 		});
+		// save data to localStorage
+		localStorage.setItem(
+			'candidatesInfo',
+			JSON.stringify({
+				...candidatesInfo,
+				address: { ...address },
+			})
+		);
 		setTimeout(() => {
 			setLoading(false);
 			setSaved(true);

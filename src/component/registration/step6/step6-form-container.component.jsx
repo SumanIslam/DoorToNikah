@@ -9,29 +9,30 @@ import InputField from '../common-component/input-field/input-field.component';
 import useRegistration from '../../../hooks/useRegistration';
 
 const Step6FormContainer = () => {
-	const [personalInfo, setPersonalInfo] = useState({
-		dailyPrayer: '',
-		prayingSince: '',
-		MaintainMahram: '',
-		QuranRecitation: '',
-		majhab: '',
-		politicalViews: '',
-		watchFilm: '',
-		mentalProblem: '',
-		deeniMehnot: '',
-		pirMuridan: '',
-		beliefsAboutMazar: '',
-		favoriteIslamicBooks: '',
-		favoriteIslamicScholar: '',
-		specialSkills: '',
-		aboutYourself: '',
-		haveSunnatiBeard: '',
-		clothesOverAnkle: '',
-		outdoorClothes: '',
-	});
-
-	// registration context
 	const { candidatesInfo, setCandidatesInfo } = useRegistration();
+	const [personalInfo, setPersonalInfo] = useState({
+		haveSunnatiBeard: candidatesInfo.personalInfo?.haveSunnatiBeard || '',
+		clothesOverAnkle: candidatesInfo.personalInfo?.clothesOverAnkle || '',
+		outdoorClothes: candidatesInfo.personalInfo?.outdoorClothes || '',
+		dailyPrayer: candidatesInfo.personalInfo?.dailyPrayer || '',
+		prayingSince: candidatesInfo.personalInfo?.prayingSince || '',
+		MaintainMahram: candidatesInfo.personalInfo?.MaintainMahram || '',
+		QuranRecitation: candidatesInfo.personalInfo?.QuranRecitation || '',
+		majhab: candidatesInfo.personalInfo?.majhab || '',
+		politicalViews: candidatesInfo.personalInfo?.politicalViews || '',
+		watchFilm: candidatesInfo.personalInfo?.watchFilm || '',
+		mentalOrPhysicalProblem:
+			candidatesInfo.personalInfo?.mentalOrPhysicalProblem || '',
+		deeniMehnot: candidatesInfo.personalInfo?.deeniMehnot || '',
+		pirMuridan: candidatesInfo.personalInfo?.pirMuridan || '',
+		beliefsAboutMazar: candidatesInfo.beliefsAboutMazar?.dailyPrayer || '',
+		favoriteIslamicBooks:
+			candidatesInfo.personalInfo?.favoriteIslamicBooks || '',
+		favoriteIslamicScholar:
+			candidatesInfo.personalInfo?.favoriteIslamicScholar || '',
+		specialSkills: candidatesInfo.personalInfo?.dailyPrayer || '',
+		aboutYourself: candidatesInfo.personalInfo?.aboutYourself || '',
+	});
 
 	const [loading, setLoading] = useState(false);
 	const [saved, setSaved] = useState(false);
@@ -44,10 +45,20 @@ const Step6FormContainer = () => {
 	const handleSubmit = (e) => {
 		e.preventDefault();
 		setLoading(true);
+		// save data to registrationContext
 		setCandidatesInfo({
 			...candidatesInfo,
 			personalInfo: { ...personalInfo },
 		});
+
+		// save data to local storage
+		localStorage.setItem(
+			'candidatesInfo',
+			JSON.stringify({
+				...candidatesInfo,
+				personalInfo: { ...personalInfo },
+			})
+		);
 		setTimeout(() => {
 			setLoading(false);
 			setSaved(true);
@@ -94,7 +105,7 @@ const Step6FormContainer = () => {
 								/>
 							</>
 						)}
-						
+
 						{/* if biodataType is 'পাত্রীর বায়োডাটা' */}
 						{candidatesInfo.generalInfo?.biodataType === 'পাত্রীর বায়োডাটা' && (
 							<>
@@ -185,9 +196,9 @@ const Step6FormContainer = () => {
 						<InputField
 							title='মানসিক বা শারীরিক কোনো রোগ আছে কি?*'
 							variant='input'
-							value={personalInfo.mentalProblem}
+							value={personalInfo.mentalOrPhysicalProblem}
 							required={true}
-							name='mentalProblem'
+							name='mentalOrPhysicalProblem'
 							handleChange={handlePersonalInfo}
 						/>
 

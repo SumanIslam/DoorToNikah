@@ -9,13 +9,12 @@ import InputField from '../common-component/input-field/input-field.component';
 import useRegistration from '../../../hooks/useRegistration';
 
 const Step8FormContainer = () => {
-	const [otherInfo, setOtherInfo] = useState({
-		termsToInclude: '',
-		occupationInfo: '',
-	});
-
-	// registration context
 	const { candidatesInfo, setCandidatesInfo } = useRegistration();
+
+	const [otherInfo, setOtherInfo] = useState({
+		termsToInclude: candidatesInfo.otherInfo?.termsToInclude || '',
+		occupationInfo: candidatesInfo.otherInfo?.occupationInfo || '',
+	});
 
 	const [loading, setLoading] = useState(false);
 	const [saved, setSaved] = useState(false);
@@ -23,10 +22,20 @@ const Step8FormContainer = () => {
 	const handleSubmit = (e) => {
 		e.preventDefault();
 		setLoading(true);
+		// save data to registrationContext
 		setCandidatesInfo({
 			...candidatesInfo,
 			otherInfo: { ...otherInfo },
 		});
+
+		// save data to local storage
+		localStorage.setItem(
+			'candidatesInfo',
+			JSON.stringify({
+				...candidatesInfo,
+				otherInfo: { ...otherInfo },
+			})
+		);
 		setTimeout(() => {
 			setLoading(false);
 			setSaved(true);

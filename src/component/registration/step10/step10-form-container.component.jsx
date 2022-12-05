@@ -12,14 +12,16 @@ import useRegistration from '../../../hooks/useRegistration';
 import { bool } from './data';
 
 const Step10FormContainer = () => {
-	const [authoritysAsk, setAuthoritysAsk] = useState({
-		parentsConsentAboutBiodata: '',
-		isGivenInfoLegitimate: '',
-		takeResponsibilityOfFalseInfo: '',
-	});
-
-	// registration context
 	const { candidatesInfo, setCandidatesInfo } = useRegistration();
+
+	const [authoritysAsk, setAuthoritysAsk] = useState({
+		parentsConsentAboutBiodata:
+			candidatesInfo.authoritysAsk?.parentsConsentAboutBiodata || '',
+		isGivenInfoLegitimate:
+			candidatesInfo.authoritysAsk?.isGivenInfoLegitimate || '',
+		takeResponsibilityOfFalseInfo:
+			candidatesInfo.authoritysAsk?.takeResponsibilityOfFalseInfo || '',
+	});
 
 	const [loading, setLoading] = useState(false);
 	const [saved, setSaved] = useState(false);
@@ -27,10 +29,21 @@ const Step10FormContainer = () => {
 	const handleSubmit = (e) => {
 		e.preventDefault();
 		setLoading(true);
+
+		// save data to registrationContext
 		setCandidatesInfo({
 			...candidatesInfo,
 			authoritysAsk: { ...authoritysAsk },
 		});
+
+		// save data to local storage
+		localStorage.setItem(
+			'candidatesInfo',
+			JSON.stringify({
+				...candidatesInfo,
+				authoritysAsk: { ...authoritysAsk },
+			})
+		);
 		setTimeout(() => {
 			setLoading(false);
 			setSaved(true);
@@ -57,6 +70,7 @@ const Step10FormContainer = () => {
 							required={true}
 							selected={bool.selected}
 							options={bool.options}
+							defaultValue={authoritysAsk.parentsConsentAboutBiodata}
 							handleSelect={handleAuthoritysAsk}
 						/>
 
@@ -67,6 +81,7 @@ const Step10FormContainer = () => {
 							required={true}
 							selected={bool.selected}
 							options={bool.options}
+							defaultValue={authoritysAsk.isGivenInfoLegitimate}
 							handleSelect={handleAuthoritysAsk}
 						/>
 
@@ -77,6 +92,7 @@ const Step10FormContainer = () => {
 							required={true}
 							selected={bool.selected}
 							options={bool.options}
+							defaultValue={authoritysAsk.takeResponsibilityOfFalseInfo}
 							handleSelect={handleAuthoritysAsk}
 						/>
 						{/* buttons */}

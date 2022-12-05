@@ -10,24 +10,26 @@ import InputField from '../common-component/input-field/input-field.component';
 import useRegistration from '../../../hooks/useRegistration';
 
 const Step7FormContainer = () => {
-	const [marriageInfo, setMarriageInfo] = useState({
-		manageWifesParda: '',
-		allowWifesStudy: '',
-		allowWifesJob: '',
-		placeToLiveWithWife: '',
-		expectDowry: '',
-		parentsConsent: '',
-		reasonOfMarriage: '',
-		wantToDoJobAfterMarriage: '',
-		wantToStudyAfterMarriage: '',
-		reasonOfMarriageAgain: '',
-		reasonOfDivorce: '',
-		wifesDeathInfo: '',
-		husbandsDeathInfo: '',
-	});
-
-	// registration context
 	const { candidatesInfo, setCandidatesInfo } = useRegistration();
+	
+	const [marriageInfo, setMarriageInfo] = useState({
+		manageWifesParda: candidatesInfo.marriageInfo?.manageWifesParda || '',
+		allowWifesStudy: candidatesInfo.marriageInfo?.allowWifesStudy || '',
+		allowWifesJob: candidatesInfo.marriageInfo?.allowWifesJob || '',
+		placeToLiveWithWife: candidatesInfo.marriageInfo?.placeToLiveWithWife || '',
+		expectDowry: candidatesInfo.marriageInfo?.expectDowry || '',
+		parentsConsent: candidatesInfo.marriageInfo?.parentsConsent || '',
+		reasonOfMarriage: candidatesInfo.marriageInfo?.reasonOfMarriage || '',
+		wantToDoJobAfterMarriage:
+			candidatesInfo.marriageInfo?.wantToDoJobAfterMarriage || '',
+		wantToStudyAfterMarriage:
+			candidatesInfo.marriageInfo?.wantToStudyAfterMarriage || '',
+		reasonOfMarriageAgain:
+			candidatesInfo.marriageInfo?.reasonOfMarriageAgain || '',
+		reasonOfDivorce: candidatesInfo.marriageInfo?.reasonOfDivorce || '',
+		wifesDeathInfo: candidatesInfo.marriageInfo?.wifesDeathInfo || '',
+		husbandsDeathInfo: candidatesInfo.marriageInfo?.husbandsDeathInfo || '',
+	});
 
 	const [loading, setLoading] = useState(false);
 	const [saved, setSaved] = useState(false);
@@ -35,10 +37,20 @@ const Step7FormContainer = () => {
 	const handleSubmit = (e) => {
 		e.preventDefault();
 		setLoading(true);
+		// save data to registrationContext
 		setCandidatesInfo({
 			...candidatesInfo,
 			marriageInfo: { ...marriageInfo },
 		});
+
+		// save data to local storage
+		localStorage.setItem(
+			'candidatesInfo',
+			JSON.stringify({
+				...candidatesInfo,
+				marriageInfo: { ...marriageInfo },
+			})
+		);
 		setTimeout(() => {
 			setLoading(false);
 			setSaved(true);
@@ -116,7 +128,7 @@ const Step7FormContainer = () => {
 									/>
 								</>
 							)}
-						
+
 						{/* for parents consent */}
 						<InputField
 							title='অভিভাবক আপনার বিয়েতে রাজি কি না?*'
@@ -159,7 +171,7 @@ const Step7FormContainer = () => {
 									name='allowWifesStudy'
 									handleChange={handleMarriageInfo}
 								/>
-								{/* can maintain wife's parda */}
+								{/* allow wife to do job */}
 								<InputField
 									title='বিয়ের পর স্ত্রীকে চাকরী করতে দিতে চান?*'
 									variant='input'
@@ -168,7 +180,7 @@ const Step7FormContainer = () => {
 									name='allowWifesJob'
 									handleChange={handleMarriageInfo}
 								/>
-								{/* can maintain wife's parda */}
+								{/* place to live with wife after marriage */}
 								<InputField
 									title='বিয়ের পর স্ত্রীকে কোথায় নিয়ে থাকবেন?*'
 									variant='input'
@@ -182,6 +194,8 @@ const Step7FormContainer = () => {
 									title='বিয়ে উপলক্ষে আপনি বা আপনার পরিবার পাত্রীপক্ষের কাছে যৌতুক বা উপহার বা অর্থ আশা করবেন কি না?*'
 									variant='textarea'
 									value={marriageInfo.expectDowry}
+									name='expectDowry'
+									required={true}
 									handleChange={handleMarriageInfo}
 								/>
 							</>

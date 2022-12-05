@@ -9,15 +9,17 @@ import InputField from '../common-component/input-field/input-field.component';
 import useRegistration from '../../../hooks/useRegistration';
 
 const Step11FormContainer = () => {
-	const [contactInfo, setContactInfo] = useState({
-		guardiansPhoneNumber: '',
-		relationWithGuardian: '',
-		EmailForResponse: '',
-		candidatesPhoneNumber: ''
-	});
-
-	// registration context
 	const { candidatesInfo, setCandidatesInfo } = useRegistration();
+
+	const [contactInfo, setContactInfo] = useState({
+		guardiansPhoneNumber:
+			candidatesInfo.contactInfo?.guardiansPhoneNumber || '',
+		relationWithGuardian:
+			candidatesInfo.contactInfo?.relationWithGuardian || '',
+		EmailForResponse: candidatesInfo.contactInfo?.EmailForResponse || '',
+		candidatesPhoneNumber:
+			candidatesInfo.contactInfo?.candidatesPhoneNumber || '',
+	});
 
 	const [loading, setLoading] = useState(false);
 	const [saved, setSaved] = useState(false);
@@ -25,10 +27,21 @@ const Step11FormContainer = () => {
 	const handleSubmit = (e) => {
 		e.preventDefault();
 		setLoading(true);
+		
+		// save data to registrationContext
 		setCandidatesInfo({
 			...candidatesInfo,
 			contactInfo: { ...contactInfo },
 		});
+
+		// save data to local storage
+		localStorage.setItem(
+			'candidatesInfo',
+			JSON.stringify({
+				...candidatesInfo,
+				candidatesName: { ...contactInfo },
+			})
+		);
 		setTimeout(() => {
 			setLoading(false);
 			setSaved(true);

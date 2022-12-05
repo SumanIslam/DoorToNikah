@@ -10,23 +10,59 @@ import SelectField from '../common-component/select-field/select-field.component
 import useRegistration from '../../../hooks/useRegistration';
 
 // data
-import { bool, mediumOfStudy, result, educationalDivision, passingYear, classes, hscClasses, hscBool, MadrasaResult, daorayeHadisBool } from './data';
+import { bool, classes, daorayeHadisBool, educationalDivision, hscBool, hscClasses, MadrasaResult, mediumOfStudy, passingYear, result } from './data';
 
 const Step4FormContainer = () => {
-	const [educationalQualification, setEducationalQualification] = useState({
-		honsOrEquivalentStudy: '',
-		honsInstituteName: '',
-		honsPassingYear: '',
-		diplomaSubject: '',
-		diplomaInstituteName: '',
-		diplomaPassingYear: '',
-		takhassosSubject: '',
-		takhassosPassingYear: '',
-		daorayeHadisYear: '',
-	});
-
-	// registration context
 	const { candidatesInfo, setCandidatesInfo } = useRegistration();
+
+	const [educationalQualification, setEducationalQualification] = useState({
+		mediumOfStudy: candidatesInfo.educationalQualification?.mediumOfStudy || '',
+		sscOrEquivalentStudy:
+			candidatesInfo.educationalQualification?.sscOrEquivalentStudy || '',
+		sscOrEquivalentResult:
+			candidatesInfo.educationalQualification?.sscOrEquivalentResult || '',
+		sscOrEquivalentDivision:
+			candidatesInfo.educationalQualification?.sscOrEquivalentDivision || '',
+		sscOrEquivalentPassingYear:
+			candidatesInfo.educationalQualification?.sscOrEquivalentPassingYear || '',
+		hscOrEquivalentStudy:
+			candidatesInfo.educationalQualification?.hscOrEquivalentStudy || '',
+		hscOrEquivalentResult:
+			candidatesInfo.educationalQualification?.hscOrEquivalentResult || '',
+		hscOrEquivalentDivision:
+			candidatesInfo.educationalQualification?.hscOrEquivalentDivision || '',
+		hscOrEquivalentPassingYear:
+			candidatesInfo.educationalQualification?.hscOrEquivalentPassingYear || '',
+		honsOrEquivalentStudy:
+			candidatesInfo.educationalQualification?.honsOrEquivalentStudy || '',
+		honsInstituteName:
+			candidatesInfo.educationalQualification?.honsInstituteName || '',
+		honsPassingYear:
+			candidatesInfo.educationalQualification?.honsPassingYear || '',
+		hscSession: candidatesInfo.educationalQualification?.hscSession || '',
+		diplomaSubject:
+			candidatesInfo.educationalQualification?.diplomaSubject || '',
+		diplomaInstituteName:
+			candidatesInfo.educationalQualification?.diplomaInstituteName || '',
+		diplomaPassingYear:
+			candidatesInfo.educationalQualification?.diplomaPassingYear || '',
+		highestClass: candidatesInfo.educationalQualification?.highestClass || '',
+		IsHafez: candidatesInfo.educationalQualification?.IsHafez || '',
+		passDaorayeHadis:
+			candidatesInfo.educationalQualification?.passDaorayeHadis || '',
+		DaorayeHadisPassingYear:
+			candidatesInfo.educationalQualification?.DaorayeHadisPassingYear || '',
+		DaorayeHadisResult:
+			candidatesInfo.educationalQualification?.DaorayeHadisResult || '',
+		studyTakhassos:
+			candidatesInfo.educationalQualification?.studyTakhassos || '',
+		takhassosSubject:
+			candidatesInfo.educationalQualification?.takhassosSubject || '',
+		takhassosPassingYear:
+			candidatesInfo.educationalQualification?.takhassosPassingYear || '',
+		daorayeHadisYear:
+			candidatesInfo.educationalQualification?.daorayeHadisYear || '',
+	});
 
 	const [loading, setLoading] = useState(false);
 	const [saved, setSaved] = useState(false);
@@ -43,10 +79,21 @@ const Step4FormContainer = () => {
 	const handleSubmit = (e) => {
 		e.preventDefault();
 		setLoading(true);
+
+		// save data to registrationContext
 		setCandidatesInfo({
 			...candidatesInfo,
 			educationalQualification: { ...educationalQualification },
 		});
+
+		// save data to local storage
+		localStorage.setItem(
+			'candidatesInfo',
+			JSON.stringify({
+				...candidatesInfo,
+				educationalQualification: { ...educationalQualification },
+			})
+		);
 		setTimeout(() => {
 			setLoading(false);
 			setSaved(true);
@@ -68,6 +115,7 @@ const Step4FormContainer = () => {
 							name='mediumOfStudy'
 							required={true}
 							guideText='আলিয়া / মাধ্যমিক / কারিগরি / ইংরেজি মাধ্যমে শিক্ষিতরা "জেনারেল" অপশন সিলেক্ট করুন।'
+							defaultValue={educationalQualification.mediumOfStudy}
 							handleSelect={handleEducationalQualification}
 						/>
 
@@ -81,6 +129,7 @@ const Step4FormContainer = () => {
 									options={bool.options}
 									name='sscOrEquivalentStudy'
 									required={true}
+									defaultValue={educationalQualification.sscOrEquivalentStudy}
 									handleSelect={handleEducationalQualification}
 								/>
 								{/* pass ssc */}
@@ -93,6 +142,9 @@ const Step4FormContainer = () => {
 											options={result.options}
 											name='sscOrEquivalentResult'
 											required={true}
+											defaultValue={
+												educationalQualification.sscOrEquivalentResult
+											}
 											handleSelect={handleEducationalQualification}
 										/>
 										{/* ssc division */}
@@ -102,6 +154,9 @@ const Step4FormContainer = () => {
 											options={educationalDivision.options}
 											name='sscOrEquivalentDivision'
 											required={true}
+											defaultValue={
+												educationalQualification.sscOrEquivalentDivision
+											}
 											handleSelect={handleEducationalQualification}
 										/>
 										{/* ssc passing year */}
@@ -111,6 +166,9 @@ const Step4FormContainer = () => {
 											options={passingYear.options}
 											name='sscOrEquivalentPassingYear'
 											required={true}
+											defaultValue={
+												educationalQualification.sscOrEquivalentPassingYear
+											}
 											handleSelect={handleEducationalQualification}
 										/>
 										{/* did pass hsc? */}
@@ -120,6 +178,9 @@ const Step4FormContainer = () => {
 											options={hscBool.options}
 											name='hscOrEquivalentStudy'
 											required={true}
+											defaultValue={
+												educationalQualification.hscOrEquivalentStudy
+											}
 											handleSelect={handleEducationalQualification}
 										/>
 										{/* when pass hsc */}
@@ -133,6 +194,9 @@ const Step4FormContainer = () => {
 													options={result.options}
 													name='hscOrEquivalentResult'
 													required={true}
+													defaultValue={
+														educationalQualification.hscOrEquivalentResult
+													}
 													handleSelect={handleEducationalQualification}
 												/>
 												{/* hsc division */}
@@ -142,6 +206,9 @@ const Step4FormContainer = () => {
 													options={educationalDivision.options}
 													name='hscOrEquivalentDivision'
 													required={true}
+													defaultValue={
+														educationalQualification.hscOrEquivalentDivision
+													}
 													handleSelect={handleEducationalQualification}
 												/>
 												{/* hsc passing year */}
@@ -151,6 +218,9 @@ const Step4FormContainer = () => {
 													options={passingYear.options}
 													name='hscOrEquivalentPassingYear'
 													required={true}
+													defaultValue={
+														educationalQualification.hscOrEquivalentPassingYear
+													}
 													handleSelect={handleEducationalQualification}
 												/>
 												{/* hons degree */}
@@ -190,6 +260,9 @@ const Step4FormContainer = () => {
 												options={hscClasses.options}
 												name='hscSession'
 												required={true}
+												defaultValue={
+													educationalQualification.hscSession
+												}
 												handleSelect={handleEducationalQualification}
 											/>
 										)}
@@ -253,6 +326,7 @@ const Step4FormContainer = () => {
 									options={bool.options}
 									name='IsHafez'
 									required={true}
+									defaultValue={educationalQualification.IsHafez}
 									handleSelect={handleEducationalQualification}
 								/>
 								{/* did passed 'দাওরায়ে হাদীস' */}
@@ -262,6 +336,7 @@ const Step4FormContainer = () => {
 									options={daorayeHadisBool.options}
 									name='passDaorayeHadis'
 									required={true}
+									defaultValue={educationalQualification.passDaorayeHadis}
 									handleSelect={handleEducationalQualification}
 								/>
 								{educationalQualification.passDaorayeHadis === 'হ্যাঁ' && (
@@ -273,6 +348,9 @@ const Step4FormContainer = () => {
 											options={passingYear.options}
 											name='DaorayeHadisPassingYear'
 											required={true}
+											defaultValue={
+												educationalQualification.DaorayeHadisPassingYear
+											}
 											handleSelect={handleEducationalQualification}
 										/>
 										{/* result of 'দাওরায়ে হাদীস' */}
@@ -282,6 +360,7 @@ const Step4FormContainer = () => {
 											options={MadrasaResult.options}
 											name='DaorayeHadisResult'
 											required={true}
+											defaultValue={educationalQualification.DaorayeHadisResult}
 											handleSelect={handleEducationalQualification}
 										/>
 										{/* study takhassos? */}
@@ -291,6 +370,7 @@ const Step4FormContainer = () => {
 											options={bool.options}
 											name='studyTakhassos'
 											required={true}
+											defaultValue={educationalQualification.studyTakhassos}
 											handleSelect={handleEducationalQualification}
 										/>
 										{educationalQualification.studyTakhassos === 'হ্যাঁ' && (
