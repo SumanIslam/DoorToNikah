@@ -13,21 +13,21 @@ import useRegistration from '../../../hooks/useRegistration';
 import { numberOfBrothers, numberOfSisters } from './data';
 
 const Step5FormContainer = () => {
-	const [familyInfo, setFamilyInfo] = useState({
-		fathersName: '',
-		mothersName: '',
-		fathersOccupation: '',
-		mothersOccupation: '',
-		numberOfBrothers: '',
-		numberOfSisters: '',
-		unclesOccupation: '',
-		financialAndSocialCondition: '',
-		brothersInfo: '',
-		sistersInfo: '',
-	});
-
-	// registration context
 	const { candidatesInfo, setCandidatesInfo } = useRegistration();
+
+	const [familyInfo, setFamilyInfo] = useState({
+		fathersName: candidatesInfo.familyInfo?.fathersName || '',
+		mothersName: candidatesInfo.familyInfo?.mothersName || '',
+		fathersOccupation: candidatesInfo.familyInfo?.fathersOccupation || '',
+		mothersOccupation: candidatesInfo.familyInfo?.mothersOccupation || '',
+		numberOfBrothers: candidatesInfo.familyInfo?.numberOfBrothers || '',
+		numberOfSisters: candidatesInfo.familyInfo?.numberOfSisters || '',
+		unclesOccupation: candidatesInfo.familyInfo?.unclesOccupation || '',
+		financialAndSocialCondition:
+			candidatesInfo.familyInfo?.financialAndSocialCondition || '',
+		brothersInfo: candidatesInfo.familyInfo?.brothersInfo || '',
+		sistersInfo: candidatesInfo.familyInfo?.sistersInfo || '',
+	});
 
 	const [loading, setLoading] = useState(false);
 	const [saved, setSaved] = useState(false);
@@ -40,10 +40,20 @@ const Step5FormContainer = () => {
 	const handleSubmit = (e) => {
 		e.preventDefault();
 		setLoading(true);
+		// save data to registrationContext
 		setCandidatesInfo({
 			...candidatesInfo,
 			familyInfo: { ...familyInfo },
 		});
+
+		// save data to local storage
+		localStorage.setItem(
+			'candidatesInfo',
+			JSON.stringify({
+				...candidatesInfo,
+				familyInfo: { ...familyInfo },
+			})
+		);
 		setTimeout(() => {
 			setLoading(false);
 			setSaved(true);
@@ -104,6 +114,7 @@ const Step5FormContainer = () => {
 							required={true}
 							selected={numberOfSisters.selected}
 							options={numberOfSisters.options}
+							defaultValue={familyInfo.numberOfSisters}
 							handleSelect={handleFamilyInfo}
 						/>
 						{/* for number of brothers */}
@@ -113,6 +124,7 @@ const Step5FormContainer = () => {
 							required={true}
 							selected={numberOfBrothers.selected}
 							options={numberOfBrothers.options}
+							defaultValue={familyInfo.numberOfBrothers}
 							handleSelect={handleFamilyInfo}
 						/>
 

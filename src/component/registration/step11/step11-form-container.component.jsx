@@ -2,18 +2,51 @@ import { useState } from 'react';
 // component
 import FormContainerButtonNav from '../common-component/form-container-button-nav/form-container-button-nav.component';
 import FormContainerNav from '../common-component/form-container-nav/form-container-nav.component';
-import NextButton from '../common-component/next-button/next-button.component';
-import SaveChangesButton from '../common-component/save-changes-button/save-changes-button.component';
 import FormButtonContainer from '../common-component/form-button-container/form-button-container.component';
-import InputField from '../common-component/input-field/input-field.component'
+import InputField from '../common-component/input-field/input-field.component';
+
+// registration context
+import useRegistration from '../../../hooks/useRegistration';
 
 const Step11FormContainer = () => {
+	const { candidatesInfo, setCandidatesInfo } = useRegistration();
+
 	const [contactInfo, setContactInfo] = useState({
-		guardiansPhoneNumber: '',
-		relationWithGuardian: '',
-		EmailForResponse: '',
-		candidatesPhoneNumber: ''
+		guardiansPhoneNumber:
+			candidatesInfo.contactInfo?.guardiansPhoneNumber || '',
+		relationWithGuardian:
+			candidatesInfo.contactInfo?.relationWithGuardian || '',
+		EmailForResponse: candidatesInfo.contactInfo?.EmailForResponse || '',
+		candidatesPhoneNumber:
+			candidatesInfo.contactInfo?.candidatesPhoneNumber || '',
 	});
+
+	const [loading, setLoading] = useState(false);
+	const [saved, setSaved] = useState(false);
+
+	const handleSubmit = (e) => {
+		e.preventDefault();
+		setLoading(true);
+		
+		// save data to registrationContext
+		setCandidatesInfo({
+			...candidatesInfo,
+			contactInfo: { ...contactInfo },
+		});
+
+		// save data to local storage
+		localStorage.setItem(
+			'candidatesInfo',
+			JSON.stringify({
+				...candidatesInfo,
+				candidatesName: { ...contactInfo },
+			})
+		);
+		setTimeout(() => {
+			setLoading(false);
+			setSaved(true);
+		}, 2000);
+	};
 
 	const handleContactInfo = (e) => {
 		e.preventDefault();
@@ -27,6 +60,7 @@ const Step11FormContainer = () => {
 			<div className='mlr-2'>
 				<FormContainerButtonNav current={11} />
 				<div className='form-container'>
+					<form onSubmit={handleSubmit}>
 					{/* guardians phone number*/}
 					<InputField
 						title='অভিভাবকের নাম্বার*'
@@ -70,9 +104,15 @@ const Step11FormContainer = () => {
 						guideText='ভেরিফিকেশন বা অন্য যে কোনো প্রয়োজনে ওয়েবসাইট কতৃপক্ষ থেকে আপনাকে কল দেয়ার প্রয়োজন হতে পারে। তাই আপনার নাম্বার আমাদের কাছে রাখা হচ্ছে। এই নাম্বার বায়োডাটাতে প্রকাশ করা হবে না। অর্থাৎ আপনি এবং কতৃপক্ষ বাদে অন্য কেউ দেখতে পাবে না।'
 						handleChange={handleContactInfo}
 					/>
-				</div>
 				{/* buttons */}
-				<FormButtonContainer states={contactInfo} />
+				<FormButtonContainer
+							nextUrl='/biodata/registration/step9'
+							backUrl='/biodata/registration/step7'
+							loading={loading}
+							saved={saved}
+						/>
+					</form>
+				</div>
 			</div>
 		</div>
 	);
