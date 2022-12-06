@@ -6,6 +6,10 @@ import FormContainerNav from '../common-component/form-container-nav/form-contai
 import FormButtonContainer from '../common-component/form-button-container/form-button-container.component';
 import InputField from '../common-component/input-field/input-field.component';
 
+// toast
+import { handleSuccess } from '../../../services/handleFormSuccess'
+import { ToastContainer } from 'react-toastify';
+
 // registration context
 import useRegistration from '../../../hooks/useRegistration';
 
@@ -54,6 +58,7 @@ const Step7FormContainer = () => {
 		setTimeout(() => {
 			setLoading(false);
 			setSaved(true);
+			handleSuccess('Changes Saved SuccessFully');
 		}, 2000);
 	};
 
@@ -65,6 +70,19 @@ const Step7FormContainer = () => {
 	return (
 		<div className='step-container'>
 			<FormContainerNav />
+			{/* success Toast */}
+			<ToastContainer
+				position='top-center'
+				autoClose={3000}
+				hideProgressBar={false}
+				newestOnTop={false}
+				closeOnClick
+				rtl={false}
+				pauseOnFocusLoss
+				draggable
+				pauseOnHover
+				theme='colored'
+			/>
 			<div className='mlr-2'>
 				<FormContainerButtonNav current={7} />
 				<div className='form-container'>
