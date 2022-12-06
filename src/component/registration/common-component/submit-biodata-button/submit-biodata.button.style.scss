@@ -1,0 +1,26 @@
+.submit-btn-container {
+  display: block;
+}
+.submit-button {
+		background-color: #522b79;
+		color: #fff;
+		font-size: 1.2rem;
+		padding: 15px 50px;
+    margin: auto;
+    display: flex;
+    outline: none;
+    border: none;
+    border-radius: 5px;
+
+    &:hover {
+      background-color: #622b98;
+      color: #fff;
+    }
+		@media (max-width: 576px) {
+			font-size: 1rem;
+		}
+	}
+
+.disabled-button {
+  cursor: no-drop;
+}
