@@ -10,7 +10,7 @@ const Tutorial = () => {
 				<div className='mlr-lg mb-5'>
 					{}
 					<div className='video-main-div'>
-						<div>
+						<div className="title">
 							<h3 className='h3tag'>
 								মোবাইল দিয়ে বায়োডাটা তৈরির ভিডিও টিউটোরিয়াল
 							</h3>
@@ -19,15 +19,15 @@ const Tutorial = () => {
 							<iframe
 								width='900'
 								height='515'
-								src='https://www.youtube.com/embed/hVU2h69ksXo'
+								src='https://www.youtube.com/embed/BovAFDFQrl0'
 								title='YouTube video player'
 								frameBorder='0'
 								allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture'
-								allowFullScreen
+								allowFullScreen=''
 							></iframe>
 						</div>
 
-						<div>
+						<div className="title">
 							<h3 className='h3tag'>
 								কম্পিউটার দিয়ে যেভাবে বায়োডাটা তৈরি করবেন
 							</h3>
@@ -44,7 +44,7 @@ const Tutorial = () => {
 							></iframe>
 						</div>
 
-						<div>
+						<div className="title">
 							<h3 className='h3tag'>
 								জানুয়ারির ১, ২০২১ ওয়েবসাইট উদ্বোধনী অনুষ্ঠান
 							</h3>

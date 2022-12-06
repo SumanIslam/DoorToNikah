@@ -25,6 +25,7 @@ const FormContainerNav = () => {
 						className='biodata-approve'
 						data-bs-toggle='modal'
 						data-bs-target='#exampleModal'
+						id='large-divec-button'
 					>
 						বায়োডাটা এপ্রুভ না হওয়ার কারণগুলো জেনে নিন
 					</button>
@@ -34,7 +35,20 @@ const FormContainerNav = () => {
 						<CreateIcon /> Edit
 					</Link>
 				</li>
-			</ul>
+				</ul>
+
+				
+					 <button
+						type='button'
+						className='biodata-approve'
+						data-bs-toggle='modal'
+						data-bs-target='#exampleModal'
+						id='small-divice-button'
+					>
+						বায়োডাটা এপ্রুভ না হওয়ার কারণগুলো জেনে নিন
+					</button> 
+				
+			
 			{/* modal */}
 			<div
 				className='modal fade  modal-lg'

@@ -37,3 +37,43 @@ ul.item-nav {
       font-size: 2rem;
     }
   }
+
+  #small-divice-button{
+    color: #fff;
+     border: none;
+        outline: none;
+        padding: 8px 20px;
+          border-bottom-left-radius: 5px;
+          border-bottom-right-radius: 5px;
+          background-color: #ad277c;
+  }
+
+
+  #large-divec-button, #small-divice-button{
+    display: none;
+  }
+
+
+  @media screen and (min-width: 100px) {
+    #large-divec-button{
+      display: none;
+    }
+    #small-divice-button{
+      display: initial;
+      width: 100%;
+      margin: auto;
+
+      
+    }
+  }
+  @media screen and (min-width: 841px) {
+    #small-divice-button{
+      display: none;
+    }
+    #large-divec-button{
+      display: initial;
+    }
+  }
+ 
+  
+  
