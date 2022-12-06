@@ -77,3 +77,15 @@ fieldset {
     color: #605e5e;
 	}
 }
+
+@media only screen and (max-width: 1196px) {
+  .step-container{
+    margin-right: 15px;
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  .step-container{
+    margin-right: 15px;
+  }
+}

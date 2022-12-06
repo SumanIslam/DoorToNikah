@@ -10,7 +10,7 @@ const PolicyMain = () => {
 		<div className='container pt-4 pb-5'>
 			<hr />
 			<div className='mlr-lg mb-5'>
-				<p>
+				<p className="policy-paragraph">
 					doortonikah.com is a matrimonial site focused on Islamic Sharia. Our
 					main goal is to find a suitable life partner to live according to the
 					Islamic way of life. Your privacy is significant to us. So it is
@@ -18,13 +18,14 @@ const PolicyMain = () => {
 					information about you. This privacy policy is mentioned to help you
 					understand
 				</p>
+				<br/>
 				<ul>
 					{policyData.map((data) => (
 						<li className='mb-4'>{data.text}</li>
 					))}
 				</ul>
 				<h2 className='mt-5'>Notice</h2>
-				<p>
+				<p className="policy-paragraph">
 					We may change this Privacy Policy from time to time based on your
 					choices or the policy of our company. If you have any questions
 					regarding our Privacy Policy, please write to{' '}

@@ -15,16 +15,16 @@ const Contact = () => {
 						</div>
 						<div className='contact-form-div'>
 							<form className='contact-form'>
-								<h4>নাম</h4>
+								<h4 className='h4tag'>নাম</h4>
 								<input type='text' className='input-field' placeholder='' />
 
-								<h4>ইমেইল</h4>
+								<h4 className='h4tag'>ইমেইল</h4>
 								<input type='email' className='input-field' placeholder='' />
 
-								<h4>বিষয়</h4>
+								<h4 className='h4tag'>বিষয়</h4>
 								<input type='text' className='input-field' placeholder='' />
 
-								<h4>আপনার বার্তা</h4>
+								<h4 className='h4tag'>আপনার বার্তা</h4>
 								<textarea
 									name='text'
 									className='input-field textarea'

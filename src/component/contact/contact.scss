@@ -1,8 +1,15 @@
 .contact_paragraph {
   margin: auto;
-  width: 55%;
+  width: 57%;
   padding: 10px;
   text-align: center;
+}
+
+.contact-para{
+  color: gray;
+  font-weight: 500;
+  font-size: 16px;
+  margin-bottom: 20px;
 }
 .contact{
   color: rgb(212, 209, 209);
@@ -66,7 +73,7 @@
   box-sizing: border-box;
 }
 
-h4{
+.h4tag{
   font-size: small;
 }
 
@@ -89,4 +96,17 @@ h4{
   -webkit-box-shadow: 0 8px 10px -6px #000000;
   -moz-box-shadow: 0 8px 10px -6px #000000;
   box-shadow: 0 8px 10px -6px #000000;
+}
+
+@media screen and (max-width: 1020px){
+  .contact_paragraph{
+    width: 80%;
+  }
+  .contact-form-div{
+    margin: auto;
+    width: 100%;
+  }
+  .title-banner{
+    font-size: 2rem;
+  }
 }

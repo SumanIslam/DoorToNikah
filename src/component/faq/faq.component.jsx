@@ -72,7 +72,7 @@ const FaqComponent = () => {
 		<>
 			<br />
 			<Container className='mb-5'>
-				<h4>সাধারণ প্রশ্ন ও উত্তর</h4>
+				<h4 className='question_ans'>সাধারণ প্রশ্ন ও উত্তর</h4>
 				{faqData.map((item, index) => (
 					<Accordion
             key={uuidv4()}
