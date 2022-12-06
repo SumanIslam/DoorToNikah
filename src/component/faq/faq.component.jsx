@@ -2,9 +2,6 @@ import * as React from "react";
 import { useEffect, useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 
-// data
-import { faqData } from "./faq-data";
-
 // style
 import "../../styles/utils.scss";
 
