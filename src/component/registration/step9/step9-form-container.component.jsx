@@ -18,7 +18,8 @@ const Step9FormContainer = () => {
 		partnersMinimumHeight:
 			candidatesInfo.partnersCharacteristics?.partnersMinimumHeight || '',
 		partnersMinimumEducationalQualification:
-			candidatesInfo.partnersCharacteristics?.partnersAge || '',
+			candidatesInfo.partnersCharacteristics
+				?.partnersMinimumEducationalQualification || '',
 		partnersDistrict:
 			candidatesInfo.partnersCharacteristics
 				?.partnersMinimumEducationalQualification || '',

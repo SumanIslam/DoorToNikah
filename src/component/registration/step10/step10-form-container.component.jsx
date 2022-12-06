@@ -97,8 +97,8 @@ const Step10FormContainer = () => {
 						/>
 						{/* buttons */}
 						<FormButtonContainer
-							nextUrl='/biodata/registration/step9'
-							backUrl='/biodata/registration/step7'
+							nextUrl='/biodata/registration/step11'
+							backUrl='/biodata/registration/step9'
 							loading={loading}
 							saved={saved}
 						/>
