@@ -232,24 +232,29 @@ const Step4FormContainer = () => {
 													guideText='উত্তরটা এভাবে দিতে পারেনঃ Bachelor of Science (B.Sc) in Electrical And Electronics Engineering (EEE)'
 													handleChange={handleEducationalQualification}
 												/>
-												{/* hons institute name */}
-												<InputField
-													title='শিক্ষাপ্রতিষ্ঠানের নাম'
-													name='honsInstituteName'
-													value={educationalQualification.honsInstituteName}
-													variant='input'
-													guideText='যে প্রতিষ্ঠান থেকে স্নাতক করেছেন।'
-													handleChange={handleEducationalQualification}
-												/>
-												{/* hons passing year */}
-												<InputField
-													title='পাসের সন'
-													name='honsPassingYear'
-													value={educationalQualification.honsPassingYear}
-													variant='input'
-													guideText='ছাত্র হলে শিক্ষাবর্ষ লিখবেন।যেমনঃ তৃতীয় বর্ষ'
-													handleChange={handleEducationalQualification}
-												/>
+												{/* if study hons */}
+												{educationalQualification.honsOrEquivalentStudy && (
+													<>
+														{/* hons institute name */}
+														<InputField
+															title='শিক্ষাপ্রতিষ্ঠানের নাম'
+															name='honsInstituteName'
+															value={educationalQualification.honsInstituteName}
+															variant='input'
+															guideText='যে প্রতিষ্ঠান থেকে স্নাতক করেছেন।'
+															handleChange={handleEducationalQualification}
+														/>
+														{/* hons passing year */}
+														<InputField
+															title='পাসের সন'
+															name='honsPassingYear'
+															value={educationalQualification.honsPassingYear}
+															variant='input'
+															guideText='ছাত্র হলে শিক্ষাবর্ষ লিখবেন।যেমনঃ তৃতীয় বর্ষ'
+															handleChange={handleEducationalQualification}
+														/>
+													</>
+												)}
 											</>
 										)}
 										{/* didn't pass hsc */}
@@ -260,9 +265,7 @@ const Step4FormContainer = () => {
 												options={hscClasses.options}
 												name='hscSession'
 												required={true}
-												defaultValue={
-													educationalQualification.hscSession
-												}
+												defaultValue={educationalQualification.hscSession}
 												handleSelect={handleEducationalQualification}
 											/>
 										)}

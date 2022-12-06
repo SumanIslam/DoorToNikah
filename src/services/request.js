@@ -9,12 +9,16 @@ export async function httpSignupUser(userData) {
 // user login
 export async function httpLoginUser(userData) {
   const res = await axios.post(`${API_URL}/users/auth/login`, userData);
-  console.log(res.data);
   return res.data;
 }
 
 // user logout
 export async function httpLogOutUser() {
-  const res = await axios.get(`${API_URL}/users/auth/logout`);
-  console.log(res.data);
+  await axios.get(`${API_URL}/users/auth/logout`);
+}
+
+// biodata registration
+export async function httpSaveBiodata(candidatesInfo) {
+	const res = await axios.post(`${API_URL}/registration`, candidatesInfo);
+	return res.data;
 }

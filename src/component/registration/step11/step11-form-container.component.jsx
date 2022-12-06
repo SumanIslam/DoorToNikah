@@ -4,6 +4,7 @@ import FormContainerButtonNav from '../common-component/form-container-button-na
 import FormContainerNav from '../common-component/form-container-nav/form-container-nav.component';
 import FormButtonContainer from '../common-component/form-button-container/form-button-container.component';
 import InputField from '../common-component/input-field/input-field.component';
+import SubmitBiodataButton from '../common-component/submit-biodata-button/submit-biodata-button.component';
 
 // registration context
 import useRegistration from '../../../hooks/useRegistration';
@@ -39,7 +40,7 @@ const Step11FormContainer = () => {
 			'candidatesInfo',
 			JSON.stringify({
 				...candidatesInfo,
-				candidatesName: { ...contactInfo },
+				contactInfo: { ...contactInfo },
 			})
 		);
 		setTimeout(() => {
@@ -104,14 +105,14 @@ const Step11FormContainer = () => {
 						guideText='ভেরিফিকেশন বা অন্য যে কোনো প্রয়োজনে ওয়েবসাইট কতৃপক্ষ থেকে আপনাকে কল দেয়ার প্রয়োজন হতে পারে। তাই আপনার নাম্বার আমাদের কাছে রাখা হচ্ছে। এই নাম্বার বায়োডাটাতে প্রকাশ করা হবে না। অর্থাৎ আপনি এবং কতৃপক্ষ বাদে অন্য কেউ দেখতে পাবে না।'
 						handleChange={handleContactInfo}
 					/>
-				{/* buttons */}
-				<FormButtonContainer
-							nextUrl='/biodata/registration/step9'
-							backUrl='/biodata/registration/step7'
+						{/* buttons */}
+						<FormButtonContainer
+							backUrl='/biodata/registration/step10'
 							loading={loading}
 							saved={saved}
 						/>
 					</form>
+					<SubmitBiodataButton saved={saved} candidatesInfo={candidatesInfo} />
 				</div>
 			</div>
 		</div>
