@@ -5,6 +5,12 @@ import { httpSaveBiodata } from '../../../../services/request';
 
 // auth context
 import useAuth from '../../../../hooks/useAuth';
+
+// toast
+import { handleSuccess } from '../../../../services/handleFormSuccess'
+import { handleError } from '../../../../services/handleFormError'
+import { ToastContainer } from 'react-toastify';
+
 // styles
 import './submit-biodata.button.style.scss';
 
@@ -17,20 +23,40 @@ const SubmitBiodataButton = ({ saved,candidatesInfo }) => {
   const handleClick = async (e) => {
     e.preventDefault();
 
-    const biodata = await httpSaveBiodata(candidatesInfo);
-		console.log(biodata);
-    setLoading(true);
-    setTimeout(() => {
-      setLoading(false)
-    }, 2000);
-
-    console.log(biodata);
+		try {
+			const biodata = await httpSaveBiodata(candidatesInfo);
+			console.log(biodata);
+			setLoading(true);
+			setTimeout(() => {
+				setLoading(false);
+				handleSuccess('Your Biodata is Saved SuccessFully');
+			}, 2000);
+		} catch (err) {
+			const errorMsg = err.response.data.msg;
+			setLoading(true);
+			setTimeout(() => {
+				setLoading(false);
+				handleError(errorMsg);
+			}, 2000);
+		}
   }
   return (
 		<div className='submit-btn-container'>
 			{saved &&
 				(loading ? (
 					<button className='submit-button mt-5' type='button'>
+						<ToastContainer
+							position='top-center'
+							autoClose={3000}
+							hideProgressBar={false}
+							newestOnTop={false}
+							closeOnClick
+							rtl={false}
+							pauseOnFocusLoss
+							draggable
+							pauseOnHover
+							theme='colored'
+						/>
 						<span
 							className='spinner-border spinner-border-sm m-2'
 							role='status'

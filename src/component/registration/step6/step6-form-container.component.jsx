@@ -5,6 +5,10 @@ import FormContainerNav from '../common-component/form-container-nav/form-contai
 import FormButtonContainer from '../common-component/form-button-container/form-button-container.component';
 import InputField from '../common-component/input-field/input-field.component';
 
+// toast
+import { handleSuccess } from '../../../services/handleFormSuccess'
+import { ToastContainer } from 'react-toastify';
+
 // registration context
 import useRegistration from '../../../hooks/useRegistration';
 
@@ -25,12 +29,12 @@ const Step6FormContainer = () => {
 			candidatesInfo.personalInfo?.mentalOrPhysicalProblem || '',
 		deeniMehnot: candidatesInfo.personalInfo?.deeniMehnot || '',
 		pirMuridan: candidatesInfo.personalInfo?.pirMuridan || '',
-		beliefsAboutMazar: candidatesInfo.beliefsAboutMazar?.dailyPrayer || '',
+		beliefsAboutMazar: candidatesInfo.personalInfo?.beliefsAboutMazar || '',
 		favoriteIslamicBooks:
 			candidatesInfo.personalInfo?.favoriteIslamicBooks || '',
 		favoriteIslamicScholar:
 			candidatesInfo.personalInfo?.favoriteIslamicScholar || '',
-		specialSkills: candidatesInfo.personalInfo?.dailyPrayer || '',
+		specialSkills: candidatesInfo.personalInfo?.specialSkills || '',
 		aboutYourself: candidatesInfo.personalInfo?.aboutYourself || '',
 	});
 
@@ -62,12 +66,26 @@ const Step6FormContainer = () => {
 		setTimeout(() => {
 			setLoading(false);
 			setSaved(true);
+			handleSuccess('Changes Saved SuccessFully');
 		}, 2000);
 	};
 
 	return (
 		<div className='step-container'>
 			<FormContainerNav />
+			{/* success Toast */}
+			<ToastContainer
+				position='top-center'
+				autoClose={3000}
+				hideProgressBar={false}
+				newestOnTop={false}
+				closeOnClick
+				rtl={false}
+				pauseOnFocusLoss
+				draggable
+				pauseOnHover
+				theme='colored'
+			/>
 			<div className='mlr-2'>
 				<FormContainerButtonNav current={6} />
 				<div className='form-container'>
