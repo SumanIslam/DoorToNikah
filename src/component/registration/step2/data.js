@@ -1,20 +1,27 @@
 export const biodataType = {
 	title: 'বায়োডাটার ধরন*',
-	dropdown: true,
-	selected: 'সকল বায়োডাটা',
+	selected: {
+		option: '----',
+		value: ''
+	},
 	options: ['পাত্রের বায়োডাটা', 'পাত্রীর বায়োডাটা'],
 };
 
 export const maritalStatus = {
 	title: 'বৈবাহিক অবস্থা*',
-	dropdown: true,
-	selected: 'সকল',
+	selected: {
+		option: '----',
+		value: '',
+	},
 	options: ['অবিবাহিত', 'বিবাহিত', 'ডিভোর্সড', 'বিধবা', 'বিপত্নীক'],
 };
 
 export const birthYear = {
 	title: 'জন্মসন (আসল)*',
-	selected: '----',
+	selected: {
+		option: '----',
+		value: '',
+	},
 	optionsValue: [
 		{
 			option: '১৯৬০',
@@ -220,26 +227,26 @@ export const birthYear = {
 			option: '২০১০',
 			value: 2010,
 		},
-		// {
-		// 	option: '২০১১',
-		// 	value: 2011,
-		// },
-		// {
-		// 	option: '২০১২',
-		// 	value: 2012,
-		// },
-		// {
-		// 	option: '২০১৩',
-		// 	value: 2013,
-		// },
-		// {
-		// 	option: '২০১৪',
-		// 	value: 2014,
-		// },
-		// {
-		// 	option: '২০১৫',
-		// 	value: 2015,
-		// },
+		{
+			option: '২০১১',
+			value: 2011,
+		},
+		{
+			option: '২০১২',
+			value: 2012,
+		},
+		{
+			option: '২০১৩',
+			value: 2013,
+		},
+		{
+			option: '২০১৪',
+			value: 2014,
+		},
+		{
+			option: '২০১৫',
+			value: 2015,
+		},
 		// {
 		// 	option: '২০১৬',
 		// 	value: 2016,
@@ -285,13 +292,19 @@ export const birthYear = {
 
 export const skinColor = {
 	title: 'গাত্রবর্ণ*',
-	selected: 'কালো',
-	options: ['শ্যামলা', 'উজ্জ্বল শ্যামলা', 'ফর্সা', 'উজ্জ্বল ফর্সা'],
+	selected: {
+		option: '----',
+		value: '',
+	},
+	options: ['কালো', 'শ্যামলা', 'উজ্জ্বল শ্যামলা', 'ফর্সা', 'উজ্জ্বল ফর্সা'],
 };
 
 export const height = {
 	title: 'উচ্চতা*',
-	selected: '----',
+	selected: {
+		option: '----',
+		value: '',
+	},
 	options: [
 		'৪\'০"',
 		'৪\'১"',
@@ -346,7 +359,10 @@ export const height = {
 
 export const weight = {
 	title: 'ওজন (কেজি)*',
-	selected: '----',
+	selected: {
+		option: '----',
+		value: '',
+	},
 	options: [
 		'৩০ কেজি',
 		'৩১ কেজি',
@@ -454,15 +470,231 @@ export const weight = {
 
 export const bloodGroup = {
 	title: 'রক্তের গ্রুপ*',
-	selected: 'জানা নেই',
-	options: [
-		'A+',
-		'A-',
-		'AB+',
-		'AB-',
-		'B+',
-		'B-',
-		'O+',
-		'O-',
-	]
+	selected: {
+		option: '----',
+		value: '',
+	},
+	options: ['জানা নেই', 'A+', 'A-', 'AB+', 'AB-', 'B+', 'B-', 'O+', 'O-'],
 };
+
+export const allDivision = {
+	label: 'বিভাগ',
+	selected: {
+		option: '----',
+		value: '',
+	},
+	options: [
+		'ঢাকা বিভাগ',
+		'চট্টগ্রাম বিভাগ',
+		'রাজশাহী বিভাগ',
+		'খুলনা বিভাগ',
+		'বরিশাল বিভাগ',
+		'সিলেট বিভাগ',
+		'রংপুর বিভাগ',
+		'ময়মনসিংহ বিভাগ',
+	],
+};
+
+export const allDistrict = {
+	selected: {
+		option: '----',
+		value: '',
+	},
+	options: [
+		'বাগেরহাট',
+		'বান্দরবান',
+		'বরগুনা',
+		'বরিশাল',
+		'ভোলা',
+		'বগুড়া',
+		'ব্রাহ্মণবাড়িয়া',
+		'চাঁদপুর',
+		'চাঁপাইনবাবগঞ্জ',
+		'চট্টগ্রাম',
+		'চুয়াডাঙ্গা',
+		'কক্স বাজার',
+		'কুমিল্লা',
+		'ঢাকা',
+		'দিনাজপুর',
+		'ফরিদপুর',
+		'ফেনী',
+		'গাইবান্ধা',
+		'গাজীপুর',
+		'গোপালগঞ্জ',
+		'হবিগঞ্জ',
+		'জামালপুর',
+		'যশোর',
+		'ঝালকাঠী',
+		'ঝিনাইদহ',
+		'জয়পুরহাট',
+		'খাগড়াছড়ি',
+		'খুলনা',
+		'কিশোরগঞ্জ',
+		'কুড়িগ্রাম',
+		'কুষ্টিয়া',
+		'লক্ষ্মীপুর',
+		'লালমনিরহাট',
+		'মাদারীপুর',
+		'মাগুরা',
+		'মানিকগঞ্জ',
+		'মেহেরপুর',
+		'মৌলভীবাজার',
+		'মুন্সিগঞ্জ',
+		'ময়মনসিংহ',
+		'নওগাঁ',
+		'নড়াইল',
+		'নারায়ণগঞ্জ',
+		'নরসিংদী',
+		'নাটোর',
+		'নেত্রকোনা',
+		'নিলফামারী',
+		'নোয়াখালী',
+		'পাবনা',
+		'পঞ্চগড়',
+		'পটুয়াখালী',
+		'পিরোজপুর',
+		'রাজবাড়ী',
+		'রাজশাহী',
+		'রাঙ্গামাটি',
+		'রংপুর',
+		'সাতক্ষীরা',
+		'শরিয়তপুর',
+		'শেরপুর',
+		'সিরাজগঞ্জ',
+		'সুনামগঞ্জ',
+		'সিলেট',
+		'টাঙ্গাইল',
+		'ঠাকুরগাঁও',
+	],
+};
+
+export const dhakaDistrict = {
+	selected: {
+		option: '----',
+		value: '',
+	},
+	options: [
+		'নরসিংদী',
+		'গাজীপুর',
+		'শরীয়তপুর',
+		'নারায়ণগঞ্জ',
+		'টাঙ্গাইল',
+		'কিশোরগঞ্জ',
+		'মানিকগঞ্জ',
+		'ঢাকা',
+		'মুন্সিগঞ্জ',
+		'রাজবাড়ী',
+		'মাদারীপুর',
+		'গোপালগঞ্জ',
+		'ফরিদপুর',
+	],
+};
+
+export const chittagongDistrict = {
+	selected: {
+		option: '----',
+		value: '',
+	},
+	options: [
+		'কুমিল্লা',
+		'ফেনী',
+		'ব্রাহ্মণবাড়িয়া',
+		'রাঙ্গামাটি',
+		'নোয়াখালী',
+		'চাঁদপুর',
+		'লক্ষ্মীপুর',
+		'চট্টগ্রাম',
+		'কক্স বাজার',
+		'খাগড়াছড়ি',
+		'বান্দরবান',
+	],
+};
+
+export const rajshahiDistrict = {
+	selected: {
+		option: '----',
+		value: '',
+	},
+	options: [
+		'সিরাজগঞ্জ',
+		'পাবনা',
+		'বগুড়া',
+		'রাজশাহী',
+		'নাটোর',
+		'জয়পুরহাট',
+		'চাঁপাইনবাবগঞ্জ',
+		'নওগাঁ',
+	],
+};
+
+export const khulnaDistrict = {
+	selected: {
+		option: '----',
+		value: '',
+	},
+	options: [
+		'যশোর',
+		'সাতক্ষীরা',
+		'মেহেরপুর',
+		'নড়াইল',
+		'চুয়াডাঙ্গা',
+		'কুষ্টিয়া',
+		'মাগুরা',
+		'খুলনা',
+		'বাগেরহাট',
+		'ঝিনাইদহ',
+	],
+};
+export const barishalDistrict = {
+	selected: {
+		option: '----',
+		value: '',
+	},
+	options: ['ঝালকাঠী', 'পটুয়াখালী', 'পিরোজপুর', 'বরিশাল', 'ভোলা', 'বরগুনা'],
+};
+
+export const sylhetDistrict = {
+	selected: {
+		option: '----',
+		value: '',
+	},
+	options: ['সিলেট', 'মৌলভীবাজার', 'হবিগঞ্জ', 'সুনামগঞ্জ'],
+};
+
+export const rangpurDistrict = {
+	selected: {
+		option: '----',
+		value: '',
+	},
+	options: [
+		'পঞ্চগড়',
+		'দিনাজপুর',
+		'লালমনিরহাট',
+		'নীলফামারী',
+		'গাইবান্ধা',
+		'ঠাকুরগাঁও',
+		'রংপুর',
+		'কুড়িগ্রাম',
+	],
+};
+
+export const moymonsinghDistrict = {
+	selected: {
+		option: '----',
+		value: '',
+	},
+	options: ['শেরপুর', 'ময়মনসিংহ', 'জামালপুর', 'নেত্রকোনা'],
+};
+
+// create district Map
+export const district = new Map();
+
+district.set('সকল বিভাগ', allDistrict);
+district.set('ঢাকা বিভাগ', dhakaDistrict);
+district.set('চট্টগ্রাম বিভাগ', chittagongDistrict);
+district.set('রাজশাহী বিভাগ', rajshahiDistrict);
+district.set('খুলনা বিভাগ', khulnaDistrict);
+district.set('বরিশাল বিভাগ', barishalDistrict);
+district.set('সিলেট বিভাগ', sylhetDistrict);
+district.set('রংপুর বিভাগ', rangpurDistrict);
+district.set('ময়মনসিংহ বিভাগ', moymonsinghDistrict);

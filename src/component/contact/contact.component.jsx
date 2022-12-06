@@ -1,42 +1,95 @@
+import React, { useRef } from "react";
+import emailjs from "@emailjs/browser";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 // style
-import '../../styles/utils.scss';
+import "../../styles/utils.scss";
 import "./contact.scss";
 
 const Contact = () => {
-    return (
-			<div className='container pt-4 pb-5'>
-				<div className='mlr-lg mb-5'>
-					<div>
-						<div className='contact_paragraph'>
-							<p className='contact-para'>
-								আপনার যে কোন জিজ্ঞাসা নিম্নোক্ত ফর্মে পূরণ করে আমাদের কাছে
-								পাঠিয়ে দিন। আমরা শীঘ্রই আপনার সাথে যোগাযোগ করবো ইন শা আল্লাহ।
-							</p>
-						</div>
-						<div className='contact-form-div'>
-							<form className='contact-form'>
-								<h4 className='h4tag'>নাম</h4>
-								<input type='text' className='input-field' placeholder='' />
+  const form = useRef();
 
-								<h4 className='h4tag'>ইমেইল</h4>
-								<input type='email' className='input-field' placeholder='' />
+  const sendEmail = (e) => {
+    e.preventDefault();
 
-								<h4 className='h4tag'>বিষয়</h4>
-								<input type='text' className='input-field' placeholder='' />
+    emailjs
+      .sendForm(
+        "service_0cgnk2k",
+        "template_5xuy08p",
+        form.current,
+        "380mhN6phH5NJyJWe"
+      )
+      .then(
+        (result) => {
+          console.log(result.text);
+          console.log("Message Sent");
+        },
+        (error) => {
+          console.log(error.text);
+        }
+      );
+  };
 
-								<h4 className='h4tag'>আপনার বার্তা</h4>
-								<textarea
-									name='text'
-									className='input-field textarea'
-									placeholder=''
-								></textarea>
-								<button className='contact-button'>পাঠান</button>
-							</form>
-						</div>
-					</div>
-				</div>
-			</div>
-		);
-  }
-  
-  export default Contact;
+  const notify = () =>
+    toast.success("Message has been sent. We will contact to you shortly.");
+
+  return (
+    <div className="container pt-4 pb-5">
+      <div className="mlr-lg mb-5">
+        <div>
+          <div className="contact_paragraph">
+            <p className="contact-para">
+              আপনার যে কোন জিজ্ঞাসা নিম্নোক্ত ফর্মে পূরণ করে আমাদের কাছে পাঠিয়ে
+              দিন। আমরা শীঘ্রই আপনার সাথে যোগাযোগ করবো ইন শা আল্লাহ।
+            </p>
+          </div>
+          <div className="contact-form-div">
+            <form ref={form} onSubmit={sendEmail} className="contact-form">
+              <h4>নাম</h4>
+              <input
+                type="text"
+                name="user_name"
+                className="input-field"
+                placeholder=""
+              />
+
+              <h4>ইমেইল</h4>
+              <input
+                type="email"
+                name="user_email"
+                className="input-field"
+                placeholder=""
+              />
+
+              <h4>বিষয়</h4>
+              <input
+                type="text"
+                name="user_subject"
+                className="input-field"
+                placeholder=""
+              />
+
+              <h4>আপনার বার্তা</h4>
+              <textarea
+                name="message"
+                className="input-field textarea"
+                placeholder=""
+              ></textarea>
+              <button
+                type="submit"
+                value="Send"
+                className="contact-button"
+                onClick={notify}
+              >
+                পাঠান
+              </button>
+              <ToastContainer />
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default Contact;
