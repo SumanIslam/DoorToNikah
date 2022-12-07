@@ -43,7 +43,17 @@ const Login = () => {
 		try {
 			const user = await httpLoginUser(userData);
 			setAuth({ ...userData, ...user });
-			
+
+			console.log(user);
+			// save auth to local storage
+			localStorage.setItem('auth', JSON.stringify({
+				userId: user.userId,
+				biodataId: user.biodataId,
+				roles: user.roles,
+				userName: user.userName,
+				email: userData.email,
+			}))
+
 			toast.success(
 				`${
 					user.userName ? user.userName : 'congratulations'

@@ -32,9 +32,12 @@ const LogoutConsent = (props) => {
 
 	const handleListItemClickWithLogout = (value) => {
 		if (value === 'Yes') {
-			setTimeout(() => {
-				httpLogOutUser();
-				setAuth('');
+			setTimeout(async () => {
+				await httpLogOutUser();
+				// set auth empty string
+				setAuth({});
+				// set auth an empty object in local storage
+				localStorage.setItem('auth', JSON.stringify({}))
 				navigate('/');
 			}, 800);
 		}
