@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 // mui icons
 import PersonIcon from '@mui/icons-material/Person';
 
@@ -8,7 +9,12 @@ import './profile-dropdown.style.scss';
 // component
 import LogoutConsent from '../logout-consent/logout-consent.component';
 
+// auth context
+import useAuth from '../../hooks/useAuth';
+
 const ProfileDropdown = () => {
+	const { auth } = useAuth();
+	const { candidatesName } =JSON.parse(localStorage.getItem('candidatesInfo'))
 	const [open, setOpen] = useState(false);
 	const [selectedValue, setSelectedValue] = useState('No');
 
@@ -34,9 +40,17 @@ const ProfileDropdown = () => {
 			</button>
 			<ul className='dropdown-menu'>
 				<li>
-					<a className='dropdown-item' href='#'>
-						Profile
-					</a>
+					{auth?.userName ? (
+						<Link className='dropdown-item' to={`${auth?.userName}/profile`}>
+							Profile
+						</Link>
+					) : (
+						<Link className='dropdown-item' to={`${candidatesName?.name}/profile`}>
+							Profile
+						</Link>
+					)}
+
+					{/* <a href='#'></a> */}
 				</li>
 				<li>
 					<a className='dropdown-item' href='#'>
