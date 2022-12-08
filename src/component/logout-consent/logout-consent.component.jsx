@@ -15,6 +15,7 @@ import PropTypes from 'prop-types';
 
 // api request handler
 import { httpLogOutUser } from '../../services/request';
+import useRegistration from '../../hooks/useRegistration';
 
 // auth
 import useAuth from '../../hooks/useAuth';
@@ -25,6 +26,7 @@ const LogoutConsent = (props) => {
 	const navigate = useNavigate();
 
 	const { setAuth } = useAuth();
+	const { setCandidatesInfo } = useRegistration();
 
 	const handleClose = () => {
 		onClose(selectedValue);
@@ -32,10 +34,17 @@ const LogoutConsent = (props) => {
 
 	const handleListItemClickWithLogout = (value) => {
 		if (value === 'Yes') {
-			setTimeout(() => {
-				httpLogOutUser();
-				setAuth('');
+			setTimeout(async () => {
+				await httpLogOutUser();
+				// set auth empty string
+				setAuth({});
+				// set auth an empty object in local storage
+				localStorage.setItem('auth', JSON.stringify({}))
+				// empty candidates info
+				localStorage.setItem('candidatesInfo', JSON.stringify({}))
 				navigate('/');
+				// empty registration context
+				setCandidatesInfo({})
 			}, 800);
 		}
 		onClose(value);

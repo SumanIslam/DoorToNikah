@@ -22,3 +22,13 @@ export async function httpSaveBiodata(candidatesInfo) {
 	const res = await axios.post(`${API_URL}/registration`, candidatesInfo);
 	return res.data;
 }
+
+// biodata registration
+export async function httpGetSingleBiodata(biodataId) {
+	const res = await axios.get(`${API_URL}/biodatas/biodata`, {
+		params: {
+			biodataId: biodataId,
+		},
+	});
+	return res.data;
+}
