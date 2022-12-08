@@ -1,4 +1,7 @@
 export const bool = {
-	selected: '----',
+	selected: {
+		option: '----',
+		value: ''
+	},
 	options: ['হ্যাঁ', 'না'],
 };

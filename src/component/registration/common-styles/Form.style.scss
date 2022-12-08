@@ -35,33 +35,29 @@
   padding: 6px;
   width: 98%;
   border: 1px solid #ddd;
-  // background-color: #522b79;
   background-color: transparent;
   font-size: 0.95rem;
   margin-bottom: 1rem;
   color: #141414;
-  // color: #fff;
 
   &:focus {
-    // border: none;
-    // outline: none;
-    border: 1px solid #ddd;
-    outline: 1px solid black;
+    border: 1px solid #ad277c;
+    outline: 1px solid #ad277c;
   }
 }
 
-::placeholder {
-  color: #888;
-  opacity: 1; /* Firefox */
-}
+// ::placeholder {
+//   color: #888;
+//   opacity: 1; /* Firefox */
+// }
 
-:-ms-input-placeholder { /* Internet Explorer 10-11 */
- color: #888;
-}
+// :-ms-input-placeholder { /* Internet Explorer 10-11 */
+//  color: #888;
+// }
 
-::-ms-input-placeholder { /* Microsoft Edge */
- color: #888;
-}
+// ::-ms-input-placeholder { /* Microsoft Edge */
+//  color: #888;
+// }
 
 .guide-text {
   color: #522b79;

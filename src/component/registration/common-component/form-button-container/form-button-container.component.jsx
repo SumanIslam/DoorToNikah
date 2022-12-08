@@ -1,13 +1,49 @@
-import SaveChangesButton from "../save-changes-button/save-changes-button.component";
-import NextButton from "../next-button/next-button.component";
+import { Link } from 'react-router-dom';
 
-const FormButtonContainer = () => {
+// mui
+import DoubleArrowIcon from '@mui/icons-material/DoubleArrow';
+import KeyboardDoubleArrowLeftIcon from '@mui/icons-material/KeyboardDoubleArrowLeft';
+
+// styles
+import './form-button-container.style.scss';
+import '../../../../styles/utils.scss'
+
+const FormButtonContainer = ({ nextUrl, backUrl, loading, saved }) => {
+
   return (
-    <div className='d-flex justify-content-between width'>
-      <SaveChangesButton />
-      <NextButton disabled={true} />
-    </div>
-  )
+		<div className='d-flex justify-content-between width'>
+			{loading ? (
+				<button className='small-button' type='button'>
+					<span
+						className='spinner-border spinner-border-sm'
+						role='status'
+						aria-hidden='true'
+					></span>{' '}
+					saving...
+				</button>
+			) : (
+				<button type='submit' className='small-button'>
+					Save Changes
+				</button>
+			)}
+			<div>
+				{backUrl && (
+					<button className='next-button'>
+						<Link to={backUrl}>
+							<KeyboardDoubleArrowLeftIcon /> Back
+						</Link>
+					</button>
+				)}
+				{nextUrl && saved && (
+					<button className='next-button'>
+						<Link to={nextUrl}>
+							Next <DoubleArrowIcon />
+						</Link>
+					</button>
+				)}
+			</div>
+		</div>
+	);
 }
 
 export default FormButtonContainer;
