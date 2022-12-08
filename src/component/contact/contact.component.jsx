@@ -1,7 +1,6 @@
 // style
 import '../../styles/utils.scss';
 import "./contact.scss";
-
 const Contact = () => {
     return (
 			<div className='container pt-4 pb-5'>
@@ -31,6 +30,7 @@ const Contact = () => {
 									placeholder=''
 								></textarea>
 								<button className='contact-button'>পাঠান</button>
+								
 							</form>
 						</div>
 					</div>
