@@ -5,7 +5,6 @@ import "react-toastify/dist/ReactToastify.css";
 // style
 import "../../styles/utils.scss";
 import "./contact.scss";
-
 const Contact = () => {
   const form = useRef();
 
