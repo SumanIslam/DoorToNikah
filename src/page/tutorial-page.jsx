@@ -12,7 +12,6 @@ const TutorialPage = () => {
 		<>
 			<Header />
             < Tutorial />
-			<ShortProfile />
 			<Footer />
 			
 		</>
