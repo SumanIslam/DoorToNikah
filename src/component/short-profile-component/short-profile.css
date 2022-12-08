@@ -1,0 +1,105 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+.main-search{
+    width: 320px;
+    border-radius: 5px;
+    padding: 0 0 20px;
+    transition: all .292s ease 0s;
+    margin-top: 30px;
+    border: 1px solid rgba(108, 0, 146, .2);
+    border: 1px solid #e5e5e5;
+    list-style: none;
+    text-align: center;
+    margin-top: 100px;
+    margin-bottom: 100px;
+}
+.main-search:hover{
+    box-shadow: 5px 10px 18px #e5e5e5;
+    transition: 3ms;
+}
+.avatar {
+    margin: 0;
+    width: 100%;
+    height: auto;
+    border: none;
+    border-radius: 0;
+    border-top-right-radius: 5px;
+    border-top-left-radius: 5px;
+    padding: 15px 0 5px;
+    box-shadow: 0 1px 0px 0px #522b79;
+    background: #522B79;
+    position: relative;
+    overflow: visible !important;
+}
+.short-profile-avatar-image{
+    margin: 0;
+    width: 100px;
+    height: 100px;
+    border: none;
+    border-radius: 50%;
+    border-top-right-radius: 5px;
+    border-top-left-radius: 5px;
+    padding: 15px 0 5px;
+    box-shadow: 0 1px 0px 0px #522b79;
+    background: #522B79;
+}
+
+.shortprofile-h4tag{
+    color: #fff;
+    margin: 10px 0 15px;
+    font-size: 18px;
+    font-weight: 700;
+}
+.shortprofile-body{
+    height: auto;
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0;
+    padding: 35px 20px 25px;
+}
+.shortprofile-body-part1:nth-child(1) {
+    border-top: 1px solid #522B79;
+}
+.shortprofile-body-part1{
+    max-width: 50%;
+    flex: 0 0 50%;
+    text-align: center;
+    margin: 0;
+    padding: 5px 0;
+    border-style: solid;
+    border-width: 0px 0px 1px 0px;
+    border-color: #522B79;
+    font-size: 14px;
+    color: #222;
+}
+
+.short-profile-paragraph:nth-child(2) {
+    border-top: 1px solid #522B79;
+}
+.short-profile-paragraph{
+    max-width: 50%;
+    flex: 0 0 50%;
+    margin: 0;
+    text-align: center;
+    padding: 5px 0;
+    border-style: solid;
+    border-width: 0px 0px 1px 1px;
+    border-color: #522B79;
+    font-size: 14px;
+}
+.short-profile-button{
+    margin-bottom: 8px;
+}
+.short-profile-btn-element{
+    background: #522B79;
+    color: #fff;
+    padding: 15px 50px;
+    font-size: 13px;
+    border-radius: 3px;
+    max-width: 200px;
+    margin: 0 auto;
+    min-width: 200px;
+    font-weight: bold;
+}
