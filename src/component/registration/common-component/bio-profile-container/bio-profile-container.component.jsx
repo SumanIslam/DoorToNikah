@@ -1,85 +1,112 @@
-import React, { useState } from 'react'
+import { useState } from 'react';
 
+// import image
+import female from '../../../../asset/Female-v2.svg';
+import male from '../../../../asset/Male-v2.svg';
 
 // styles
-import './BioprofileContainer/BioprofileContainer.css';
-import '../../../../styles/utils.scss'
+import '../../../../styles/utils.scss';
+import './bio-profile-container.css';
+
+// copy to clipboard
+import { CopyToClipboard } from 'react-copy-to-clipboard';
 
 
-const BioprofileContainer = () => {
 
-    return ( 
-            <div className='container pt-4 pb-5'>
-				<div className=''>
-                    <div className='main-div'>
-                        <div className="image-div">
-                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRJiVVrzvJxFLcIOE9oE0OfI7UdITM_hz_flw&usqp=CAU">
-                        </div>
-                        <div className="bio-no-div">
-                            <p>Biodata No: 123</p>
-                        </div>
-                        <div className="table-div">
-                        <ul className="tabs-content custom">
-                            <li active id="e0a6b8e0a6bee0a6a7e0a6bee0a6b0e0a6a3-e0a6a4e0a6a5e0a78de0a6afTab" class="active regulartab">
-                                <dl className="dl-horizontal">
-                                    <dt className="dt-div" >বায়োডাটার ধরন</dt>
-                                    <dd className="dd-div">
-                                        <p>পাত্রীর বায়োডাটা</p>
-                                    </dd>
-                                    <dt className="dt-div">বৈবাহিক অবস্থা</dt>
-                                    <dd className="dd-div">
-                                        <p>অবিবাহিত</p>
-                                    </dd>
-                                    <dt className="dt-div">স্থায়ী ঠিকানা</dt>
-                                    <dd className="dd-div">
-                                        <p>ঢাকা</p>
-                                    </dd>
-                                    <dt className="dt-div">বিভাগ</dt>
-                                    <dd className="dd-div">
-                                        <p>ঢাকা বিভাগ</p>
-                                    </dd>
-                                    <dt className="dt-div">বর্তমান ঠিকানা</dt>
-                                    <dd className="dd-div">
-                                        <p>ঢাকা</p>
-                                    </dd>
-                                    <dt className="dt-div">বিভাগ </dt>
-                                    <dd class="dd-div">
-                                        <p>ঢাকা বিভাগ</p>
-                                    </dd>
-                                    <dt className="dt-div">জন্মসন (আসল)</dt>
-                                    <dd className="dd-div">
-                                        <p>২০০০</p>
-                                    </dd>
-                                    <dt className="dt-div">গাত্রবর্ণ</dt>
-                                    <dd className="dd-div">
-                                        <p>কালো</p>
-                                    </dd>
-                                    <dt className="dt-div">উচ্চতা</dt>
-                                    <dd className="dd-div">
-                                        <p>৫&#039;১&#039;&#039;</p>
-                                    </dd>
-                                    <dt className="dt-div">ওজন</dt>
-                                    <dd className="dd-div">
-                                        <p>৬০ কেজি</p>
-                                    </dd>
-                                    <dt className="dt-div">রক্তের গ্রুপ</dt>
-                                    <dd className="dd-div">
-                                        <p>B-</p>
-                                    </dd>
-                                    <dt className="dt-div">পেশা</dt>
-                                    <dd className="dd-div">
-                                        <p>ছাত্রী</p>
-                                    </dd>
-                                </dl>
-                            </li>
-                        </ul>
+const BioProfileContainer = ({ biodataId, generalInfo }) => {
+  const [copied, setCopied] = useState(false); 
 
-                    </div>     
+  const handleCopy = () => {
+		setCopied(true);
+	};
+
+  return (
+		<div className='profile-container'>
+			<div className='image-div'>
+				<div>
+					{generalInfo?.biodataType === 'পাত্রীর বায়োডাটা' ? (
+						<img src={female} alt='biodata-type' />
+					) : (
+						<img src={male} alt='biodata-type' />
+					)}
+				</div>
+				<div className='bio-no-div'>
+					<p>Biodata No: {biodataId}</p>
 				</div>
 			</div>
-        </div>
-		);
-  }
+
+			<table className='table-div'>
+				<dl className='dl-horizontal'>
+					<dt className='dt-div'>বায়োডাটার ধরন</dt>
+					<dd className='dd-div'>
+						<p>{generalInfo.biodataType}</p>
+					</dd>
+					<dt className='dt-div'>বৈবাহিক অবস্থা</dt>
+					<dd className='dd-div'>
+						<p>{generalInfo.maritalStatus}</p>
+					</dd>
+					<dt className='dt-div'>স্থায়ী ঠিকানা (বিভাগ)</dt>
+					<dd className='dd-div'>
+						<p>{generalInfo.permanentDivision}</p>
+					</dd>
+					<dt className='dt-div'>স্থায়ী ঠিকানা (জেলা)</dt>
+					<dd className='dd-div'>
+						<p>{generalInfo.permanentDistrict}</p>
+					</dd>
+					<dt className='dt-div'>বর্তমান ঠিকানা (বিভাগ)</dt>
+					<dd className='dd-div'>
+						<p>{generalInfo.presentDivision}</p>
+					</dd>
+					<dt className='dt-div'>বর্তমান ঠিকানা (জেলা)</dt>
+					<dd className='dd-div'>
+						<p>{generalInfo.presentDistrict}</p>
+					</dd>
+					<dt className='dt-div'>জন্মসন (আসল)</dt>
+					<dd className='dd-div'>
+						<p>{generalInfo.birthYear.option}</p>
+					</dd>
+					<dt className='dt-div'>গাত্রবর্ণ</dt>
+					<dd className='dd-div'>
+						<p>{generalInfo.skinColor}</p>
+					</dd>
+					<dt className='dt-div'>উচ্চতা</dt>
+					<dd className='dd-div'>
+						<p>{generalInfo.height}</p>
+					</dd>
+					<dt className='dt-div'>ওজন</dt>
+					<dd className='dd-div'>
+						<p>{generalInfo.weight}</p>
+					</dd>
+					<dt className='dt-div'>রক্তের গ্রুপ</dt>
+					<dd className='dd-div'>
+						<p>{generalInfo.bloodGroup}</p>
+					</dd>
+					<dt className='dt-div'>পেশা</dt>
+					<dd className='dd-div'>
+						<p>{generalInfo.occupation}</p>
+					</dd>
+					{generalInfo.monthlyIncome && (
+						<>
+							<dt className='dt-div'>মাসিক আয়</dt>
+							<dd className='dd-div'>
+								<p>{generalInfo.monthlyIncome}</p>
+							</dd>
+						</>
+					)}
+				</dl>
+			</table>
+			<div className='copy-to-clipboard'>
+				{copied ? (
+					<div className='btn btn-light'>কপি সম্পন্ন হয়েছে</div>
+				) : (
+					<CopyToClipboard text={biodataId} onCopy={() => handleCopy()}>
+						<div className='btn btn-light'>বায়োডাটার লিংক কপি করুন</div>
+					</CopyToClipboard>
+				)}
+			</div>
+		</div>
+	);
+}
   
 
-export default BioprofileContainer;
+export default BioProfileContainer;

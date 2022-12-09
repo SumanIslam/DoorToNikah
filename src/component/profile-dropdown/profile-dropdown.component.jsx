@@ -41,21 +41,29 @@ const ProfileDropdown = () => {
 			<ul className='dropdown-menu'>
 				<li>
 					{auth?.userName ? (
-						<Link className='dropdown-item' to={`${auth?.userName}/profile`}>
-							Profile
+						<Link
+							className='dropdown-item'
+							to={`/${(auth?.userName).replace(/ /g, '')}/profile`}
+						>
+							My Profile
+						</Link>
+					) : candidatesName.name ? (
+						<Link
+							className='dropdown-item'
+							to={`/${(candidatesName?.name).replace(/ /g, '')}/profile`}
+						>
+							My Profile
 						</Link>
 					) : (
-						<Link className='dropdown-item' to={`${candidatesName?.name}/profile`}>
-							Profile
+						<Link className='dropdown-item' to='/unknown/profile'>
+							My Profile
 						</Link>
 					)}
-
-					{/* <a href='#'></a> */}
 				</li>
 				<li>
-					<a className='dropdown-item' href='#'>
+					<Link className='dropdown-item' to='/biodata/registration/step1'>
 						Edit Biodata
-					</a>
+					</Link>
 				</li>
 				<li>
 					<a className='dropdown-item' href='#'>
