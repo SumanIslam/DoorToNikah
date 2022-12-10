@@ -15,7 +15,7 @@ import useAuth from '../../../../hooks/useAuth';
 
 const FormContainerNav = () => {
 	const { auth } = useAuth();
-	const { candidatesName } = JSON.parse(localStorage.getItem('candidatesInfo'));
+	const { candidatesName } = JSON.parse(localStorage.getItem('candidatesInfo')) || '';
   return (
 		<>
 			<ul className='item-nav'>

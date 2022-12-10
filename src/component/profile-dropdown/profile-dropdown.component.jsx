@@ -15,7 +15,8 @@ import useAuth from '../../hooks/useAuth';
 
 const ProfileDropdown = () => {
 	const { auth } = useAuth();
-	const { candidatesName } =JSON.parse(localStorage.getItem('candidatesInfo'))
+	const { candidatesName } =JSON.parse(localStorage.getItem('candidatesInfo')) || 
+	''
 	const [open, setOpen] = useState(false);
 	const [open2, setOpen2] = useState(false);
 	const [selectedValue, setSelectedValue] = useState('No');
