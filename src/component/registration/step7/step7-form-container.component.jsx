@@ -106,7 +106,7 @@ const Step7FormContainer = () => {
 						{candidatesInfo.generalInfo?.maritalStatus === 'ডিভোর্সড' && (
 							<>
 								<InputField
-									title='আপনার ডিভোর্সের সময়কাল ও কারণ *'
+									title='আপনার ডিভোর্সের সময়কাল ও কারণ*'
 									variant='textarea'
 									value={marriageInfo.reasonOfDivorce}
 									required={true}

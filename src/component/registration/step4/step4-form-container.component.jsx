@@ -51,7 +51,7 @@ const Step4FormContainer = () => {
 		diplomaPassingYear:
 			candidatesInfo.educationalQualification?.diplomaPassingYear || '',
 		highestClass: candidatesInfo.educationalQualification?.highestClass || '',
-		IsHafez: candidatesInfo.educationalQualification?.IsHafez || '',
+		isHafez: candidatesInfo.educationalQualification?.isHafez || '',
 		passDaorayeHadis:
 			candidatesInfo.educationalQualification?.passDaorayeHadis || '',
 		DaorayeHadisPassingYear:
@@ -66,6 +66,8 @@ const Step4FormContainer = () => {
 			candidatesInfo.educationalQualification?.takhassosPassingYear || '',
 		daorayeHadisYear:
 			candidatesInfo.educationalQualification?.daorayeHadisYear || '',
+		otherEducationalInfo:
+			candidatesInfo.educationalQualification?.otherEducationalInfo || '',
 	});
 
 	const [loading, setLoading] = useState(false);
@@ -345,9 +347,9 @@ const Step4FormContainer = () => {
 									title='আপনি কি হাফেজ?*'
 									selected={bool.selected}
 									options={bool.options}
-									name='IsHafez'
+									name='isHafez'
 									required={true}
-									defaultValue={educationalQualification.IsHafez}
+									defaultValue={educationalQualification.isHafez}
 									handleSelect={handleEducationalQualification}
 								/>
 								{/* did passed 'দাওরায়ে হাদীস' */}

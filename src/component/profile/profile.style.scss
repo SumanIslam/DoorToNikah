@@ -1,0 +1,12 @@
+.biodata-profile {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  margin: 3rem 0;
+}
+
+@media only screen and (max-width: 767px) {
+  .biodata-profile {
+    flex-direction: column;
+  }
+}
