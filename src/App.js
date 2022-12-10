@@ -1,6 +1,7 @@
-import { Routes, Route }  from 'react-router-dom';
+import { Routes, Route } from "react-router-dom";
 
 // component
+
 import Homepage from './page/homepage';
 import AboutUs from './page/about-page';
 import PrivacyPolicy from './page/privacy-policy-page';
@@ -14,6 +15,7 @@ import ForgetPasswordPage from './page/forget-password-page';
 
 // protected routes
 // registration pages
+
 import RegistrationPage1 from './page/registration/registration-page1.component';
 import RegistrationPage2 from './page/registration/registration-page2.component';
 import RegistrationPage3 from './page/registration/registration-page3.component';
@@ -28,7 +30,8 @@ import RegistrationPage11 from './page/registration/registration-page11.componen
 import ProfilePage from './page/profile-page';
 
 // require auth
-import RequireAuth from './services/requireAuth';
+import RequireAuth from "./services/requireAuth";
+import AdminPanel from "./page/admin-panel";
 
 function App() {
   return (
@@ -44,6 +47,7 @@ function App() {
 			<Route path='/login' element={<LoginPage />} />
 			<Route path='/signup' element={<SignUpPage />} />
 			<Route path='/forget-password' element={<ForgetPasswordPage />} />
+      <Route path="/adminPanel/*" element={<AdminPanel />} />
 			{/* protected routes */}
 			<Route path='/' element={<RequireAuth />}>
 				<Route
