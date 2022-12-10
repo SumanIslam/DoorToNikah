@@ -8,6 +8,7 @@ import './profile-dropdown.style.scss';
 
 // component
 import LogoutConsent from '../logout-consent/logout-consent.component';
+import BiodataDeleteConsent from '../biodata-delete-consent/biodata-delete-consent.component';
 
 // auth context
 import useAuth from '../../hooks/useAuth';
@@ -16,16 +17,25 @@ const ProfileDropdown = () => {
 	const { auth } = useAuth();
 	const { candidatesName } =JSON.parse(localStorage.getItem('candidatesInfo'))
 	const [open, setOpen] = useState(false);
+	const [open2, setOpen2] = useState(false);
 	const [selectedValue, setSelectedValue] = useState('No');
+	const [selectedValue2, setSelectedValue2] = useState('No');
 
 	const handleClose = (value) => {
-		console.log(value);
 		setOpen(false);
 		setSelectedValue(value);
+	};
+	const handleClose2 = (value) => {
+		console.log(value);
+		setOpen2(false);
+		setSelectedValue2(value);
 	};
 
 	const handleClickOpen = () => {
 		setOpen(true);
+	};
+	const handleClickOpen2 = () => {
+		setOpen2(true);
 	};
 	
 	return (
@@ -47,15 +57,11 @@ const ProfileDropdown = () => {
 						>
 							My Profile
 						</Link>
-					) : candidatesName.name ? (
+					) : (
 						<Link
 							className='dropdown-item'
 							to={`/${(candidatesName?.name).replace(/ /g, '')}/profile`}
 						>
-							My Profile
-						</Link>
-					) : (
-						<Link className='dropdown-item' to='/unknown/profile'>
 							My Profile
 						</Link>
 					)}
@@ -66,7 +72,7 @@ const ProfileDropdown = () => {
 					</Link>
 				</li>
 				<li>
-					<a className='dropdown-item' href='#'>
+					<a className='dropdown-item' href='#' onClick={handleClickOpen2}>
 						Delete / Hide Biodata
 					</a>
 				</li>
@@ -79,6 +85,11 @@ const ProfileDropdown = () => {
 					selectedValue={selectedValue}
 					open={open}
 					onClose={handleClose}
+				/>
+				<BiodataDeleteConsent
+					selectedValue={selectedValue2}
+					open={open2}
+					onClose={handleClose2}
 				/>
 			</ul>
 		</div>

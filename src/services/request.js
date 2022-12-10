@@ -23,7 +23,7 @@ export async function httpSaveBiodata(candidatesInfo) {
 	return res.data;
 }
 
-// biodata registration
+// get single biodata
 export async function httpGetSingleBiodata(biodataId) {
 	const res = await axios.get(`${API_URL}/biodatas/biodata`, {
 		params: {
@@ -31,4 +31,13 @@ export async function httpGetSingleBiodata(biodataId) {
 		},
 	});
 	return res.data;
+}
+
+// delete a biodata
+export async function httpDeleteBiodata(biodataId) {
+	return await axios.delete(`${API_URL}/biodatas/biodata/delete`, {
+		params: {
+			biodataId: biodataId,
+		},
+	});
 }

@@ -66,6 +66,8 @@ const Step4FormContainer = () => {
 			candidatesInfo.educationalQualification?.takhassosPassingYear || '',
 		daorayeHadisYear:
 			candidatesInfo.educationalQualification?.daorayeHadisYear || '',
+		otherEducationalInfo:
+			candidatesInfo.educationalQualification?.otherEducationalInfo || '',
 	});
 
 	const [loading, setLoading] = useState(false);
