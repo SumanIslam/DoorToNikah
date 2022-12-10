@@ -7,26 +7,20 @@ import BioInfoContainer from '../registration/common-component/bio-info-containe
 // registration context
 import useRegistration from '../../hooks/useRegistration';
 
+// auth
+import useAuth from '../../hooks/useAuth';
+
 // style
 import './profile.style.scss'
 
 const Profile = () => {
   const { candidatesInfo } = useRegistration();
-  // const biodataToShowArray = [
-	// 	candidatesInfo.candidatesName,
-	// 	candidatesInfo.address,
-	// 	candidatesInfo.educationalQualification,
-	// 	candidatesInfo.familyInfo,
-	// 	candidatesInfo.personalInfo,
-	// 	candidatesInfo.marriageInfo,
-	// 	candidatesInfo.otherInfo,
-	// 	candidatesInfo.partnersCharacteristics,
-	// 	candidatesInfo.authoritysAsk,
-	// ];
+	const { auth: {biodataId} } = useAuth();
+	
   return (
 		<div className='biodata-profile'>
 			<BioProfileContainer
-				biodataId={candidatesInfo?.biodataId}
+				biodataId={biodataId}
 				generalInfo={candidatesInfo.generalInfo}
 			/>
 			<BioInfoContainer candidatesInfo={candidatesInfo} />
