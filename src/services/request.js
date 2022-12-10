@@ -41,3 +41,9 @@ export async function httpDeleteBiodata(biodataId) {
 		},
 	});
 }
+
+// get count of biodatas
+export async function httpGETBiodataCount() {
+	const res = await axios.get(`${API_URL}/biodatas/count`);
+	return res.data;
+}

@@ -10,6 +10,7 @@ import ContactPage from './page/contact-page';
 import TutorialPage from './page/tutorial-page';
 import LoginPage from './page/login-page';
 import SignUpPage from './page/signup-page';
+import ForgetPasswordPage from './page/forget-password-page';
 
 // protected routes
 // registration pages
@@ -42,19 +43,53 @@ function App() {
 			<Route path='/tutorial' element={<TutorialPage />} />
 			<Route path='/login' element={<LoginPage />} />
 			<Route path='/signup' element={<SignUpPage />} />
+			<Route path='/forget-password' element={<ForgetPasswordPage />} />
 			{/* protected routes */}
 			<Route path='/' element={<RequireAuth />}>
-				<Route path='biodata/registration/step1' element={<RegistrationPage1 />} />
-				<Route path='biodata/registration/step2' element={<RegistrationPage2 />} />
-				<Route path='biodata/registration/step3' element={<RegistrationPage3 />} />
-				<Route path='biodata/registration/step4' element={<RegistrationPage4 />} />
-				<Route path='biodata/registration/step5' element={<RegistrationPage5 />} />
-				<Route path='biodata/registration/step6' element={<RegistrationPage6 />} />
-				<Route path='biodata/registration/step7' element={<RegistrationPage7 />} />
-				<Route path='biodata/registration/step8' element={<RegistrationPage8 />} />
-				<Route path='biodata/registration/step9' element={<RegistrationPage9 />} />
-				<Route path='biodata/registration/step10' element={<RegistrationPage10 />} />
-				<Route path='biodata/registration/step11' element={<RegistrationPage11 />} />
+				<Route
+					path='biodata/registration/step1'
+					element={<RegistrationPage1 />}
+				/>
+				<Route
+					path='biodata/registration/step2'
+					element={<RegistrationPage2 />}
+				/>
+				<Route
+					path='biodata/registration/step3'
+					element={<RegistrationPage3 />}
+				/>
+				<Route
+					path='biodata/registration/step4'
+					element={<RegistrationPage4 />}
+				/>
+				<Route
+					path='biodata/registration/step5'
+					element={<RegistrationPage5 />}
+				/>
+				<Route
+					path='biodata/registration/step6'
+					element={<RegistrationPage6 />}
+				/>
+				<Route
+					path='biodata/registration/step7'
+					element={<RegistrationPage7 />}
+				/>
+				<Route
+					path='biodata/registration/step8'
+					element={<RegistrationPage8 />}
+				/>
+				<Route
+					path='biodata/registration/step9'
+					element={<RegistrationPage9 />}
+				/>
+				<Route
+					path='biodata/registration/step10'
+					element={<RegistrationPage10 />}
+				/>
+				<Route
+					path='biodata/registration/step11'
+					element={<RegistrationPage11 />}
+				/>
 				<Route path=':user/profile' element={<ProfilePage />} />
 			</Route>
 		</Routes>

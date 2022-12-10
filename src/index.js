@@ -6,6 +6,8 @@ import reportWebVitals from './reportWebVitals';
 import { BrowserRouter } from 'react-router-dom';
 import AuthProvider from './context/auth.context';
 import RegistrationProvider from './context/registration.context';
+// scroll to top
+import ScrollToTop from './services/scrollToTop';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -13,6 +15,7 @@ root.render(
 		<AuthProvider>
 			<RegistrationProvider>
 				<BrowserRouter>
+				<ScrollToTop />
 					<App />
 				</BrowserRouter>
 			</RegistrationProvider>
