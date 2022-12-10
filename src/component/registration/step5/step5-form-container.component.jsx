@@ -177,7 +177,7 @@ const Step5FormContainer = () => {
 						{/* for uncles occupation */}
 						<InputField
 							title='চাচা মামাদের পেশা'
-							variant='input'
+							variant='textarea'
 							value={familyInfo.unclesOccupation}
 							name='unclesOccupation'
 							guideText='জানাতে অনিচ্ছুক হলে ঘরটি ফাঁকা রাখুন।'

@@ -10,14 +10,31 @@ import VisibilityIcon from '@mui/icons-material/Visibility';
 import '../../../../styles/utils.scss';
 import './form-container-nav.style.scss';
 
+// auth context
+import useAuth from '../../../../hooks/useAuth';
+
 const FormContainerNav = () => {
+	const { auth } = useAuth();
+	const { candidatesName } = JSON.parse(localStorage.getItem('candidatesInfo')) || '';
   return (
 		<>
 			<ul className='item-nav'>
 				<li>
-					<a href='#' className='view'>
-						<VisibilityIcon /> View
-					</a>
+					{auth?.userName ? (
+						<Link
+							to={`/${(auth?.userName).replace(/ /g, '')}/profile`}
+							className='view'
+						>
+							<VisibilityIcon /> View
+						</Link>
+					) : (
+						<Link
+							to={`/${(candidatesName?.name).replace(/ /g, '')}/profile`}
+							className='view'
+						>
+							<VisibilityIcon /> View
+						</Link>
+					)}
 				</li>
 				<li>
 					<button
@@ -35,20 +52,18 @@ const FormContainerNav = () => {
 						<CreateIcon /> Edit
 					</Link>
 				</li>
-				</ul>
+			</ul>
 
-				
-					 <button
-						type='button'
-						className='biodata-approve'
-						data-bs-toggle='modal'
-						data-bs-target='#exampleModal'
-						id='small-divice-button'
-					>
-						বায়োডাটা এপ্রুভ না হওয়ার কারণগুলো জেনে নিন
-					</button> 
-				
-			
+			<button
+				type='button'
+				className='biodata-approve'
+				data-bs-toggle='modal'
+				data-bs-target='#exampleModal'
+				id='small-divice-button'
+			>
+				বায়োডাটা এপ্রুভ না হওয়ার কারণগুলো জেনে নিন
+			</button>
+
 			{/* modal */}
 			<div
 				className='modal fade  modal-lg'

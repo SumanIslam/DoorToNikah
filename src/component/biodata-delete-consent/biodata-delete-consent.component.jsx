@@ -14,51 +14,49 @@ import ListItemText from '@mui/material/ListItemText';
 import PropTypes from 'prop-types';
 
 // api request handler
-import { httpLogOutUser } from '../../services/request';
+import { httpDeleteBiodata } from '../../services/request';
+
+// registration context
 import useRegistration from '../../hooks/useRegistration';
 
-// auth
+// auth context
 import useAuth from '../../hooks/useAuth';
 
-const LogoutConsent = (props) => {
+const BiodataDeleteConsent = (props) => {
 	const { onClose, selectedValue, open } = props;
 
 	const navigate = useNavigate();
 
-	const { setAuth } = useAuth();
-	const { setCandidatesInfo } = useRegistration();
+	const { candidatesInfo, setCandidatesInfo } = useRegistration();
+	const {
+		auth: { biodataId },
+	} = useAuth();
 
 	const handleClose = () => {
 		onClose(selectedValue);
 	};
 
-	const handleListItemClickWithLogout = (value) => {
+	const handleListItemClick2 = (value) => {
 		if (value === 'Yes') {
 			setTimeout(async () => {
-				await httpLogOutUser();
-				// set auth empty string
-				setAuth({});
-				// set auth an empty object in local storage
-				localStorage.setItem('auth', JSON.stringify({}))
-				// empty candidates info
-				localStorage.setItem('candidatesInfo', JSON.stringify({}))
-				navigate('/');
-				// empty registration context
-				setCandidatesInfo({})
+				navigate('/biodata/registration/step1');
+				await httpDeleteBiodata(biodataId);
 			}, 800);
+			
+			// empty registration context
+			setCandidatesInfo({});
+
+			// empty candidates info
+			localStorage.setItem('candidatesInfo', JSON.stringify({}));
 		}
 		onClose(value);
 	};
 
 	return (
 		<Dialog onClose={handleClose} open={open}>
-			<DialogTitle>Do You want to logOut?</DialogTitle>
+			<DialogTitle>Do You want to Delete/Hide your Biodata?</DialogTitle>
 			<List sx={{ pt: 0 }}>
-				<ListItem
-					button
-					onClick={() => handleListItemClickWithLogout('Yes')}
-					key='Yes'
-				>
+				<ListItem button onClick={() => handleListItemClick2('Yes')} key='Yes'>
 					<ListItemAvatar>
 						<Avatar sx={{ bgcolor: blue[100], color: blue[600] }}>
 							<CheckCircleIcon />
@@ -66,11 +64,7 @@ const LogoutConsent = (props) => {
 					</ListItemAvatar>
 					<ListItemText primary='Yes' />
 				</ListItem>
-				<ListItem
-					button
-					onClick={() => handleListItemClickWithLogout('No')}
-					key='No'
-				>
+				<ListItem button onClick={() => handleListItemClick2('No')} key='No'>
 					<ListItemAvatar>
 						<Avatar sx={{ backgroundColor: red[100], color: red[600] }}>
 							<CancelIcon />
@@ -83,10 +77,10 @@ const LogoutConsent = (props) => {
 	);
 };
 
-LogoutConsent.propTypes = {
+export default BiodataDeleteConsent;
+
+BiodataDeleteConsent.propTypes = {
 	onClose: PropTypes.func.isRequired,
 	open: PropTypes.bool.isRequired,
 	selectedValue: PropTypes.string.isRequired,
 };
-
-export default LogoutConsent;

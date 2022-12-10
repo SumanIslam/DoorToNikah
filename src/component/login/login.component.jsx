@@ -16,14 +16,15 @@ import Facebook from '../../asset/facebook.png';
 import Github from '../../asset/github.png';
 import Google from '../../asset/google.png';
 
-// auth context
+// auth, registration context
 import useAuth from '../../hooks/useAuth';
+import useRegistration from '../../hooks/useRegistration';
 
 // styles
 import './login.styles.scss';
 
 // request
-import { httpLoginUser } from '../../services/request';
+import { httpLoginUser, httpGetSingleBiodata } from '../../services/request';
 
 // react toastify
 import { toast, ToastContainer } from 'react-toastify';
@@ -31,7 +32,8 @@ import 'react-toastify/dist/ReactToastify.css';
 
 const Login = () => {
 	const navigate = useNavigate();
-	const { setAuth } = useAuth();
+	const { auth, setAuth } = useAuth();
+	const { setCandidatesInfo } = useRegistration();
 
 	const handleSubmit = async (event) => {
 		event.preventDefault();
@@ -43,13 +45,31 @@ const Login = () => {
 		try {
 			const user = await httpLoginUser(userData);
 			setAuth({ ...userData, ...user });
-			
+			// save auth to local storage
+			localStorage.setItem(
+				'auth',
+				JSON.stringify({
+					userId: user.userId,
+					biodataId: user.biodataId,
+					roles: user.roles,
+					userName: user.userName,
+					email: userData.email,
+				})
+			);
+
+			// get biodata 
+			const biodata = await httpGetSingleBiodata(user.biodataId);
+			console.log(biodata);
+			// set biodata to registration context
+			setCandidatesInfo({ ...biodata });
+			// set biodata to local storage
+			localStorage.setItem('candidatesInfo', JSON.stringify(biodata));
+
 			toast.success(
 				`${
 					user.userName ? user.userName : 'congratulations'
 				}, You are logged in`
 			);
-
 			setTimeout(() => {
 				navigate('/');
 			}, 2000);
