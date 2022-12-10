@@ -13,7 +13,7 @@ import { CopyToClipboard } from 'react-copy-to-clipboard';
 
 
 
-const BioProfileContainer = ({ biodataId, generalInfo }) => {
+const BioProfileContainer = ({ biodataId, generalInfo, noHide }) => {
   const [copied, setCopied] = useState(false); 
 
   const handleCopy = () => {
@@ -21,7 +21,7 @@ const BioProfileContainer = ({ biodataId, generalInfo }) => {
 	};
 
   return (
-		<div className='profile-container'>
+		<div className={`profile-container ${noHide ? '' : 'dis-none'}`}>
 			<div className='image-div'>
 				<div>
 					{generalInfo?.biodataType === 'পাত্রীর বায়োডাটা' ? (

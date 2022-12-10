@@ -22,6 +22,7 @@ const Profile = () => {
 			<BioProfileContainer
 				biodataId={biodataId}
 				generalInfo={candidatesInfo.generalInfo}
+				noHide={true}
 			/>
 			<BioInfoContainer candidatesInfo={candidatesInfo} />
 		</div>
