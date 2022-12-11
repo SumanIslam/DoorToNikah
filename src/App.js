@@ -1,19 +1,20 @@
 import { Routes, Route } from "react-router-dom";
 
 // component
-import Homepage from "./page/homepage";
-import AboutUs from "./page/about-page";
-import PrivacyPolicy from "./page/privacy-policy-page";
-import TermsCondition from "./page/terms-page";
-import FaqPage from "./page/faq-page";
-import ContactPage from "./page/contact-page";
-import TutorialPage from "./page/tutorial-page";
-import LoginPage from "./page/login-page";
-import SignUpPage from "./page/signup-page";
+import Homepage from './page/homepage';
+import AboutUs from './page/about-page';
+import PrivacyPolicy from './page/privacy-policy-page';
+import TermsCondition from './page/terms-page';
+import FaqPage from './page/faq-page';
+import ContactPage from './page/contact-page';
+import TutorialPage from './page/tutorial-page';
+import LoginPage from './page/login-page';
+import SignUpPage from './page/signup-page';
 import ForgetPasswordPage from './page/forget-password-page';
 
 // protected routes
 // registration pages
+
 import RegistrationPage1 from './page/registration/registration-page1.component';
 import RegistrationPage2 from './page/registration/registration-page2.component';
 import RegistrationPage3 from './page/registration/registration-page3.component';
@@ -30,6 +31,7 @@ import ProfilePage from './page/profile-page';
 // require auth
 import RequireAuth from "./services/requireAuth";
 import AdminPanel from "./page/admin-panel";
+import ContactRequest from "./page/contact-request";
 
 function App() {
   return (
@@ -41,10 +43,12 @@ function App() {
 			<Route path='/privacy&policy' element={<PrivacyPolicy />} />
 			<Route path='/terms' element={<TermsCondition />} />
 			<Route path='/contact' element={<ContactPage />} />
+			<Route path='/contact-request' element={<ContactRequest />} />
 			<Route path='/tutorial' element={<TutorialPage />} />
 			<Route path='/login' element={<LoginPage />} />
 			<Route path='/signup' element={<SignUpPage />} />
 			<Route path='/forget-password' element={<ForgetPasswordPage />} />
+      <Route path="/adminPanel/*" element={<AdminPanel />} />
 			{/* protected routes */}
 			<Route path='/' element={<RequireAuth />}>
 				<Route
