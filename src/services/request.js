@@ -47,3 +47,9 @@ export async function httpGETBiodataCount() {
 	const res = await axios.get(`${API_URL}/biodatas/count`);
 	return res.data;
 }
+
+// reset password
+export async function httpGETResetPassword(email) {
+	const res = await axios.post(`${API_URL}/password/forget-password`, {email});
+	return res.data;
+}
