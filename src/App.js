@@ -1,7 +1,6 @@
 import { Routes, Route } from "react-router-dom";
 
 // component
-
 import Homepage from './page/homepage';
 import AboutUs from './page/about-page';
 import PrivacyPolicy from './page/privacy-policy-page';
@@ -32,6 +31,7 @@ import ProfilePage from './page/profile-page';
 // require auth
 import RequireAuth from "./services/requireAuth";
 import AdminPanel from "./page/admin-panel";
+import ContactRequest from "./page/contact-request";
 
 function App() {
   return (
@@ -43,6 +43,7 @@ function App() {
 			<Route path='/privacy&policy' element={<PrivacyPolicy />} />
 			<Route path='/terms' element={<TermsCondition />} />
 			<Route path='/contact' element={<ContactPage />} />
+			<Route path='/contact-request' element={<ContactRequest />} />
 			<Route path='/tutorial' element={<TutorialPage />} />
 			<Route path='/login' element={<LoginPage />} />
 			<Route path='/signup' element={<SignUpPage />} />
