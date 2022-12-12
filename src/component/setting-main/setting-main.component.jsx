@@ -10,6 +10,12 @@ import useAuth from '../../hooks/useAuth';
 // use registration context
 import useRegistration from '../../hooks/useRegistration';
 
+// api
+import { httpPOSTChangePassword } from '../../services/request';
+
+// react toastify
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 // style
 import './setting-main.style.scss';
@@ -29,9 +35,31 @@ const SettingMain = () => {
 		e.preventDefault();
 		setSettings({...settings, [e.target.name] : e.target.value})
 	}
+
+	const handleSubmit = async (e) => {
+		e.preventDefault();
+
+		const userData = {
+			email: settings.email,
+			oldPassword: settings.oldPassword,
+			newPassword: settings.newPassword,
+			confirmNewPassword: settings.confirmNewPassword
+		}
+
+		console.log(userData);
+		
+		try {
+      const user = await httpPOSTChangePassword(userData);
+			toast.success(user.msg);
+		} catch (err) {
+			const errorMsg = err.response.data.msg;
+			toast.error(errorMsg);
+		}
+	}
   
   return (
 		<div className='setting-main'>
+			<ToastContainer />
 			{/* nav */}
 			<div>
 				<ul className='item-nav'>
@@ -62,13 +90,13 @@ const SettingMain = () => {
 					</li>
 				</ul>
 			</div>
-			<form className='setting-form'>
-				<label for='email' class='form-label'>
+			<form className='setting-form' onSubmit={handleSubmit}>
+				<label htmlFor='email' className='form-label'>
 					Account Email
 				</label>
 				<input
 					type='email'
-					class='form-control'
+					className='form-control'
 					id='email'
 					name='email'
 					value={settings.email}
@@ -84,48 +112,48 @@ const SettingMain = () => {
 						<option value='না'>না</option>
 					</select>
 					<p className='guide-text'>
-						পাসওায়ার্ড পরিবর্তন করতে হলে পূর্বের পাসওার্ড মনে থাকতে হবে আর যদি
-						পূর্বের পাসওায়র্ড ভুলে যান তাহলে 'Forget Password' এ ক্লিক করুন
+						পাসওায়ার্ড পরিবর্তন করতে হলে পূর্বের পাসওায়ার্ড মনে থাকতে হবে আর যদি
+						পূর্বের পাসওায়ার্ড ভুলে যান তাহলে 'Forget Password' এ ক্লিক করুন
 					</p>
 				</fieldset>
 				{settings.wantToChangePassword === 'হ্যাঁ' && (
 					<>
 						{/* old password */}
-						<label for='oldPassword' class='form-label'>
+						<label htmlFor='oldPassword' className='form-label'>
 							Old Password
 						</label>
 						<input
 							type='password'
-							class='form-control'
+							className='form-control'
 							id='oldPassword'
 							name='oldPassword'
 							value={settings.oldPassword}
 							onChange={handleChange}
 						/>
 						{/* new password */}
-						<label for='newPassword' class='form-label'>
+						<label htmlFor='newPassword' className='form-label'>
 							New Password
 						</label>
 						<input
 							type='password'
-							class='form-control'
+							className='form-control'
 							id='newPassword'
 							name='newPassword'
 							value={settings.newPassword}
 							onChange={handleChange}
 						/>
-						<label for='confirmNewPassword' class='form-label'>
+						<label htmlFor='confirmNewPassword' className='form-label'>
 							Confirm New Password
 						</label>
 						<input
 							type='password'
-							class='form-control'
+							className='form-control'
 							id='confirmNewPassword'
 							name='confirmNewPassword'
 							value={settings.confirmNewPassword}
 							onChange={handleChange}
 						/>
-						<button type='submit' class='btn btn-primary mb-3 mt-3'>
+						<button type='submit' className='btn btn-primary mb-3 mt-3'>
 							Submit
 						</button>
 					</>

@@ -1,5 +1,5 @@
 .setting-main {
-  width: 760px;
+	width: 760px;
 	height: auto;
 	padding-bottom: 3rem;
 	border-radius: 5px;
@@ -17,7 +17,8 @@
 	}
 
 	.setting-form {
-		margin: 3rem 2rem;
+		margin: 1rem 2rem;
+		margin-bottom: -1rem;
 	}
 
 	fieldset {
@@ -30,10 +31,17 @@
 			margin-bottom: 1rem;
 		}
 	}
+
 	label {
 		margin-top: 1rem;
 	}
+
+	@media only screen and (max-width: 767px) {
+		width: 570px;
+		margin: 0 auto;
+	}
+	@media only screen and (max-width: 576px) {
+		width: 400px;
+		margin: 0 auto;
+	}
 }
-
-
-
