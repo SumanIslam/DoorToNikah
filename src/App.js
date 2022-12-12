@@ -27,6 +27,7 @@ import RegistrationPage9 from './page/registration/registration-page9.component'
 import RegistrationPage10 from './page/registration/registration-page10.component';
 import RegistrationPage11 from './page/registration/registration-page11.component';
 import ProfilePage from './page/profile-page';
+import SettingPage from './page/setting-page';
 
 // require auth
 import RequireAuth from "./services/requireAuth";
@@ -95,7 +96,8 @@ function App() {
 					path='biodata/registration/step11'
 					element={<RegistrationPage11 />}
 				/>
-				<Route path=':user/profile' element={<ProfilePage />} />
+				<Route path='/biodatas/:user/profile' element={<ProfilePage />} />
+				<Route path='/biodatas/:user/settings' element={<SettingPage />} />
 			</Route>
 		</Routes>
 	);

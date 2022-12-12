@@ -49,7 +49,13 @@ export async function httpGETBiodataCount() {
 }
 
 // reset password
-export async function httpGETResetPassword(email) {
+export async function httpPOSTResetPassword(email) {
 	const res = await axios.post(`${API_URL}/password/forget-password`, {email});
+	return res.data;
+}
+// change password
+export async function httpPOSTChangePassword(userData) {
+	const res = await axios.post(`${API_URL}/password/change-password`, userData);
+	console.log(res.data);
 	return res.data;
 }

@@ -17,7 +17,7 @@ import Footer from '../component/footer/footer.component';
 import Header from '../component/header/header.component';
 
 // api
-import { httpGETResetPassword } from '../services/request';
+import { httpPOSTResetPassword } from '../services/request';
 
 // react toastify
 import { toast, ToastContainer } from 'react-toastify';
@@ -29,7 +29,7 @@ const ForgetPasswordPage = () => {
 		const data = new FormData(event.currentTarget);
 		const email = data.get('email');
 		try {
-      const user = await httpGETResetPassword(email);
+      const user = await httpPOSTResetPassword(email);
 			toast.success(user.msg);
 		} catch (err) {
 			const errorMsg = err.response.data.msg;
