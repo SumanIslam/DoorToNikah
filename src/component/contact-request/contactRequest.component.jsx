@@ -96,7 +96,8 @@ const ContactRequestComponent = () => {
                           ? "২৭০"
                           : counter == 5
                           ? "৩০০"
-                          : 0} টাকা
+                          : "১০০"}{" "}
+                        টাকা
                       </li>
                     </ul>
                   </div>
@@ -147,7 +148,7 @@ const ContactRequestComponent = () => {
                             ? "২৭০"
                             : counter == 5
                             ? "৩০০"
-                            : 0}{" "}
+                            : "১০০"}{" "}
                           টাকা Send Money{" "}
                         </span>{" "}
                         করুন।
@@ -217,7 +218,7 @@ const ContactRequestComponent = () => {
                             ? "২৭০"
                             : counter == 5
                             ? "৩০০"
-                            : 0}{" "}
+                            : "১০০"}{" "}
                           টাকা Send Money{" "}
                         </span>{" "}
                         করুন।
@@ -287,7 +288,7 @@ const ContactRequestComponent = () => {
                             ? "২৭০"
                             : counter == 5
                             ? "৩০০"
-                            : 0}{" "}
+                            : "১০০"}{" "}
                           টাকা Send Money{" "}
                         </span>{" "}
                         করুন।
