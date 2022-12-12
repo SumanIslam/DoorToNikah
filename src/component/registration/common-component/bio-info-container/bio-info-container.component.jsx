@@ -34,14 +34,14 @@ function BioInfoContainer({ candidatesInfo }) {
 					<li>
 						{auth?.userName ? (
 							<Link
-								to={`/${(auth?.userName).replace(/ /g, '')}/profile`}
+								to={`/biodatas/${(auth?.userName).replace(/ /g, '')}/profile`}
 								className='view'
 							>
 								<VisibilityIcon /> View
 							</Link>
 						) : (
 							<Link
-								to={`/${(candidatesName?.name).replace(/ /g, '')}/profile`}
+								to={`/biodatas/${(candidatesName?.name).replace(/ /g, '')}/profile`}
 								className='view'
 							>
 								<VisibilityIcon /> View

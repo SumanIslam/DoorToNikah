@@ -54,14 +54,37 @@ const ProfileDropdown = () => {
 					{auth?.userName ? (
 						<Link
 							className='dropdown-item'
-							to={`/${(auth?.userName).replace(/ /g, '')}/profile`}
+							to={`/biodatas/${(auth?.userName).replace(/ /g, '')}/settings`}
+						>
+							Settings
+						</Link>
+					) : (
+						<Link
+							className='dropdown-item'
+							to={`/biodatas/${(candidatesName?.name).replace(
+								/ /g,
+								''
+							)}/settings`}
+						>
+							Settings
+						</Link>
+					)}
+				</li>
+				<li>
+					{auth?.userName ? (
+						<Link
+							className='dropdown-item'
+							to={`/biodatas/${(auth?.userName).replace(/ /g, '')}/profile`}
 						>
 							My Profile
 						</Link>
 					) : (
 						<Link
 							className='dropdown-item'
-							to={`/${(candidatesName?.name).replace(/ /g, '')}/profile`}
+							to={`/biodatas/${(candidatesName?.name).replace(
+								/ /g,
+								''
+							)}/profile`}
 						>
 							My Profile
 						</Link>

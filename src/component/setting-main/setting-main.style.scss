@@ -1,0 +1,39 @@
+.setting-main {
+  width: 760px;
+	height: auto;
+	padding-bottom: 3rem;
+	border-radius: 5px;
+	margin-left: 2rem;
+	background-color: #fff;
+	-webkit-box-shadow: 2px 2px 27px 0px rgba(240, 228, 240, 0.56);
+	-moz-box-shadow: 2px 2px 27px 0px rgba(240, 228, 240, 0.56);
+	box-shadow: 2px 2px 27px 0px rgba(240, 228, 240, 0.56);
+
+	.profile,
+	.reset {
+		padding: 8px 20px;
+		border-top-left-radius: 5px;
+		background-color: #522b79;
+	}
+
+	.setting-form {
+		margin: 3rem 2rem;
+	}
+
+	fieldset {
+		width: 100%;
+		margin-top: 1.5rem !important;
+		margin-bottom: 0.3rem;
+		p {
+			width: 99% !important;
+			margin: auto;
+			margin-bottom: 1rem;
+		}
+	}
+	label {
+		margin-top: 1rem;
+	}
+}
+
+
+
