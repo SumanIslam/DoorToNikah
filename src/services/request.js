@@ -12,6 +12,13 @@ export async function httpLoginUser(userData) {
   return res.data;
 }
 
+// google user login
+export async function httpGETGoogleLoginUser() {
+	const res = await axios.get(`${API_URL}/login/success/again`);
+	console.log('hi',res);
+	return res.data;
+}
+
 // user logout
 export async function httpLogOutUser() {
   await axios.get(`${API_URL}/users/auth/logout`);
