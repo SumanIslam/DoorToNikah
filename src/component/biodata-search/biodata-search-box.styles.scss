@@ -20,3 +20,33 @@
     background-color: #522b79;
   }
 }
+
+.custom-select {
+  margin-bottom: 0.7rem;
+}
+
+.custom-select:last-of-type {
+  margin-bottom: 1rem;
+}
+.custom-select select,
+.custom-select input {
+  border-radius: 0;
+  padding: 0.4rem;
+  width: 13rem;
+  border: none;
+  background-color: #522b79;
+  color: #fff;
+
+  &:focus {
+    border: none;
+    outline: none;
+  }
+
+  @media screen and (max-width: 992px) and (min-width: 768px)  {
+    width: 11rem;
+  }
+}
+
+.custom-select label {
+  font-size: 1.125rem;
+}
