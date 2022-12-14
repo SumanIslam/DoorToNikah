@@ -1,8 +1,8 @@
 export const searchingFor = {
 	label: 'আমি খুঁজছি',
 	selected: {
-		option: 'বাছাই করুন',
-		value: ''
+		option: '',
+		value: '',
 	},
 	options: ['সকল বায়োডাটা', 'পাত্রের বায়োডাটা', 'পাত্রীর বায়োডাটা'],
 };
@@ -10,16 +10,25 @@ export const searchingFor = {
 export const maritalStatus = {
 	label: 'বৈবাহিক অবস্থা',
 	selected: {
-		option: 'বাছাই করুন',
+		option: '',
 		value: '',
 	},
 	options: ['সকল', 'অবিবাহিত', 'বিবাহিত', 'ডিভোর্সড', 'বিধবা', 'বিপত্নীক'],
 };
 
+export const mediumOfStudy = {
+	label: 'পড়াশোনার মাধ্যম',
+	selected: {
+		value: '',
+		option: '',
+	},
+	options: ['সকল', 'মাদ্রাসা', 'জেনারেল'],
+};
+
 export const allDivision = {
 	label: 'বিভাগ',
 	selected: {
-		option: 'বাছাই করুন',
+		option: '',
 		value: '',
 	},
 	options: [
@@ -37,7 +46,7 @@ export const allDivision = {
 
 export const allDistrict = {
 	selected: {
-		option: 'বাছাই করুন',
+		option: '----',
 		value: '',
 	},
 	options: [
@@ -111,7 +120,7 @@ export const allDistrict = {
 
 export const dhakaDistrict = {
 	selected: {
-		option: 'বাছাই করুন',
+		option: '----',
 		value: '',
 	},
 	options: [
@@ -133,7 +142,7 @@ export const dhakaDistrict = {
 
 export const chittagongDistrict = {
 	selected: {
-		option: 'বাছাই করুন',
+		option: '----',
 		value: '',
 	},
 	options: [
@@ -153,7 +162,7 @@ export const chittagongDistrict = {
 
 export const rajshahiDistrict = {
 	selected: {
-		option: 'বাছাই করুন',
+		option: '----',
 		value: '',
 	},
 	options: [
@@ -170,7 +179,7 @@ export const rajshahiDistrict = {
 
 export const khulnaDistrict = {
 	selected: {
-		option: 'বাছাই করুন',
+		option: '----',
 		value: '',
 	},
 	options: [
@@ -188,7 +197,7 @@ export const khulnaDistrict = {
 };
 export const barishalDistrict = {
 	selected: {
-		option: 'বাছাই করুন',
+		option: '----',
 		value: '',
 	},
 	options: ['ঝালকাঠী', 'পটুয়াখালী', 'পিরোজপুর', 'বরিশাল', 'ভোলা', 'বরগুনা'],
@@ -196,7 +205,7 @@ export const barishalDistrict = {
 
 export const sylhetDistrict = {
 	selected: {
-		option: 'বাছাই করুন',
+		option: '----',
 		value: '',
 	},
 	options: ['সিলেট', 'মৌলভীবাজার', 'হবিগঞ্জ', 'সুনামগঞ্জ'],
@@ -204,7 +213,7 @@ export const sylhetDistrict = {
 
 export const rangpurDistrict = {
 	selected: {
-		option: 'বাছাই করুন',
+		option: '----',
 		value: '',
 	},
 	options: [
@@ -221,7 +230,7 @@ export const rangpurDistrict = {
 
 export const moymonsinghDistrict = {
 	selected: {
-		option: 'বাছাই করুন',
+		option: '----',
 		value: '',
 	},
 	options: ['শেরপুর', 'ময়মনসিংহ', 'জামালপুর', 'নেত্রকোনা'],

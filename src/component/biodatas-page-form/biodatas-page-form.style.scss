@@ -1,0 +1,73 @@
+.biodatas-form-box {
+	width: 100vw;
+	color: white;
+}
+
+.biodatas-form-search-button {
+  padding: 0.35rem 1.2rem;
+  border-radius: 5px;
+	background-color: #ad277c;
+  color: #fff;
+  cursor: pointer;
+  border: none;
+  margin: 0 auto;
+
+  &:hover {
+    background-color: #ad277c;
+  }
+}
+
+.biodatas-form-custom-select {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin-bottom: 0.7rem;
+}
+
+.biodatas-form-custom-select:last-of-type {
+  margin-bottom: 1rem;
+}
+.biodatas-form-custom-select select,
+.biodatas-form-custom-select input {
+  border-radius: 0;
+  padding: 0.4rem;
+  width: 40rem;
+  border: 1px solid #fff;
+  background-color: transparent;
+  color: #fff;
+  margin-bottom: 0.55rem;
+
+  &:focus {
+    outline: none;
+  }
+
+  @media screen and (max-width: 1200px) and (min-width: 992px)  {
+    width: 35rem;
+  }
+  @media screen and (max-width: 991px) and (min-width: 768px)  {
+    width: 28rem;
+  }
+  @media screen and (max-width: 767px) and (min-width: 576px)  {
+    width: 22.5rem;
+  }
+  @media screen and (max-width: 575px) and (min-width: 470px)  {
+    width: 18rem;
+  }
+  @media screen and (max-width: 470px)  {
+    width: 14rem;
+  }
+  
+}
+
+.biodatas-form-custom-select select option {
+  background-color: #b9f0ff;
+  color: black;
+}
+
+.biodatas-form-custom-select label {
+  font-size: 1.125rem;
+  width: 10rem;
+  margin-right: 0.5rem;
+  color: #fff;
+  float: right;
+}
