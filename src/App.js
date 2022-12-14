@@ -14,7 +14,6 @@ import ForgetPasswordPage from './page/forget-password-page';
 
 // protected routes
 // registration pages
-
 import RegistrationPage1 from './page/registration/registration-page1.component';
 import RegistrationPage2 from './page/registration/registration-page2.component';
 import RegistrationPage3 from './page/registration/registration-page3.component';
@@ -28,6 +27,7 @@ import RegistrationPage10 from './page/registration/registration-page10.componen
 import RegistrationPage11 from './page/registration/registration-page11.component';
 import ProfilePage from './page/profile-page';
 import SettingPage from './page/setting-page';
+import BiodatasPage from "./page/biodatas-page";
 
 // require auth
 import RequireAuth from "./services/requireAuth";
@@ -49,7 +49,7 @@ function App() {
 			<Route path='/login' element={<LoginPage />} />
 			<Route path='/signup' element={<SignUpPage />} />
 			<Route path='/forget-password' element={<ForgetPasswordPage />} />
-      <Route path="/adminPanel/*" element={<AdminPanel />} />
+			<Route path='/adminPanel/*' element={<AdminPanel />} />
 			{/* protected routes */}
 			<Route path='/' element={<RequireAuth />}>
 				<Route
@@ -96,6 +96,7 @@ function App() {
 					path='biodata/registration/step11'
 					element={<RegistrationPage11 />}
 				/>
+				<Route path='/biodatas/' element={<BiodatasPage />} />
 				<Route path='/biodatas/:user/profile' element={<ProfilePage />} />
 				<Route path='/biodatas/:user/settings' element={<SettingPage />} />
 			</Route>

@@ -1,11 +1,13 @@
 import axios from 'axios';
 const API_URL = 'http://localhost:5000/v1/api';
 
+/* USER RELATED */
 // user signup
 export async function httpSignupUser(userData) {
   const res = await axios.post(`${API_URL}/users/auth/signup`, userData);
   return res.data;
 }
+
 // user login
 export async function httpLoginUser(userData) {
   const res = await axios.post(`${API_URL}/users/auth/login`, userData);
@@ -24,9 +26,21 @@ export async function httpLogOutUser() {
   await axios.get(`${API_URL}/users/auth/logout`);
 }
 
+/* BIODATA RELATED */
 // biodata registration
 export async function httpSaveBiodata(candidatesInfo) {
 	const res = await axios.post(`${API_URL}/registration`, candidatesInfo);
+	return res.data;
+}
+
+// get biodatas
+export async function httpGETBiodatas(BiodataDetails) {
+	const res = await axios.get(`${API_URL}/biodatas`, {
+		params: {
+			BiodataDetails: BiodataDetails,
+		},
+	});
+	console.log(res.data);
 	return res.data;
 }
 
@@ -55,6 +69,7 @@ export async function httpGETBiodataCount() {
 	return res.data;
 }
 
+/* PASSWORD RELATED */
 // reset password
 export async function httpPOSTResetPassword(email) {
 	const res = await axios.post(`${API_URL}/password/forget-password`, {email});

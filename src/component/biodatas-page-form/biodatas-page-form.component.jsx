@@ -1,12 +1,8 @@
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useState, useEffect } from 'react'
+import { useLocation } from 'react-router-dom';
 
 // MUI
 import SearchIcon from '@mui/icons-material/Search';
-
-// styles
-import '../../styles/utils.scss';
-import './biodata-search-box.styles.scss';
 
 import {
 	searchingFor,
@@ -15,19 +11,28 @@ import {
 	allDivision,
 	allDistrict,
 	district,
-} from './selectOptionData';
+} from '../biodata-search/selectOptionData';
 
-const BiodataSearchBox = () => {
+// api
+import { httpGETBiodatas } from '../../services/request';
+
+// styles
+import './biodatas-page-form.style.scss'
+
+const BiodatasPageForm = ({setBiodatas}) => {
+	const location = useLocation();
+
 	const [searchData, setSearchData] = useState({
-		searchingFor: 'পাত্রের বায়োডাটা',
-		maritalStatus: 'অবিবাহিত',
-		mediumOfStudy: 'জেনারেল',
-		division: 'সকল বিভাগ',
-		district: 'সকল জেলা',
-		biodataNo: '',
+		searchingFor: location.state.searchData.searchingFor || 'পাত্রের বায়োডাটা',
+		maritalStatus: location.state.searchData.maritalStatus || 'অবিবাহিত',
+		mediumOfStudy: location.state.searchData.mediumOfStudy || 'জেনারেল',
+		division: location.state.searchData.division || 'সকল বিভাগ',
+		district: location.state.searchData.district || 'সকল জেলা',
+		biodataNo: location.state.searchData.biodataNo || '',
 	});
 
-	const navigate = useNavigate();
+	const [biodatasFetch, setBiodatasFetch] = useState(location.state.searchData.fetch || false);
+
 
 	const districtData = district.get(searchData?.division);
 
@@ -37,23 +42,29 @@ const BiodataSearchBox = () => {
 		setSearchData({ ...searchData, [e.target.name]: e.target.value });
 	};
 
-	const handleSubmit = (e) => {
+	const handleSubmit = async(e) => {
 		e.preventDefault();
-		setTimeout(() => {
-			navigate('/biodatas', {
-				state: {
-					searchData,
-					fetch: true,
-				}
-			});
-		}, 500);
 		
-		console.log('hi');
+		try{
+			const biodatas = await httpGETBiodatas(searchData);
+			setBiodatas(biodatas);
+		} catch(err) {
+			console.log(err);
+		}
 	}
+
+	useEffect(() => {
+		const getBiodatas = async() => {
+			const biodatas = await httpGETBiodatas(location.state.searchData);
+			setBiodatas(biodatas)
+		}
+		getBiodatas();
+	}, [biodatasFetch])
+	
   return (
-		<div className='bg-pink p-4 biodata-box'>
+		<div className='bg-purple p-4 biodatas-form-box'>
 			<form onSubmit={handleSubmit}>
-				<div className='row custom-select'>
+				<div className='row biodatas-form-custom-select'>
 					{/* searching for select field */}
 					<div className='col-4 col-md-5 text-align-right'>
 						<label className='form-label mt-1'>{searchingFor.label}</label>
@@ -208,7 +219,7 @@ const BiodataSearchBox = () => {
 				</div>
 				<button
 					type='submit'
-					className='search-button d-flex justify-content-center align-items-center'
+					className='biodatas-form-search-button d-flex justify-content-center align-items-center'
 				>
 					<SearchIcon />
 					বায়োডাটা খুঁজুন
@@ -218,4 +229,4 @@ const BiodataSearchBox = () => {
 	);
 }
 
-export default BiodataSearchBox;
+export default BiodatasPageForm;
