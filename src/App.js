@@ -28,6 +28,7 @@ import RegistrationPage11 from './page/registration/registration-page11.componen
 import ProfilePage from './page/profile-page';
 import SettingPage from './page/setting-page';
 import BiodatasPage from "./page/biodatas-page";
+import BiodataDetails from "./page/biodata-details-page";
 
 // require auth
 import RequireAuth from "./services/requireAuth";
@@ -97,6 +98,7 @@ function App() {
 					element={<RegistrationPage11 />}
 				/>
 				<Route path='/biodatas/' element={<BiodatasPage />} />
+				<Route path='/biodatas/:user' element={<BiodataDetails />} />
 				<Route path='/biodatas/:user/profile' element={<ProfilePage />} />
 				<Route path='/biodatas/:user/settings' element={<SettingPage />} />
 			</Route>
