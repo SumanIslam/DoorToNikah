@@ -4,7 +4,7 @@ import { v4 as uuidv4 } from 'uuid';
 // mui
 import {
 	Container,
-	Pagination,
+	Pagination
 } from '@mui/material';
 // component
 import ShortProfile from '../short-profile/short-profile.component';
@@ -37,30 +37,13 @@ const BiodatasShowcase = () => {
 			<div className='container'>
 				<div className='showcase-short-profile'>
 					{isLoading ? (
-						<div>
-							<div
-								style={{
-									display: 'flex',
-									justifyContent: 'center',
-									alignItems: 'center',
-									marginBottom: "1.5rem"
-								}}
-							>
-								<LoadingSkeleton />
-								<LoadingSkeleton />
-								<LoadingSkeleton />
-							</div>
-							<div
-								style={{
-									display: 'flex',
-									justifyContent: 'center',
-									alignItems: 'center',
-								}}
-							>
-								<LoadingSkeleton />
-								<LoadingSkeleton />
-								<LoadingSkeleton />
-							</div>
+						<div className='skeleton'>
+							<LoadingSkeleton />
+							<LoadingSkeleton />
+							<LoadingSkeleton />
+							<LoadingSkeleton />
+							<LoadingSkeleton />
+							<LoadingSkeleton />
 						</div>
 					) : biodatas ? (
 						biodatas?.map((biodata) => (
