@@ -96,14 +96,14 @@ const ProfileDropdown = () => {
 					</Link>
 				</li>
 				<li>
-					<a className='dropdown-item' href='#' onClick={handleClickOpen2}>
+					<button className='dropdown-item' onClick={handleClickOpen2}>
 						Delete / Hide Biodata
-					</a>
+					</button>
 				</li>
 				<li>
-					<a className='dropdown-item' href='#' onClick={handleClickOpen}>
+					<button className='dropdown-item' onClick={handleClickOpen}>
 						Logout
-					</a>
+					</button>
 				</li>
 				<LogoutConsent
 					selectedValue={selectedValue}
