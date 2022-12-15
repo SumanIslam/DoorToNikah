@@ -40,7 +40,18 @@ export async function httpGETBiodatas(BiodataDetails) {
 			BiodataDetails: BiodataDetails,
 		},
 	});
-	console.log(res.data);
+	// console.log(res.data);
+	return res.data;
+}
+export async function httpGETBiodatasWithPagination(BiodataDetails, page) {
+	const res = await axios.get(`${API_URL}/biodatasWithPagination`, {
+		params: {
+			BiodataDetails: BiodataDetails,
+			page: page,
+			limit: 12,
+		},
+	});
+	// console.log(res.data);
 	return res.data;
 }
 

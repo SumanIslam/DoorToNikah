@@ -1,25 +1,29 @@
-import { useState, useEffect } from 'react'
+import { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 
 // MUI
 import SearchIcon from '@mui/icons-material/Search';
 
 import {
-	searchingFor,
-	maritalStatus,
-	mediumOfStudy,
-	allDivision,
-	allDistrict,
-	district,
+	allDistrict, allDivision, district, maritalStatus,
+	mediumOfStudy, searchingFor
 } from '../biodata-search/selectOptionData';
 
 // api
-import { httpGETBiodatas } from '../../services/request';
+import {
+	httpGETBiodatas,
+	httpGETBiodatasWithPagination,
+} from '../../services/request';
+
+// biodatas context
+import useBiodatas from '../../hooks/useBiodatas';
 
 // styles
-import './biodatas-page-form.style.scss'
+import './biodatas-page-form.style.scss';
 
-const BiodatasPageForm = ({setBiodatas}) => {
+const BiodatasPageForm = () => {
+	const {page, setBiodatas, count, setCount} = useBiodatas();
+
 	const location = useLocation();
 
 	const [searchData, setSearchData] = useState({
@@ -30,9 +34,6 @@ const BiodatasPageForm = ({setBiodatas}) => {
 		district: location.state.searchData.district || 'সকল জেলা',
 		biodataNo: location.state.searchData.biodataNo || '',
 	});
-
-	const [biodatasFetch, setBiodatasFetch] = useState(location.state.searchData.fetch || false);
-
 
 	const districtData = district.get(searchData?.division);
 
@@ -46,8 +47,13 @@ const BiodatasPageForm = ({setBiodatas}) => {
 		e.preventDefault();
 		
 		try{
+			const biodatasWithPagination = await httpGETBiodatasWithPagination(
+				searchData,
+				page
+			);
+			setBiodatas(biodatasWithPagination);
 			const biodatas = await httpGETBiodatas(searchData);
-			setBiodatas(biodatas);
+			setCount(Math.ceil(biodatas.length / 12));
 		} catch(err) {
 			console.log(err);
 		}
@@ -55,11 +61,18 @@ const BiodatasPageForm = ({setBiodatas}) => {
 
 	useEffect(() => {
 		const getBiodatas = async() => {
-			const biodatas = await httpGETBiodatas(location.state.searchData);
-			setBiodatas(biodatas)
+			const biodatasWithPagination = await httpGETBiodatasWithPagination(
+				searchData,
+				page
+			);
+			setBiodatas(biodatasWithPagination);
+			if (count === 10) {
+				const biodatas = await httpGETBiodatas(searchData);
+				setCount(Math.ceil(biodatas.length / 12));
+			}
 		}
 		getBiodatas();
-	}, [biodatasFetch])
+	}, [page])
 	
   return (
 		<div className='bg-purple p-4 biodatas-form-box'>
