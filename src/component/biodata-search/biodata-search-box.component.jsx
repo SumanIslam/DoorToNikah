@@ -47,8 +47,6 @@ const BiodataSearchBox = () => {
 				}
 			});
 		}, 500);
-		
-		console.log('hi');
 	}
   return (
 		<div className='bg-pink p-4 biodata-box'>
