@@ -6,7 +6,7 @@ import {
 
 const LoadingSkeleton = () => {
   return (
-		<div style={{margin: '1rem'}}>
+		<div style={{margin: '1rem', marginBottom: '1.5rem'}}>
 			<Skeleton
 				variant='rectangular'
 				width={300}
