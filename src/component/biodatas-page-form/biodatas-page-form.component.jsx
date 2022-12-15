@@ -22,7 +22,7 @@ import useBiodatas from '../../hooks/useBiodatas';
 import './biodatas-page-form.style.scss';
 
 const BiodatasPageForm = () => {
-	const {page, setBiodatas, count, setCount} = useBiodatas();
+	const {page, setBiodatas, count, setCount, setIsLoading} = useBiodatas();
 
 	const location = useLocation();
 
@@ -52,6 +52,10 @@ const BiodatasPageForm = () => {
 				page
 			);
 			setBiodatas(biodatasWithPagination);
+			setIsLoading(true);
+			setTimeout(() => {
+				setIsLoading(false);
+			}, 2000);
 			const biodatas = await httpGETBiodatas(searchData);
 			setCount(Math.ceil(biodatas.length / 12));
 		} catch(err) {
