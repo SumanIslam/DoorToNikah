@@ -92,3 +92,14 @@ export async function httpPOSTChangePassword(userData) {
 	console.log(res.data);
 	return res.data;
 }
+
+/* CONTACT REQUEST RELATED */
+// post contactRequest
+export async function httpPOSTSaveContactRequest(contactRequestDetails) {
+	const res = await axios.post(
+		`${API_URL}/contact-request`,
+		contactRequestDetails
+	);
+	console.log(res.data);
+	return res.data;
+}

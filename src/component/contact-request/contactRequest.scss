@@ -1,17 +1,11 @@
-.checkbox { margin: 0; }
-.bg-color{
-  background-color: #522b79;
-  color: #fff;
-}
 .contact_paragraph {
   margin: auto;
-  width: 57%;
+  width: 60%;
   padding: 10px;
   text-align: center;
-   color: gray;
+  color: gray;
   font-weight: 500;
   font-size: 16px;
-  margin-bottom: 20px;
 }
 
 .contact{
@@ -93,7 +87,7 @@
   cursor: pointer;
   border: 2px;
   font-weight: bold;
-  
+  margin-top: 2rem;
 }
 .contact-button:hover{
   -webkit-box-shadow: 0 8px 10px -6px #000000;
@@ -101,8 +95,8 @@
   box-shadow: 0 8px 10px -6px #000000;
 }
 
-.button-container {
-	margin: 5rem auto;
+.contact-request-button-container {
+	margin: 0 auto 3rem;
 	display: flex;
 	flex-direction: column;
 	justify-content: center;

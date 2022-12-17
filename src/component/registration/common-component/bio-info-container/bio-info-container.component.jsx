@@ -41,7 +41,10 @@ function BioInfoContainer({ candidatesInfo }) {
 							</Link>
 						) : (
 							<Link
-								to={`/biodatas/${(candidatesName?.name).replace(/ /g, '')}/profile`}
+								to={`/biodatas/${(candidatesName?.name).replace(
+									/ /g,
+									''
+								)}/profile`}
 								className='view'
 							>
 								<VisibilityIcon /> View
@@ -678,7 +681,9 @@ function BioInfoContainer({ candidatesInfo }) {
 					</tr>
 					<tr>
 						<td colSpan={2} className='category-title'>
-							<button className='category-button'>যোগাযোগ করুন</button>
+							<Link to='/contact-request'>
+								<button className='category-button'>যোগাযোগ করুন</button>
+							</Link>
 						</td>
 					</tr>
 				</table>

@@ -90,6 +90,10 @@
 	margin-top: 0.5rem;
 }
 
+.category-button a {
+	color: #fff;
+}
+
 .contact-text {
 	text-align: center;
 	padding: 5px 0;

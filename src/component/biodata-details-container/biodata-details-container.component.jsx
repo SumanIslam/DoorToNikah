@@ -601,9 +601,10 @@ function BiodataDetailsContainer({ biodataDetails }) {
 					</tr>
 					<tr>
 						<td colSpan={2} className='category-title'>
-							<button className='category-button'>
-								<Link to='/contact-request'>যোগাযোগ করুন</Link>
-							</button>
+							<Link to='/contact-request'>
+								<button className='category-button'>যোগাযোগ করুন
+								</button>
+							</Link>
 						</td>
 					</tr>
 				</table>
