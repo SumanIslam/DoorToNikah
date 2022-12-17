@@ -46,9 +46,12 @@ const BiodatasShowcase = () => {
 							<LoadingSkeleton />
 						</div>
 					) : biodatas ? (
-						biodatas?.map((biodata) => (
+						Array.isArray(biodatas) ? (
+							biodatas?.map((biodata) => (
 							<ShortProfile key={uuidv4()} biodata={biodata} />
-						))
+						))) : (
+							<ShortProfile key={uuidv4} biodata={biodatas} />
+						)
 					) : (
 						<div>No biodata Found</div>
 					)}
