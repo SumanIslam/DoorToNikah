@@ -105,6 +105,16 @@ const ProfileDropdown = () => {
 						Logout
 					</button>
 				</li>
+				{auth?.roles?.Admin === 5056 && (
+					<li>
+						<Link
+							className='dropdown-item'
+							to='/adminPanel'
+						>
+							Admin Dashboard
+						</Link> 
+					</li>
+				)}
 				<LogoutConsent
 					selectedValue={selectedValue}
 					open={open}
