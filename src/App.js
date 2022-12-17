@@ -29,11 +29,15 @@ import ProfilePage from './page/profile-page';
 import SettingPage from './page/setting-page';
 import BiodatasPage from "./page/biodatas-page";
 import BiodataDetails from "./page/biodata-details-page";
+import ContactRequest from './page/contact-request';
+
+// admin panel
+import AdminPanel from './page/admin-panel';
 
 // require auth
 import RequireAuth from "./services/requireAuth";
-import AdminPanel from "./page/admin-panel";
-import ContactRequest from "./page/contact-request";
+import RequireAdminAuth from "./services/requireAdminAuth";
+
 
 function App() {
   return (
@@ -50,7 +54,11 @@ function App() {
 			<Route path='/login' element={<LoginPage />} />
 			<Route path='/signup' element={<SignUpPage />} />
 			<Route path='/forget-password' element={<ForgetPasswordPage />} />
-			<Route path='/adminPanel' element={<AdminPanel />} />
+
+			{/* protected routes for admin */}
+			<Route path='/' element={<RequireAdminAuth />}>
+				<Route path='/adminPanel' element={<AdminPanel />} />
+			</Route>
 			{/* protected routes */}
 			<Route path='/' element={<RequireAuth />}>
 				<Route
