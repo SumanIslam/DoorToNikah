@@ -99,17 +99,17 @@ const AdminPanelComponent = (props) => {
     {
       text: "Manage Biodata",
       icon: <DashboardIcon />,
-      onClick: () => navigate("/adminPanel/manageBiodatas"),
+      onClick: () => navigate("manageBiodatas"),
     },
     {
       text: "Total Biodata",
       icon: <ScoreboardIcon />,
-      onClick: () => navigate("/adminPanel/totalBiodata"),
+      onClick: () => navigate("totalBiodata"),
     },
     {
       text: "Settings",
       icon: <SettingsIcon />,
-      onClick: () => navigate("/adminPanel/settings"),
+      onClick: () => navigate("settings"),
     },
   ];
   const handleDrawerOpen = () => {
@@ -198,11 +198,11 @@ const AdminPanelComponent = (props) => {
           <DrawerHeader />
           <Routes>
             <Route
-              path="/manageBiodatas/"
+              path="/manageBiodatas"
               element={<ManageBiodataComponent />}
             />
-            <Route path="/totalBiodata/" element={<TotalBiodata />} />
-            <Route path="/settings/" element={<Settings />} />
+            <Route path="/totalBiodata" element={<TotalBiodata />} />
+            <Route path="/settings" element={<Settings />} />
           </Routes>
         </Box>
       </Box>
