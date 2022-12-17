@@ -19,7 +19,7 @@ const Tutorial = () => {
 							<iframe
 								width='900'
 								height='515'
-								src='https://www.youtube.com/embed/BovAFDFQrl0'
+								src='https://www.youtube.com/embed/PFIKdnC9aZk'
 								title='YouTube video player'
 								frameBorder='0'
 								allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture'
@@ -36,7 +36,7 @@ const Tutorial = () => {
 							<iframe
 								width='900'
 								height='515'
-								src='https://www.youtube.com/embed/HJFxTsX0Ok0'
+								src='https://www.youtube.com/embed/PFIKdnC9aZk'
 								title='YouTube video player'
 								frameBorder='0'
 								allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture'
@@ -53,7 +53,7 @@ const Tutorial = () => {
 							<iframe
 								width='900'
 								height='515'
-								src='https://www.youtube.com/embed/BdGB6op867Q'
+								src='https://www.youtube.com/embed/PFIKdnC9aZk'
 								title='YouTube video player'
 								frameBorder='0'
 								allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture'
