@@ -50,7 +50,7 @@ function App() {
 			<Route path='/login' element={<LoginPage />} />
 			<Route path='/signup' element={<SignUpPage />} />
 			<Route path='/forget-password' element={<ForgetPasswordPage />} />
-			<Route path='/adminPanel/*' element={<AdminPanel />} />
+			<Route path='/adminPanel' element={<AdminPanel />} />
 			{/* protected routes */}
 			<Route path='/' element={<RequireAuth />}>
 				<Route

@@ -103,3 +103,32 @@ export async function httpPOSTSaveContactRequest(contactRequestDetails) {
 	console.log(res.data);
 	return res.data;
 }
+
+/* ADMIN PANEL RELATED */
+// get biodatas uploaded this week
+export async function httpGETBiodatasOfThisWeek() {
+	const res = await axios.post(`${API_URL}/biodatas/this-week`);
+	console.log(res.data);
+	return res.data;
+}
+
+// get biodatas uploaded in 15 days
+export async function httpGETBiodatasOf15Days() {
+	const res = await axios.post(`${API_URL}/biodatas/15days`);
+	console.log(res.data);
+	return res.data;
+}
+
+// get biodatas uploaded this month
+export async function httpGETBiodatasOfThisMonth() {
+	const res = await axios.post(`${API_URL}/biodatas/this-month`);
+	console.log(res.data);
+	return res.data;
+}
+
+// get biodatas uploaded this year
+export async function httpGETBiodatasOfThisYear() {
+	const res = await axios.post(`${API_URL}/biodatas/this-year`);
+	console.log(res.data);
+	return res.data;
+}
