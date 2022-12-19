@@ -16,7 +16,7 @@ import useBiodatas from '../../hooks/useBiodatas';
 // styles
 import './biodatas-showcase.style.scss';
 
-const BiodatasShowcase = () => {
+const BiodatasShowcase = ({admin}) => {
   const { page, setPage, biodatas, count, isLoading, setIsLoading } = useBiodatas();
 
 	useEffect(() => {
@@ -48,9 +48,9 @@ const BiodatasShowcase = () => {
 					) : biodatas ? (
 						Array.isArray(biodatas) ? (
 							biodatas?.map((biodata) => (
-							<ShortProfile key={uuidv4()} biodata={biodata} />
+							<ShortProfile key={uuidv4()} biodata={biodata} admin={admin} />
 						))) : (
-							<ShortProfile key={uuidv4} biodata={biodatas} />
+							<ShortProfile key={uuidv4} biodata={biodatas} admin={admin} />
 						)
 					) : (
 						<div>No biodata Found</div>

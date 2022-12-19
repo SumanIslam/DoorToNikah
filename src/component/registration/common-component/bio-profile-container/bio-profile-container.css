@@ -6,6 +6,17 @@
   display: flex;
   flex-direction: column;
 }
+
+.admin-profile-container {
+	background-color: #522b79;
+	width: 330px;
+	color: #fff;
+	border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+}
+
+
 .image-div {
 	text-align: center;
   margin-top: 2rem;
@@ -70,22 +81,47 @@ dl {
   color: white;
 }
 
+@media only screen and (max-width: 1020px) {
+  .admin-profile-container{
+    width: 670px;
+		margin: 0 auto;
+		margin-bottom: 4rem;
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  .admin-profile-container{
+    width: 500px;
+		margin: 0 auto;
+		margin-bottom: 4rem;
+  }
+}
+@media only screen and (max-width: 400px) {
+  .admin-profile-container{
+    width: 250px;
+		margin: 0 auto;
+		margin-bottom: 4rem;
+  }
+}
+
 @media only screen and (max-width: 1192px) {
   .profile-container{
     margin-left: 15px;
   }
-
 }
+
 @media only screen and (max-width: 767px) {
 	.profile-container {
 		width: 570px;
 		margin: 0 auto;
 		margin-bottom: 4rem;
+		font-family: 'SolaimanLipi' !important;
 	}
   .dis-none{
     display: none;
   }
 }
+
 @media only screen and (max-width: 576px) {
 	.profile-container {
 		width: 400px;

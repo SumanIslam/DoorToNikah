@@ -1,12 +1,23 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
-
+// styles
 import './biodata-details-container.style.scss';
 
+// api
+import {
+	httpPOSTAcceptedBiodata,
+	httpDeleteBiodata,
+} from '../../services/request';
 
-function BiodataDetailsContainer({ biodataDetails }) {
+// react toastify
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
+function BiodataDetailsContainer({ biodataDetails, admin }) {
 	const {
+		candidatesName,
 		generalInfo,
 		address,
 		educationalQualification,
@@ -16,12 +27,68 @@ function BiodataDetailsContainer({ biodataDetails }) {
 		otherInfo,
 		partnersCharacteristics,
 		authoritysAsk,
+		contactInfo,
 	} = biodataDetails;
 
+	const navigate = useNavigate();
+
+	// handle accept
+	const handleAccept = async (e) => {
+		e.preventDefault();
+		const biodata = {...biodataDetails, isApproved: true}
+
+		try {
+			const acceptedBiodata = await httpPOSTAcceptedBiodata(biodata)
+			console.log(acceptedBiodata);
+			toast.success('Biodata is Accepted')
+			setTimeout(() => {
+				navigate('/adminPanel/manageBiodatas');
+			}, 1500);
+		} catch(err) {
+			const errorMsg = err.response.data.msg;
+			console.log(errorMsg);
+			toast.error(errorMsg)
+		}
+	}
+
+	// handle reject
+	const handleReject = async (e) => {
+		e.preventDefault();
+
+		try {
+			toast.success('Biodata is Deleted Succssfully');
+
+			setTimeout(async () => {
+				navigate('/adminPanel/manageBiodatas');
+				await httpDeleteBiodata(biodataDetails.biodataId);
+			}, 1500);
+		} catch(err) {
+			const errorMsg = err.response.data.msg;
+			console.log(errorMsg);
+			toast.error(errorMsg);
+		}
+	}
+
 	return (
-		<div className='biodata-details-container'>
+		<div className={`${admin ? 'admin-biodata-details-container' : 'biodata-details-container'}`}>
+			<ToastContainer />
 			{/* full info */}
 			<div>
+				{/* candidates Name section */}
+				{admin && candidatesName && (
+					<table className='biodata-details-table'>
+						<tr>
+							<td colSpan={2} className='category-title'>
+								নাম
+							</td>
+						</tr>
+						<tr>
+							<td>নাম</td>
+							<td>{candidatesName?.name}</td>
+						</tr>
+					</table>
+				)}
+
 				{/* address section */}
 				{address && (
 					<table className='biodata-details-table'>
@@ -583,31 +650,64 @@ function BiodataDetailsContainer({ biodataDetails }) {
 					</table>
 				)}
 
+				{/* contact info */}
+				{admin && contactInfo && (
+					<table className='bio-info-table'>
+						<tr>
+							<td colSpan={2} className='category-title'>
+								যোগাযোগ
+							</td>
+						</tr>
+						<tr>
+							<td>অভিভাবকের নাম্বার</td>
+							<td>{contactInfo?.guardiansPhoneNumber}</td>
+						</tr>
+						<tr>
+							<td>যার নাম্বার লিখেছেন</td>
+							<td>{contactInfo?.relationWithGuardian}</td>
+						</tr>
+						<tr>
+							<td>বায়োডাটা গ্রহণের ই-মেইল এড্রেস</td>
+							<td>{contactInfo?.EmailForResponse}</td>
+						</tr>
+						<tr>
+							<td>আপনার নাম্বার</td>
+							<td>{contactInfo?.candidatesPhoneNumber}</td>
+						</tr>
+					</table>
+				)}
+
 				{/* contact with other parents */}
-				<table className='biodata-details-table'>
-					<tr>
-						<td colSpan={2} className='category-title'>
-							কর্তৃপক্ষের সাথে যোগাযোগ করুন
-						</td>
-					</tr>
-					<tr>
-						<td colSpan={2}>
-							<p className='contact-text'>
-								আপনার যদি কোনো বায়োডাটা পছন্দ হয় এবং আপনি উক্ত বায়োডাটাটির
-								অভিভাবকের সাথে যোগাযোগ করতে আগ্রহী হন, তাহলে নিচের বাটনে ক্লিক
-								করুন।
-							</p>
-						</td>
-					</tr>
-					<tr>
-						<td colSpan={2} className='category-title'>
-							<Link to='/contact-request'>
-								<button className='category-button'>যোগাযোগ করুন
-								</button>
-							</Link>
-						</td>
-					</tr>
-				</table>
+				{admin ? (
+					<div className='d-flex justify-content-center align-items-center'>
+						<button className="btn btn-success mlr-1" onClick={handleAccept}>Accept</button>
+						<button className="btn btn-danger mlr-1" onClick={handleReject}>Reject</button>
+					</div>
+				) : (
+					<table className='biodata-details-table'>
+						<tr>
+							<td colSpan={2} className='category-title'>
+								কর্তৃপক্ষের সাথে যোগাযোগ করুন
+							</td>
+						</tr>
+						<tr>
+							<td colSpan={2}>
+								<p className='contact-text'>
+									আপনার যদি কোনো বায়োডাটা পছন্দ হয় এবং আপনি উক্ত বায়োডাটাটির
+									অভিভাবকের সাথে যোগাযোগ করতে আগ্রহী হন, তাহলে নিচের বাটনে ক্লিক
+									করুন।
+								</p>
+							</td>
+						</tr>
+						<tr>
+							<td colSpan={2} className='category-title'>
+								<Link to='/contact-request'>
+									<button className='category-button'>যোগাযোগ করুন</button>
+								</Link>
+							</td>
+						</tr>
+					</table>
+				)}
 			</div>
 		</div>
 	);

@@ -14,7 +14,7 @@ import { CopyToClipboard } from 'react-copy-to-clipboard';
 // component
 import BiodataNoContainer from '../biodata-no-container/biodata-no-container.component';
 
-const BioProfileContainer = ({ biodataId, generalInfo, noHide }) => {
+const BioProfileContainer = ({ biodataId, generalInfo, noHide, admin }) => {
   const [copied, setCopied] = useState(false); 
 
   const handleCopy = () => {
@@ -24,7 +24,11 @@ const BioProfileContainer = ({ biodataId, generalInfo, noHide }) => {
   return (
 		<>
 			{generalInfo ? (
-				<div className={`profile-container ${noHide ? '' : 'dis-none'}`}>
+				<div
+					className={`${
+						admin ? 'admin-profile-container' : 'profile-container'
+					} ${noHide ? '' : 'dis-none'}`}
+				>
 					<div className='image-div'>
 						<div>
 							{generalInfo?.biodataType === 'পাত্রীর বায়োডাটা' ? (

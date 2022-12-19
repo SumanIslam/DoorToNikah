@@ -22,7 +22,7 @@ import useBiodatas from '../../hooks/useBiodatas';
 import './biodatas-page-form.style.scss';
 
 const BiodatasPageForm = () => {
-	const {page, setBiodatas, count, setCount, setIsLoading} = useBiodatas();
+	const {page, setBiodatas, setCount, setIsLoading} = useBiodatas();
 
 	const location = useLocation();
 
@@ -51,13 +51,28 @@ const BiodatasPageForm = () => {
 				searchData,
 				page
 			);
-			setBiodatas(biodatasWithPagination);
+
+			if(biodatasWithPagination?.length) {
+				setBiodatas(biodatasWithPagination);
+			} else if(biodatasWithPagination?.date) {
+				setBiodatas(biodatasWithPagination);
+			} else {
+				setBiodatas(null)
+			}
+			
 			setIsLoading(true);
 			setTimeout(() => {
 				setIsLoading(false);
 			}, 2000);
 			const biodatas = await httpGETBiodatas(searchData);
-			setCount(Math.ceil(biodatas.length / 12));
+			if (biodatas?.length) {
+				setCount(Math.ceil(biodatas.length / 12));
+			} else if (biodatasWithPagination?.date) {
+				setCount(0)
+			} else {
+				setCount(0);
+			}
+			
 		} catch(err) {
 			console.log(err);
 		}
@@ -69,11 +84,22 @@ const BiodatasPageForm = () => {
 				searchData,
 				page
 			);
-			setBiodatas(biodatasWithPagination);
-			if (count === 10) {
-				const biodatas = await httpGETBiodatas(searchData);
-				setCount(Math.ceil(biodatas.length / 12));
+			if (biodatasWithPagination?.length) {
+				setBiodatas(biodatasWithPagination);
+			} else if (biodatasWithPagination?.date) {
+				setBiodatas(biodatasWithPagination);
+			} else {
+				setBiodatas(null);
 			}
+
+				const biodatas = await httpGETBiodatas(searchData);
+				if (biodatas?.length) {
+					setCount(Math.ceil(biodatas.length / 12));
+				} else if (biodatasWithPagination?.date) {
+					setCount(0);
+				} else {
+					setCount(0);
+				}
 		}
 		getBiodatas();
 	}, [page])
