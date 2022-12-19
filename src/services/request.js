@@ -169,3 +169,12 @@ export async function httpPOSTAcceptedBiodata(biodata) {
 	// console.log(res.data);
 	return res.data;
 }
+
+// get contact request
+export async function httpGETContactRequest() {
+	const res = await axios.get(
+		`${API_URL}/contact-request`,
+	);
+	console.log(res.data);
+	return res.data;
+}
