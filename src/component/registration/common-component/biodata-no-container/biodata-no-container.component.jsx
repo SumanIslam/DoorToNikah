@@ -28,7 +28,10 @@ const BiodataNoContainer = () => {
   return (
 		<>
 			{candidatesInfo?.generalInfo ? (
-				<BioProfileContainer biodataId={candidatesInfo.biodataId} generalInfo={candidatesInfo.generalInfo} />
+				<BioProfileContainer
+					biodataId={auth.biodataId}
+					generalInfo={candidatesInfo.generalInfo}
+				/>
 			) : (
 				<div className='biodata-no-container bg-purple'>
 					<div className='biodata-no-container-body'>

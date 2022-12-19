@@ -1,0 +1,207 @@
+.biodata-details-container {
+	width: 760px;
+	height: auto;
+	padding-bottom: 3rem;
+	border-radius: 5px;
+	margin-left: 2rem;
+	background-color: #fff;
+	-webkit-box-shadow: 2px 2px 27px 0px rgba(240, 228, 240, 0.56);
+	-moz-box-shadow: 2px 2px 27px 0px rgba(240, 228, 240, 0.56);
+	box-shadow: 2px 2px 27px 0px rgba(240, 228, 240, 0.56);
+
+  @media only screen and (max-width: 767px) {
+    width: 570px;
+		margin: 0 auto;
+  }
+  @media only screen and (max-width: 576px) {
+    width: 400px;
+    margin: 0 auto;
+  }
+
+  .biodata-details-table {
+    border-collapse: separate;
+    width: 95%;
+    margin: 0 auto;
+    margin-top: 2rem;
+    margin-bottom: 3rem;
+    border: 2px solid #f0f0f0;
+    border-top: 2px solid #522b79;
+    border-spacing: 0;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+
+    tr {
+      width: 100%;
+      &:nth-child(even) {
+        background-color: #f8f8f8;
+      }
+    }
+
+    td {
+      width: 50%;
+      padding: 4px;
+      font-family: 'SolaimanLipi';
+      font-size: 1rem;
+      &:first-child {
+        border-right: 1px solid #f0f0f0;
+        padding-left: 1rem;
+      }
+      &:last-child {
+        border-left: 1px solid #f0f0f0;
+        padding-left: 0.8rem;
+        color: #666;
+      }
+    }
+
+    .category-title {
+      font-size: 1.3rem !important;
+      font-weight: 600;
+      color: #522b79 !important;
+      text-align: center;
+      padding-left: 0 !important;
+      padding-top: 0.6rem !important;
+      padding-bottom: 0.65rem !important;
+    }
+
+    .category-button {
+      margin: 0 auto;
+      display: block;
+      border: 1px solid #522B79;
+      background: #522B79;
+      color: #fff;
+      border-radius: 3px;
+      padding: 15px 50px;
+      cursor: pointer;
+      transition: all .29s ease 0s;
+      font-family: 'SolaimanLipi';
+      font-size: 18px;
+      box-shadow: 0px 6px 6px -5px #000;
+      text-align: center;
+      margin: auto;
+      margin-bottom: 0.5rem;
+      margin-top: 0.5rem;
+
+      a {
+        color: #fff;
+      }
+    }
+
+    .contact-text {
+      text-align: center;
+      padding: 5px 0;
+    }
+  }
+  .biodata-details-table:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.admin-biodata-details-container {
+  width: 740px;
+	height: auto;
+	padding-bottom: 3rem;
+	border-radius: 5px;
+	margin-left: 2rem;
+	background-color: #fff;
+	-webkit-box-shadow: 2px 2px 27px 0px rgba(240, 228, 240, 0.56);
+	-moz-box-shadow: 2px 2px 27px 0px rgba(240, 228, 240, 0.56);
+	box-shadow: 2px 2px 27px 0px rgba(240, 228, 240, 0.56);
+
+  @media only screen and (max-width: 1200px) {
+    width: 600px;
+		margin: 0 auto;
+  }
+  @media only screen and (max-width: 1020px) {
+    width: 670px;
+		margin: 0 auto;
+  }
+  @media only screen and (max-width: 767px) {
+    width: 500px;
+    margin: 0 auto;
+  }
+  @media only screen and (max-width: 400px) {
+    width: 250px;
+    margin: 0 auto;
+  }
+
+  .biodata-details-table {
+    border-collapse: separate;
+    width: 95%;
+    margin: 0 auto;
+    margin-top: 2rem;
+    margin-bottom: 3rem;
+    border: 2px solid #f0f0f0;
+    border-top: 2px solid #522b79;
+    border-spacing: 0;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+
+    tr {
+      width: 100%;
+      &:nth-child(even) {
+        background-color: #f8f8f8;
+      }
+    }
+
+    td {
+      width: 50%;
+      padding: 4px;
+      font-family: 'SolaimanLipi';
+      font-size: 1rem;
+      &:first-child {
+        border-right: 1px solid #f0f0f0;
+        padding-left: 1rem;
+      }
+      &:last-child {
+        border-left: 1px solid #f0f0f0;
+        padding-left: 0.8rem;
+        color: #666;
+      }
+    }
+
+    .category-title {
+      font-size: 1.3rem !important;
+      font-weight: 600;
+      color: #522b79 !important;
+      text-align: center;
+      padding-left: 0 !important;
+      padding-top: 0.6rem !important;
+      padding-bottom: 0.65rem !important;
+    }
+
+    .category-button {
+      margin: 0 auto;
+      display: block;
+      border: 1px solid #522B79;
+      background: #522B79;
+      color: #fff;
+      border-radius: 3px;
+      padding: 15px 50px;
+      cursor: pointer;
+      transition: all .29s ease 0s;
+      font-family: 'SolaimanLipi';
+      font-size: 18px;
+      box-shadow: 0px 6px 6px -5px #000;
+      text-align: center;
+      margin: auto;
+      margin-bottom: 0.5rem;
+      margin-top: 0.5rem;
+
+      a {
+        color: #fff;
+      }
+    }
+
+    .contact-text {
+      text-align: center;
+      padding: 5px 0;
+    }
+  }
+  .biodata-details-table:last-child {
+    margin-bottom: 0;
+  }
+
+  .mlr-1 {
+    margin: 0 1rem;
+  }
+}

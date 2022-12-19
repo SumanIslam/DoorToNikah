@@ -10,7 +10,7 @@ const TutorialPage = () => {
   return (
 		<>
 			<Header />
-            < Tutorial />
+      <Tutorial />
 			<Footer />
 			
 		</>

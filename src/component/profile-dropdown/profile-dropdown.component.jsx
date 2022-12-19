@@ -54,14 +54,37 @@ const ProfileDropdown = () => {
 					{auth?.userName ? (
 						<Link
 							className='dropdown-item'
-							to={`/${(auth?.userName).replace(/ /g, '')}/profile`}
+							to={`/biodatas/${(auth?.userName).replace(/ /g, '')}/settings`}
+						>
+							Settings
+						</Link>
+					) : (
+						<Link
+							className='dropdown-item'
+							to={`/biodatas/${(candidatesName?.name).replace(
+								/ /g,
+								''
+							)}/settings`}
+						>
+							Settings
+						</Link>
+					)}
+				</li>
+				<li>
+					{auth?.userName ? (
+						<Link
+							className='dropdown-item'
+							to={`/biodatas/${(auth?.userName).replace(/ /g, '')}/profile`}
 						>
 							My Profile
 						</Link>
 					) : (
 						<Link
 							className='dropdown-item'
-							to={`/${(candidatesName?.name).replace(/ /g, '')}/profile`}
+							to={`/biodatas/${(candidatesName?.name).replace(
+								/ /g,
+								''
+							)}/profile`}
 						>
 							My Profile
 						</Link>
@@ -73,15 +96,22 @@ const ProfileDropdown = () => {
 					</Link>
 				</li>
 				<li>
-					<a className='dropdown-item' href='#' onClick={handleClickOpen2}>
+					<button className='dropdown-item' onClick={handleClickOpen2}>
 						Delete / Hide Biodata
-					</a>
+					</button>
 				</li>
 				<li>
-					<a className='dropdown-item' href='#' onClick={handleClickOpen}>
+					<button className='dropdown-item' onClick={handleClickOpen}>
 						Logout
-					</a>
+					</button>
 				</li>
+				{auth?.roles?.Admin === 5056 && (
+					<li>
+						<Link className='dropdown-item' to='/adminPanel/dashboard'>
+							Admin Dashboard
+						</Link>
+					</li>
+				)}
 				<LogoutConsent
 					selectedValue={selectedValue}
 					open={open}

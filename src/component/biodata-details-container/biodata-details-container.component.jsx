@@ -1,16 +1,21 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
-// mui icons
-import CreateIcon from '@mui/icons-material/Create';
-import VisibilityIcon from '@mui/icons-material/Visibility';
+// styles
+import './biodata-details-container.style.scss';
 
-import './bio-info-container.css';
+// api
+import {
+	httpPOSTAcceptedBiodata,
+	httpDeleteBiodata,
+} from '../../services/request';
 
-// auth context
-import useAuth from '../../../../hooks/useAuth';
+// react toastify
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
-function BioInfoContainer({ candidatesInfo }) {
+function BiodataDetailsContainer({ biodataDetails, admin }) {
 	const {
 		candidatesName,
 		generalInfo,
@@ -23,46 +28,54 @@ function BioInfoContainer({ candidatesInfo }) {
 		partnersCharacteristics,
 		authoritysAsk,
 		contactInfo,
-	} = candidatesInfo;
+	} = biodataDetails;
 
-	const { auth } = useAuth();
+	const navigate = useNavigate();
+
+	// handle accept
+	const handleAccept = async (e) => {
+		e.preventDefault();
+		const biodata = {...biodataDetails, isApproved: true}
+
+		try {
+			await httpPOSTAcceptedBiodata(biodata)
+			toast.success('Biodata is Accepted')
+			setTimeout(() => {
+				navigate('/adminPanel/manageBiodatas');
+			}, 1500);
+		} catch(err) {
+			const errorMsg = err.response.data.msg;
+			console.log(errorMsg);
+			toast.error(errorMsg)
+		}
+	}
+
+	// handle reject
+	const handleReject = async (e) => {
+		e.preventDefault();
+
+		try {
+			toast.success('Biodata is Deleted Succssfully');
+
+			setTimeout(async () => {
+				navigate('/adminPanel/manageBiodatas');
+				await httpDeleteBiodata(biodataDetails.biodataId);
+			}, 1500);
+		} catch(err) {
+			const errorMsg = err.response.data.msg;
+			console.log(errorMsg);
+			toast.error(errorMsg);
+		}
+	}
+
 	return (
-		<div className='bio-info-container'>
-			{/* nav */}
-			<div>
-				<ul className='item-nav'>
-					<li>
-						{auth?.userName ? (
-							<Link
-								to={`/biodatas/${(auth?.userName).replace(/ /g, '')}/profile`}
-								className='view'
-							>
-								<VisibilityIcon /> View
-							</Link>
-						) : (
-							<Link
-								to={`/biodatas/${(candidatesName?.name).replace(
-									/ /g,
-									''
-								)}/profile`}
-								className='view'
-							>
-								<VisibilityIcon /> View
-							</Link>
-						)}
-					</li>
-					<li>
-						<Link to='/biodata/registration/step1' className='edit'>
-							<CreateIcon /> Edit
-						</Link>
-					</li>
-				</ul>
-			</div>
+		<div className={`${admin ? 'admin-biodata-details-container' : 'biodata-details-container'}`}>
+			<ToastContainer />
 			{/* full info */}
 			<div>
 				{/* candidates Name section */}
-				{candidatesName && (
-					<table className='bio-info-table'>
+				{admin && candidatesName && (
+					<table className='biodata-details-table'>
 						<tr>
 							<td colSpan={2} className='category-title'>
 								নাম
@@ -77,7 +90,7 @@ function BioInfoContainer({ candidatesInfo }) {
 
 				{/* address section */}
 				{address && (
-					<table className='bio-info-table'>
+					<table className='biodata-details-table'>
 						<tr>
 							<td colSpan={2} className='category-title'>
 								ঠিকানা
@@ -100,7 +113,7 @@ function BioInfoContainer({ candidatesInfo }) {
 
 				{/* educational qualification section */}
 				{educationalQualification && (
-					<table className='bio-info-table'>
+					<table className='biodata-details-table'>
 						<tr>
 							<td colSpan={2} className='category-title'>
 								শিক্ষাগত যোগ্যতা
@@ -291,7 +304,7 @@ function BioInfoContainer({ candidatesInfo }) {
 
 				{/* family info */}
 				{familyInfo && (
-					<table className='bio-info-table'>
+					<table className='biodata-details-table'>
 						<tr>
 							<td colSpan={2} className='category-title'>
 								পারিবারিক তথ্য
@@ -351,7 +364,7 @@ function BioInfoContainer({ candidatesInfo }) {
 
 				{/* personal info */}
 				{personalInfo && (
-					<table className='bio-info-table'>
+					<table className='biodata-details-table'>
 						<tr>
 							<td colSpan={2} className='category-title'>
 								ব্যক্তিগত তথ্য
@@ -446,7 +459,7 @@ function BioInfoContainer({ candidatesInfo }) {
 
 				{/* marriage info */}
 				{marriageInfo && (
-					<table className='bio-info-table'>
+					<table className='biodata-details-table'>
 						<tr>
 							<td colSpan={2} className='category-title'>
 								বিয়ে সংক্রান্ত তথ্য
@@ -528,7 +541,7 @@ function BioInfoContainer({ candidatesInfo }) {
 
 				{/* other Info */}
 				{otherInfo && (
-					<table className='bio-info-table'>
+					<table className='biodata-details-table'>
 						<tr>
 							<td colSpan={2} className='category-title'>
 								অন্যান্য তথ্য
@@ -551,7 +564,7 @@ function BioInfoContainer({ candidatesInfo }) {
 
 				{/* partners characteristics */}
 				{partnersCharacteristics && (
-					<table className='bio-info-table'>
+					<table className='biodata-details-table'>
 						<tr>
 							<td colSpan={2} className='category-title'>
 								যেমন জীবনসঙ্গী আশা করেন
@@ -608,7 +621,7 @@ function BioInfoContainer({ candidatesInfo }) {
 
 				{/* authoritys ask */}
 				{authoritysAsk && (
-					<table className='bio-info-table'>
+					<table className='biodata-details-table'>
 						<tr>
 							<td colSpan={2} className='category-title'>
 								কর্তৃপক্ষের জিজ্ঞাসা
@@ -637,7 +650,7 @@ function BioInfoContainer({ candidatesInfo }) {
 				)}
 
 				{/* contact info */}
-				{contactInfo && (
+				{admin && contactInfo && (
 					<table className='bio-info-table'>
 						<tr>
 							<td colSpan={2} className='category-title'>
@@ -664,32 +677,39 @@ function BioInfoContainer({ candidatesInfo }) {
 				)}
 
 				{/* contact with other parents */}
-				<table className='bio-info-table'>
-					<tr>
-						<td colSpan={2} className='category-title'>
-							কর্তৃপক্ষের সাথে যোগাযোগ করুন
-						</td>
-					</tr>
-					<tr>
-						<td colSpan={2}>
-							<p className='contact-text'>
-								আপনার যদি কোনো বায়োডাটা পছন্দ হয় এবং আপনি উক্ত বায়োডাটাটির
-								অভিভাবকের সাথে যোগাযোগ করতে আগ্রহী হন, তাহলে নিচের বাটনে ক্লিক
-								করুন।
-							</p>
-						</td>
-					</tr>
-					<tr>
-						<td colSpan={2} className='category-title'>
-							<Link to='/contact-request'>
-								<button className='category-button'>যোগাযোগ করুন</button>
-							</Link>
-						</td>
-					</tr>
-				</table>
+				{admin ? (
+					<div className='d-flex justify-content-center align-items-center'>
+						<button className="btn btn-success mlr-1" onClick={handleAccept}>Accept</button>
+						<button className="btn btn-danger mlr-1" onClick={handleReject}>Reject</button>
+					</div>
+				) : (
+					<table className='biodata-details-table'>
+						<tr>
+							<td colSpan={2} className='category-title'>
+								কর্তৃপক্ষের সাথে যোগাযোগ করুন
+							</td>
+						</tr>
+						<tr>
+							<td colSpan={2}>
+								<p className='contact-text'>
+									আপনার যদি কোনো বায়োডাটা পছন্দ হয় এবং আপনি উক্ত বায়োডাটাটির
+									অভিভাবকের সাথে যোগাযোগ করতে আগ্রহী হন, তাহলে নিচের বাটনে ক্লিক
+									করুন।
+								</p>
+							</td>
+						</tr>
+						<tr>
+							<td colSpan={2} className='category-title'>
+								<Link to='/contact-request'>
+									<button className='category-button'>যোগাযোগ করুন</button>
+								</Link>
+							</td>
+						</tr>
+					</table>
+				)}
 			</div>
 		</div>
 	);
 }
 
-export default BioInfoContainer;
+export default BiodataDetailsContainer;

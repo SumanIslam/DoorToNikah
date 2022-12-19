@@ -5,8 +5,8 @@ import DoubleArrowIcon from '@mui/icons-material/DoubleArrow';
 import KeyboardDoubleArrowLeftIcon from '@mui/icons-material/KeyboardDoubleArrowLeft';
 
 // styles
+import '../../../../styles/utils.scss';
 import './form-button-container.style.scss';
-import '../../../../styles/utils.scss'
 
 const FormButtonContainer = ({ nextUrl, backUrl, loading, saved }) => {
 
@@ -28,18 +28,18 @@ const FormButtonContainer = ({ nextUrl, backUrl, loading, saved }) => {
 			)}
 			<div>
 				{backUrl && (
-					<button className='next-button'>
-						<Link to={backUrl}>
+					<Link to={backUrl}>
+						<button className='next-button'>
 							<KeyboardDoubleArrowLeftIcon /> Back
-						</Link>
-					</button>
+						</button>
+					</Link>
 				)}
 				{nextUrl && saved && (
-					<button className='next-button'>
-						<Link to={nextUrl}>
+					<Link to={nextUrl}>
+						<button className='next-button'>
 							Next <DoubleArrowIcon />
-						</Link>
-					</button>
+						</button>
+					</Link>
 				)}
 			</div>
 		</div>

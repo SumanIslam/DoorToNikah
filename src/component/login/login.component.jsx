@@ -12,19 +12,17 @@ import TextField from '@mui/material/TextField';
 import Typography from '@mui/material/Typography';
 
 // assets
-import Facebook from '../../asset/facebook.png';
-import Github from '../../asset/github.png';
-import Google from '../../asset/google.png';
 
 // auth, registration context
 import useAuth from '../../hooks/useAuth';
 import useRegistration from '../../hooks/useRegistration';
 
+
 // styles
 import './login.styles.scss';
 
 // request
-import { httpLoginUser, httpGetSingleBiodata } from '../../services/request';
+import { httpGetSingleBiodata, httpLoginUser } from '../../services/request';
 
 // react toastify
 import { toast, ToastContainer } from 'react-toastify';
@@ -32,7 +30,7 @@ import 'react-toastify/dist/ReactToastify.css';
 
 const Login = () => {
 	const navigate = useNavigate();
-	const { auth, setAuth } = useAuth();
+	const { setAuth } = useAuth();
 	const { setCandidatesInfo } = useRegistration();
 
 	const handleSubmit = async (event) => {
@@ -83,9 +81,6 @@ const Login = () => {
 
 	return (
 		<div className='login'>
-			<h1 className='loginTitle'>Choose a Login Method</h1>
-			<div className='wrapper'>
-				<div className='left'>
 					<ThemeProvider theme={theme}>
 						<Container component='main' maxWidth='xs'>
 							<ToastContainer />
@@ -113,6 +108,7 @@ const Login = () => {
 										margin='normal'
 										required
 										fullWidth
+										type='email'
 										id='email'
 										label='Email Address'
 										name='email'
@@ -139,7 +135,7 @@ const Login = () => {
 									</Button>
 									<Grid container>
 										<Grid item xs>
-											<Link to='/' className='link'>
+											<Link to='/forget-password' className='link'>
 												Forgot password?
 											</Link>
 										</Grid>
@@ -154,23 +150,6 @@ const Login = () => {
 						</Container>
 					</ThemeProvider>
 				</div>
-				<div className='or'>OR</div>
-				<div className='right'>
-					<div className='loginButton google'>
-						<img src={Google} alt='' className='icon' />
-						Google
-					</div>
-					<div className='loginButton facebook'>
-						<img src={Facebook} alt='' className='icon' />
-						Facebook
-					</div>
-					<div className='loginButton github'>
-						<img src={Github} alt='' className='icon' />
-						Github
-					</div>
-				</div>
-			</div>
-		</div>
 	);
 };
 

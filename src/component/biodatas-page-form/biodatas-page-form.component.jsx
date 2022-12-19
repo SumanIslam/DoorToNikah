@@ -1,33 +1,41 @@
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useEffect, useState } from 'react';
+import { useLocation } from 'react-router-dom';
 
 // MUI
 import SearchIcon from '@mui/icons-material/Search';
 
-// styles
-import '../../styles/utils.scss';
-import './biodata-search-box.styles.scss';
-
 import {
-	searchingFor,
-	maritalStatus,
-	mediumOfStudy,
-	allDivision,
-	allDistrict,
-	district,
-} from './selectOptionData';
+	allDistrict, allDivision, district, maritalStatus,
+	mediumOfStudy, searchingFor
+} from '../biodata-search/selectOptionData';
 
-const BiodataSearchBox = () => {
+// api
+import {
+	httpGETBiodatas,
+	httpGETApprovedBiodatas,
+	httpGETBiodatasWithPagination,
+	httpGETApprovedBiodatasWithPagination,
+} from '../../services/request';
+
+// biodatas context
+import useBiodatas from '../../hooks/useBiodatas';
+
+// styles
+import './biodatas-page-form.style.scss';
+
+const BiodatasPageForm = ({ admin }) => {
+	const {page, setBiodatas, setCount, setIsLoading} = useBiodatas();
+
+	const location = useLocation();
+
 	const [searchData, setSearchData] = useState({
-		searchingFor: 'পাত্রের বায়োডাটা',
-		maritalStatus: 'অবিবাহিত',
-		mediumOfStudy: 'জেনারেল',
-		division: 'সকল বিভাগ',
-		district: 'সকল জেলা',
-		biodataNo: '',
+		searchingFor: location.state?.searchData?.searchingFor || 'পাত্রের বায়োডাটা',
+		maritalStatus: location.state?.searchData?.maritalStatus || 'অবিবাহিত',
+		mediumOfStudy: location.state?.searchData?.mediumOfStudy || 'জেনারেল',
+		division: location.state?.searchData?.division || 'সকল বিভাগ',
+		district: location.state?.searchData?.district || 'সকল জেলা',
+		biodataNo: location.state?.searchData?.biodataNo || '',
 	});
-
-	const navigate = useNavigate();
 
 	const districtData = district.get(searchData?.division);
 
@@ -37,21 +45,139 @@ const BiodataSearchBox = () => {
 		setSearchData({ ...searchData, [e.target.name]: e.target.value });
 	};
 
-	const handleSubmit = (e) => {
+	const handleSubmit = async(e) => {
 		e.preventDefault();
-		setTimeout(() => {
-			navigate('/biodatas', {
-				state: {
+		
+		try{
+			if(admin) {
+				// biodatas with pagination
+				const biodatasWithPagination = await httpGETBiodatasWithPagination(
 					searchData,
-					fetch: true,
+					page
+				);
+
+				if (biodatasWithPagination?.length) {
+					setBiodatas(biodatasWithPagination);
+				} else if (biodatasWithPagination?.date) {
+					setBiodatas(biodatasWithPagination);
+				} else {
+					setBiodatas(null);
 				}
-			});
-		}, 500);
+
+				setIsLoading(true);
+				setTimeout(() => {
+					setIsLoading(false);
+				}, 2000);
+
+				// biodatas
+				const biodatas = await httpGETBiodatas(searchData);
+				if (biodatas?.length) {
+					setCount(Math.ceil(biodatas.length / 12));
+				} else if (biodatasWithPagination?.date) {
+					setCount(0);
+				} else {
+					setCount(0);
+				}
+			} else {
+				// approved biodatas with pagination
+				const approvedBiodatasWithPagination =
+					await httpGETApprovedBiodatasWithPagination(searchData, page);
+
+				if (approvedBiodatasWithPagination?.length) {
+					setBiodatas(approvedBiodatasWithPagination);
+				} else if (approvedBiodatasWithPagination?.date) {
+					setBiodatas(approvedBiodatasWithPagination);
+				} else {
+					setBiodatas(null);
+				}
+
+				setIsLoading(true);
+				setTimeout(() => {
+					setIsLoading(false);
+				}, 2000);
+
+				// approved biodatas
+				const approvedBiodatas = await httpGETApprovedBiodatas(searchData);
+				if (approvedBiodatas?.length) {
+					setCount(Math.ceil(approvedBiodatas.length / 12));
+				} else if (approvedBiodatasWithPagination?.date) {
+					setCount(0);
+				} else {
+					setCount(0);
+				}
+			}
+		} catch(err) {
+			console.log(err);
+		}
 	}
+
+	useEffect(() => {
+		// get biodatas
+		const getBiodatas = async() => {
+			const biodatasWithPagination = await httpGETBiodatasWithPagination(
+				searchData,
+				page
+			);
+			if (biodatasWithPagination?.length) {
+				setBiodatas(biodatasWithPagination);
+			} else if (biodatasWithPagination?.date) {
+				setBiodatas(biodatasWithPagination);
+			} else {
+				setBiodatas(null);
+			}
+
+				const biodatas = await httpGETBiodatas(searchData);
+				if (biodatas?.length) {
+					setCount(Math.ceil(biodatas.length / 12));
+				} else if (biodatasWithPagination?.date) {
+					setCount(0);
+				} else {
+					setCount(0);
+				}
+		}
+
+		// get approved biodatas
+		const getApprovedBiodatas = async () => {
+			// approved biodatas with pagination
+			const approvedBiodatasWithPagination =
+				await httpGETApprovedBiodatasWithPagination(searchData, page);
+
+			if (approvedBiodatasWithPagination?.length) {
+				setBiodatas(approvedBiodatasWithPagination);
+			} else if (approvedBiodatasWithPagination?.date) {
+				setBiodatas(approvedBiodatasWithPagination);
+			} else {
+				setBiodatas(null);
+			}
+
+			setIsLoading(true);
+			setTimeout(() => {
+				setIsLoading(false);
+			}, 2000);
+
+			// approved biodatas
+			const approvedBiodatas = await httpGETApprovedBiodatas(searchData);
+			if (approvedBiodatas?.length) {
+				setCount(Math.ceil(approvedBiodatas.length / 12));
+			} else if (approvedBiodatasWithPagination?.date) {
+				setCount(0);
+			} else {
+				setCount(0);
+			}
+		};
+
+		if(admin) {
+			getBiodatas();
+			
+		} else {
+			getApprovedBiodatas();
+		}
+	}, [page])
+	
   return (
-		<div className='bg-pink p-4 biodata-box'>
+		<div className='bg-purple p-4 biodatas-form-box'>
 			<form onSubmit={handleSubmit}>
-				<div className='row custom-select'>
+				<div className='row biodatas-form-custom-select'>
 					{/* searching for select field */}
 					<div className='col-4 col-md-5 text-align-right'>
 						<label className='form-label mt-1'>{searchingFor.label}</label>
@@ -206,7 +332,7 @@ const BiodataSearchBox = () => {
 				</div>
 				<button
 					type='submit'
-					className='search-button d-flex justify-content-center align-items-center'
+					className='biodatas-form-search-button d-flex justify-content-center align-items-center'
 				>
 					<SearchIcon />
 					বায়োডাটা খুঁজুন
@@ -216,4 +342,4 @@ const BiodataSearchBox = () => {
 	);
 }
 
-export default BiodataSearchBox;
+export default BiodatasPageForm;
