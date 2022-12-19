@@ -1,6 +1,6 @@
 import axios from 'axios';
-// const API_URL = 'http://localhost:5000/v1/api';
-const API_URL = 'https://doortonikahserver.onrender.com/v1/api';
+const API_URL = 'http://localhost:5000/v1/api';
+// const API_URL = 'https://doortonikahserver.onrender.com/v1/api';
 
 /* USER RELATED */
 // user signup
