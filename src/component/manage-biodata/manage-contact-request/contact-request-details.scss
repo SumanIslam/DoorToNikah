@@ -1,0 +1,12 @@
+.done-button {
+		background-color: #761753;
+		color: #fff;
+		font-size: 1.15rem;
+		padding: 20px 35px 20px 35px;
+		a {
+			color: #fff;
+		}
+		@media (max-width: 576px) {
+			font-size: 1.2rem;
+		}
+	}
