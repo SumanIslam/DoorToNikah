@@ -3,6 +3,8 @@ import { useState } from 'react';
 // api
 import { httpSaveBiodata } from '../../../../services/request';
 
+// biodatas context
+import useRegistration from '../../../../hooks/useRegistration';
 // auth context
 import useAuth from '../../../../hooks/useAuth';
 
@@ -14,9 +16,10 @@ import { ToastContainer } from 'react-toastify';
 // styles
 import './submit-biodata.button.style.scss';
 
-const SubmitBiodataButton = ({ saved,candidatesInfo }) => {
+const SubmitBiodataButton = ({ saved, candidatesInfo }) => {
   const [loading, setLoading] = useState(false);
   const { auth } = useAuth();
+	const { setCandidatesInfo } = useRegistration();
 
   candidatesInfo = {...candidatesInfo, biodataId: auth?.biodataId}
   
@@ -27,6 +30,14 @@ const SubmitBiodataButton = ({ saved,candidatesInfo }) => {
 			const biodata = await httpSaveBiodata(candidatesInfo);
 			console.log(biodata);
 			setLoading(true);
+			// set candidates info in registration context
+			setCandidatesInfo(biodata);
+
+			// set candidates info in local storage
+			localStorage.setItem(
+				'candidatesInfo',
+				JSON.stringify(biodata)
+			);
 			setTimeout(() => {
 				setLoading(false);
 				handleSuccess('Your Biodata is Saved SuccessFully');
