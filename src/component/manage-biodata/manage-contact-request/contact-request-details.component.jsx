@@ -38,7 +38,7 @@ const ContactRequestDetails = () => {
   }
 
   return (
-    <div className="card">
+    <div className="card" style={{fontFamily: 'SolaimanLipi'}}>
       <div className="card-header text-center">আবেদনকারীর পেমেন্ট ইনফরমেশন</div>
       <ul className="list-group list-group-flush">
         <li className="list-group-item">আবেদনকারীর নামঃ {request.userName}</li>
