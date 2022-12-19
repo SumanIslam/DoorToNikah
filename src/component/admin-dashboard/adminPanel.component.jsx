@@ -101,6 +101,15 @@ const AdminPanelComponent = (props) => {
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
 
+	const searchData = {
+		searchingFor: 'সকল বায়োডাটা',
+		maritalStatus: 'সকল',
+		mediumOfStudy: 'সকল',
+		division: 'সকল বিভাগ',
+		district: 'সকল জেলা',
+		biodataNo: '',
+	};
+
   const itemsList = [
 		{
 			text: 'Dashboard',
@@ -115,7 +124,12 @@ const AdminPanelComponent = (props) => {
 		{
 			text: 'Total Biodata',
 			icon: <ScoreboardIcon />,
-			onClick: () => navigate('totalBiodata'),
+			onClick: () =>
+				navigate('totalBiodata', {
+					state: { 
+						searchData: searchData,
+					},
+				}),
 		},
 		{
 			text: 'Settings',

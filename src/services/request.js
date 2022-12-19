@@ -43,8 +43,33 @@ export async function httpGETBiodatas(BiodataDetails) {
 	// console.log(res.data);
 	return res.data;
 }
+// get approved biodatas
+export async function httpGETApprovedBiodatas(BiodataDetails) {
+	const res = await axios.get(`${API_URL}/approved-biodatas`, {
+		params: {
+			BiodataDetails: BiodataDetails,
+		},
+	});
+	// console.log(res.data);
+	return res.data;
+}
+
+// get biodatas with pagination
 export async function httpGETBiodatasWithPagination(BiodataDetails, page) {
 	const res = await axios.get(`${API_URL}/biodatasWithPagination`, {
+		params: {
+			BiodataDetails: BiodataDetails,
+			page: page,
+			limit: 12,
+		},
+	});
+	// console.log(res.data);
+	return res.data;
+}
+
+// get approved biodatas with pagination
+export async function httpGETApprovedBiodatasWithPagination(BiodataDetails, page) {
+	const res = await axios.get(`${API_URL}/approved-biodatasWithPagination`, {
 		params: {
 			BiodataDetails: BiodataDetails,
 			page: page,
@@ -117,7 +142,7 @@ export async function httpGETUsersCount() {
 export async function httpGETUnapprovedBiodatas() {
 	const res = await axios.get(`${API_URL}/biodatas/unapproved-biodatas`);
 
-	console.log(res.data);
+	// console.log(res.data);
 	return res.data;
 }
 
@@ -132,7 +157,7 @@ export async function httpGETUnapprovedBiodatasWithPagination(page) {
 		}
 	);
 
-	console.log(res.data);
+	// console.log(res.data);
 	return res.data;
 }
 
@@ -141,6 +166,6 @@ export async function httpPOSTAcceptedBiodata(biodata) {
 		`${API_URL}/biodatas/accepted`, biodata
 	);
 
-	console.log(res.data);
+	// console.log(res.data);
 	return res.data;
 }

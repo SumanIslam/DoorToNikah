@@ -12,7 +12,9 @@ import {
 // api
 import {
 	httpGETBiodatas,
+	httpGETApprovedBiodatas,
 	httpGETBiodatasWithPagination,
+	httpGETApprovedBiodatasWithPagination,
 } from '../../services/request';
 
 // biodatas context
@@ -21,18 +23,20 @@ import useBiodatas from '../../hooks/useBiodatas';
 // styles
 import './biodatas-page-form.style.scss';
 
-const BiodatasPageForm = () => {
+const BiodatasPageForm = ({ admin }) => {
 	const {page, setBiodatas, setCount, setIsLoading} = useBiodatas();
+
+	console.log(admin);
 
 	const location = useLocation();
 
 	const [searchData, setSearchData] = useState({
-		searchingFor: location.state.searchData.searchingFor || 'পাত্রের বায়োডাটা',
-		maritalStatus: location.state.searchData.maritalStatus || 'অবিবাহিত',
-		mediumOfStudy: location.state.searchData.mediumOfStudy || 'জেনারেল',
-		division: location.state.searchData.division || 'সকল বিভাগ',
-		district: location.state.searchData.district || 'সকল জেলা',
-		biodataNo: location.state.searchData.biodataNo || '',
+		searchingFor: location.state?.searchData?.searchingFor || 'পাত্রের বায়োডাটা',
+		maritalStatus: location.state?.searchData?.maritalStatus || 'অবিবাহিত',
+		mediumOfStudy: location.state?.searchData?.mediumOfStudy || 'জেনারেল',
+		division: location.state?.searchData?.division || 'সকল বিভাগ',
+		district: location.state?.searchData?.district || 'সকল জেলা',
+		biodataNo: location.state?.searchData?.biodataNo || '',
 	});
 
 	const districtData = district.get(searchData?.division);
@@ -47,38 +51,70 @@ const BiodatasPageForm = () => {
 		e.preventDefault();
 		
 		try{
-			const biodatasWithPagination = await httpGETBiodatasWithPagination(
-				searchData,
-				page
-			);
+			if(admin) {
+				// biodatas with pagination
+				const biodatasWithPagination = await httpGETBiodatasWithPagination(
+					searchData,
+					page
+				);
 
-			if(biodatasWithPagination?.length) {
-				setBiodatas(biodatasWithPagination);
-			} else if(biodatasWithPagination?.date) {
-				setBiodatas(biodatasWithPagination);
+				if (biodatasWithPagination?.length) {
+					setBiodatas(biodatasWithPagination);
+				} else if (biodatasWithPagination?.date) {
+					setBiodatas(biodatasWithPagination);
+				} else {
+					setBiodatas(null);
+				}
+
+				setIsLoading(true);
+				setTimeout(() => {
+					setIsLoading(false);
+				}, 2000);
+
+				// biodatas
+				const biodatas = await httpGETBiodatas(searchData);
+				if (biodatas?.length) {
+					setCount(Math.ceil(biodatas.length / 12));
+				} else if (biodatasWithPagination?.date) {
+					setCount(0);
+				} else {
+					setCount(0);
+				}
 			} else {
-				setBiodatas(null)
+				// approved biodatas with pagination
+				const approvedBiodatasWithPagination =
+					await httpGETApprovedBiodatasWithPagination(searchData, page);
+
+				if (approvedBiodatasWithPagination?.length) {
+					setBiodatas(approvedBiodatasWithPagination);
+				} else if (approvedBiodatasWithPagination?.date) {
+					setBiodatas(approvedBiodatasWithPagination);
+				} else {
+					setBiodatas(null);
+				}
+
+				setIsLoading(true);
+				setTimeout(() => {
+					setIsLoading(false);
+				}, 2000);
+
+				// approved biodatas
+				const approvedBiodatas = await httpGETApprovedBiodatas(searchData);
+				if (approvedBiodatas?.length) {
+					setCount(Math.ceil(approvedBiodatas.length / 12));
+				} else if (approvedBiodatasWithPagination?.date) {
+					setCount(0);
+				} else {
+					setCount(0);
+				}
 			}
-			
-			setIsLoading(true);
-			setTimeout(() => {
-				setIsLoading(false);
-			}, 2000);
-			const biodatas = await httpGETBiodatas(searchData);
-			if (biodatas?.length) {
-				setCount(Math.ceil(biodatas.length / 12));
-			} else if (biodatasWithPagination?.date) {
-				setCount(0)
-			} else {
-				setCount(0);
-			}
-			
 		} catch(err) {
 			console.log(err);
 		}
 	}
 
 	useEffect(() => {
+		// get biodatas
 		const getBiodatas = async() => {
 			const biodatasWithPagination = await httpGETBiodatasWithPagination(
 				searchData,
@@ -101,7 +137,43 @@ const BiodatasPageForm = () => {
 					setCount(0);
 				}
 		}
-		getBiodatas();
+
+		// get approved biodatas
+		const getApprovedBiodatas = async () => {
+			// approved biodatas with pagination
+			const approvedBiodatasWithPagination =
+				await httpGETApprovedBiodatasWithPagination(searchData, page);
+
+			if (approvedBiodatasWithPagination?.length) {
+				setBiodatas(approvedBiodatasWithPagination);
+			} else if (approvedBiodatasWithPagination?.date) {
+				setBiodatas(approvedBiodatasWithPagination);
+			} else {
+				setBiodatas(null);
+			}
+
+			setIsLoading(true);
+			setTimeout(() => {
+				setIsLoading(false);
+			}, 2000);
+
+			// approved biodatas
+			const approvedBiodatas = await httpGETApprovedBiodatas(searchData);
+			if (approvedBiodatas?.length) {
+				setCount(Math.ceil(approvedBiodatas.length / 12));
+			} else if (approvedBiodatasWithPagination?.date) {
+				setCount(0);
+			} else {
+				setCount(0);
+			}
+		};
+
+		if(admin) {
+			getBiodatas();
+			
+		} else {
+			getApprovedBiodatas();
+		}
 	}, [page])
 	
   return (
