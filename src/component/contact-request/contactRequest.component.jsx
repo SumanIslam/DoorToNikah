@@ -26,7 +26,7 @@ const ContactRequestComponent = () => {
           <div className="container button-container">
             <button type="button" className="btn biodata-btn-2">
               <a
-                href="https://www.youtube.com/watch?v=ZP0RbKk2v-E&feature=youtu.be"
+                href="https://youtu.be/eicDuBRkcds"
                 target="blank"
               >
                 যেভাবে আবেদন করবেন (ভিডিও)

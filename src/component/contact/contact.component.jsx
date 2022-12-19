@@ -51,6 +51,7 @@ const Contact = () => {
                 name="user_name"
                 className="input-field"
                 placeholder=""
+                required
               />
 
               <h6>ইমেইল</h6>
@@ -59,6 +60,7 @@ const Contact = () => {
                 name="user_email"
                 className="input-field"
                 placeholder=""
+                required
               />
 
               <h6>বিষয়</h6>
@@ -67,6 +69,7 @@ const Contact = () => {
                 name="user_subject"
                 className="input-field"
                 placeholder=""
+                required
               />
 
               <h6>আপনার বার্তা</h6>
@@ -74,6 +77,7 @@ const Contact = () => {
                 name="message"
                 className="input-field textarea"
                 placeholder=""
+                required
               ></textarea>
               <button
                 type="submit"
