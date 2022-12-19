@@ -1,43 +1,49 @@
-import React from "react";
+import { useEffect } from "react";
+
+// component
+import BiodatasShowcase from "../biodatas-showcase/biodatas-showcase.component";
+
+// useBiodatas context
+import useBiodatas from "../../hooks/useBiodatas";
+
+// api
+import {
+	httpGETUnapprovedBiodatas,
+	httpGETUnapprovedBiodatasWithPagination,
+} from '../../services/request';
 
 const ManageBiodataComponent = () => {
+  const { page, setBiodatas, setCount } = useBiodatas();
+
+  useEffect(() => {
+		const getUnapprovedBiodatas = async () => {
+			const unapprovedBiodatas = await httpGETUnapprovedBiodatas();
+			const unapprovedBiodatasWithPagination =
+				await httpGETUnapprovedBiodatasWithPagination(page);
+
+			if (unapprovedBiodatas?.length) {
+				setCount(Math.ceil(unapprovedBiodatas.length / 12));
+			} else if (unapprovedBiodatasWithPagination?.date) {
+				setCount(0);
+			} else {
+				setCount(0);
+			}
+
+			if (unapprovedBiodatasWithPagination?.length) {
+				setBiodatas(unapprovedBiodatasWithPagination);
+			} else if (unapprovedBiodatasWithPagination?.date) {
+				setBiodatas(unapprovedBiodatasWithPagination);
+			} else {
+				setBiodatas(null);
+			}
+		};
+
+		getUnapprovedBiodatas();
+	}, [page]);
+
   return (
     <>
-      <table className="table table-striped">
-        <thead>
-          <tr>
-            <th scope="col">Biodata No</th>
-            <th scope="col">Phone Number</th>
-            <th scope="col">Email ID</th>
-            <th scope="col">Father's Name</th>
-            <th scope="col">Mother's Name</th>
-            <th scope="col">Action</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <th scope="row">1</th>
-            <td>01610726728</td>
-            <td>imsamrat24@gmail.com</td>
-            <td>Md. Lal Mian</td>
-            <td>Mst. Sultana Begum</td>
-          </tr>
-          <tr>
-            <th scope="row">2</th>
-            <td>01610726728</td>
-            <td>imsamrat24@gmail.com</td>
-            <td>Md. Lal Mian</td>
-            <td>Mst. Sultana Begum</td>
-          </tr>
-          <tr>
-            <th scope="row">3</th>
-            <td>01610726728</td>
-            <td>imsamrat24@gmail.com</td>
-            <td>Md. Lal Mian</td>
-            <td>Mst. Sultana Begum</td>
-          </tr>
-        </tbody>
-      </table>
+    	<BiodatasShowcase admin={true} />
     </>
   );
 };

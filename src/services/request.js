@@ -89,7 +89,7 @@ export async function httpPOSTResetPassword(email) {
 // change password
 export async function httpPOSTChangePassword(userData) {
 	const res = await axios.post(`${API_URL}/password/change-password`, userData);
-	console.log(res.data);
+	// console.log(res.data);
 	return res.data;
 }
 
@@ -100,35 +100,47 @@ export async function httpPOSTSaveContactRequest(contactRequestDetails) {
 		`${API_URL}/contact-request`,
 		contactRequestDetails
 	);
-	console.log(res.data);
+	// console.log(res.data);
 	return res.data;
 }
 
 /* ADMIN PANEL RELATED */
-// get biodatas uploaded this week
-export async function httpGETBiodatasOfThisWeek() {
-	const res = await axios.post(`${API_URL}/biodatas/this-week`);
+// get total users count
+export async function httpGETUsersCount() {
+	const res = await axios.get(`${API_URL}/users/userCount`);
+
+	// console.log(res.data);
+	return res.data;
+}
+
+// get all unapproved biodatas
+export async function httpGETUnapprovedBiodatas() {
+	const res = await axios.get(`${API_URL}/biodatas/unapproved-biodatas`);
+
 	console.log(res.data);
 	return res.data;
 }
 
-// get biodatas uploaded in 15 days
-export async function httpGETBiodatasOf15Days() {
-	const res = await axios.post(`${API_URL}/biodatas/15days`);
+// get all unapproved biodatas
+export async function httpGETUnapprovedBiodatasWithPagination(page) {
+	const res = await axios.get(
+		`${API_URL}/biodatas/unapproved-biodatas-pagination`,
+		{
+			params: {
+				page: page,
+			},
+		}
+	);
+
 	console.log(res.data);
 	return res.data;
 }
 
-// get biodatas uploaded this month
-export async function httpGETBiodatasOfThisMonth() {
-	const res = await axios.post(`${API_URL}/biodatas/this-month`);
-	console.log(res.data);
-	return res.data;
-}
+export async function httpPOSTAcceptedBiodata(biodata) {
+	const res = await axios.post(
+		`${API_URL}/biodatas/accepted`, biodata
+	);
 
-// get biodatas uploaded this year
-export async function httpGETBiodatasOfThisYear() {
-	const res = await axios.post(`${API_URL}/biodatas/this-year`);
 	console.log(res.data);
 	return res.data;
 }

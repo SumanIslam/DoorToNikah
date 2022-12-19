@@ -5,7 +5,7 @@ import Male from '../../asset/Male-v2.svg'
 import Female from '../../asset/Female-v2.svg'
 import "./short-profile.css";
 
-function ShortProfile({ biodata }) {
+function ShortProfile({ biodata, admin }) {
     return (
 			<div className='short-profile'>
 				<div className='avatar'>
@@ -45,9 +45,23 @@ function ShortProfile({ biodata }) {
 					</p>
 				</div>
 				<div className='short-profile-button'>
-					<Link to={`/biodatas/${biodata?.biodataId}`} className='short-profile-btn-element' state={biodata}>
-						সম্পূর্ণ বায়োডাটা
-					</Link>
+					{admin ? (
+						<Link
+							to={`${biodata?.biodataId}`}
+							className='short-profile-btn-element'
+							state={biodata}
+						>
+							সম্পূর্ণ বায়োডাটা
+						</Link>
+					) : (
+						<Link
+							to={`/biodatas/${biodata?.biodataId}`}
+							className='short-profile-btn-element'
+							state={biodata}
+						>
+							সম্পূর্ণ বায়োডাটা
+						</Link>
+					)}
 				</div>
 			</div>
 		);

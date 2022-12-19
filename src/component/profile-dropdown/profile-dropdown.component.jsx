@@ -107,12 +107,9 @@ const ProfileDropdown = () => {
 				</li>
 				{auth?.roles?.Admin === 5056 && (
 					<li>
-						<Link
-							className='dropdown-item'
-							to='/adminPanel'
-						>
+						<Link className='dropdown-item' to='/adminPanel/dashboard'>
 							Admin Dashboard
-						</Link> 
+						</Link>
 					</li>
 				)}
 				<LogoutConsent
