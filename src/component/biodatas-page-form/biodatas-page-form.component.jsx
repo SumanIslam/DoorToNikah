@@ -26,8 +26,6 @@ import './biodatas-page-form.style.scss';
 const BiodatasPageForm = ({ admin }) => {
 	const {page, setBiodatas, setCount, setIsLoading} = useBiodatas();
 
-	console.log(admin);
-
 	const location = useLocation();
 
 	const [searchData, setSearchData] = useState({

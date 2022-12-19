@@ -38,8 +38,7 @@ function BiodataDetailsContainer({ biodataDetails, admin }) {
 		const biodata = {...biodataDetails, isApproved: true}
 
 		try {
-			const acceptedBiodata = await httpPOSTAcceptedBiodata(biodata)
-			console.log(acceptedBiodata);
+			await httpPOSTAcceptedBiodata(biodata)
 			toast.success('Biodata is Accepted')
 			setTimeout(() => {
 				navigate('/adminPanel/manageBiodatas');

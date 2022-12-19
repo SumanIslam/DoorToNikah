@@ -4,6 +4,7 @@ import DashboardIcon from "@mui/icons-material/Dashboard";
 import MenuIcon from "@mui/icons-material/Menu";
 import RuleIcon from '@mui/icons-material/Rule';
 import ScoreboardIcon from "@mui/icons-material/Scoreboard";
+import ContactMailIcon from '@mui/icons-material/ContactMail';
 import SettingsIcon from "@mui/icons-material/Settings";
 import MuiAppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
@@ -28,6 +29,8 @@ import ManageBiodataComponent from "../manage-biodata/manageBiodata.component";
 import Settings from "../manage-biodata/settings.component";
 import TotalBiodata from "../manage-biodata/totalBiodata.component";
 import UnapprovedBiodataProfile from "../manage-biodata/unapproved-biodata-profile/unapproved-biodata-profiile";
+import ManageContactRequest from "../manage-biodata/manage-contact-request/manage-contact-request.component";
+import ContactRequestDetails from "../manage-biodata/manage-contact-request/contact-request-details.component";
 
 const drawerWidth = 240;
 
@@ -126,10 +129,16 @@ const AdminPanelComponent = (props) => {
 			icon: <ScoreboardIcon />,
 			onClick: () =>
 				navigate('totalBiodata', {
-					state: { 
+					state: {
 						searchData: searchData,
 					},
 				}),
+		},
+		{
+			text: 'Contact Request',
+			icon: <ContactMailIcon />,
+			onClick: () =>
+				navigate('manage-contact-request'),
 		},
 		{
 			text: 'Settings',
@@ -231,7 +240,13 @@ const AdminPanelComponent = (props) => {
 							path='/manageBiodatas/:biodataId'
 							element={<UnapprovedBiodataProfile />}
 						/>
+						<Route
+							path='/manageBiodatas/:biodataId'
+							element={<UnapprovedBiodataProfile />}
+						/>
 						<Route path='/totalBiodata' element={<TotalBiodata />} />
+						<Route path='/manage-contact-request' element={<ManageContactRequest />} />
+						<Route path='/manage-contact-request/:id' element={<ContactRequestDetails />} />
 						<Route path='/settings' element={<Settings />} />
 					</Routes>
 				</Box>
