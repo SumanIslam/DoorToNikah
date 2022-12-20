@@ -27,7 +27,7 @@ const Settings = () => {
           />
         </div>
         <div class="col-auto">
-          <button type="submit" className="btn mb-3" style={{backgroundColor: "#ad277c", color:"#fff"}}>
+          <button type="button" className="btn mb-3" style={{backgroundColor: "#ad277c", color:"#fff"}}>
             Submit
           </button>
         </div>
