@@ -118,7 +118,7 @@ const DashBoard = () => {
 					sx={{
 						width: 300,
 						height: 150,
-						backgroundColor: '#FFC100',
+						backgroundColor: '#198754',
 						color: '#fff',
 						margin: '1rem',
 						padding: '0 0.7rem',
@@ -128,7 +128,7 @@ const DashBoard = () => {
 						justifyContent: 'space-between',
 						flexWrap: 'wrap',
 						'&:hover': {
-							backgroundColor: '#FFC100',
+							backgroundColor: '#198754',
 						},
 					}}
 				>
@@ -221,7 +221,7 @@ const DashBoard = () => {
 					sx={{
 						width: 300,
 						height: 150,
-						backgroundColor: '#FFC100',
+						backgroundColor: '#198754',
 						color: '#fff',
 						margin: '1rem',
 						padding: '0 0.7rem',
@@ -231,7 +231,7 @@ const DashBoard = () => {
 						justifyContent: 'space-between',
 						flexWrap: 'wrap',
 						'&:hover': {
-							backgroundColor: '#FFC100',
+							backgroundColor: '#198754',
 						},
 					}}
 				>
@@ -327,7 +327,7 @@ const DashBoard = () => {
 					sx={{
 						width: 300,
 						height: 150,
-						backgroundColor: '#FFC100',
+						backgroundColor: '#198754',
 						color: '#fff',
 						margin: '1rem',
 						padding: '0 0.7rem',
@@ -337,7 +337,7 @@ const DashBoard = () => {
 						justifyContent: 'space-between',
 						flexWrap: 'wrap',
 						'&:hover': {
-							backgroundColor: '#FFC100',
+							backgroundColor: '#198754',
 						},
 					}}
 				>
@@ -435,7 +435,7 @@ const DashBoard = () => {
 					sx={{
 						width: 300,
 						height: 150,
-						backgroundColor: '#FFC100',
+						backgroundColor: '#198754',
 						color: '#fff',
 						margin: '1rem',
 						padding: '0 0.7rem',
@@ -445,7 +445,7 @@ const DashBoard = () => {
 						justifyContent: 'space-between',
 						flexWrap: 'wrap',
 						'&:hover': {
-							backgroundColor: '#FFC100',
+							backgroundColor: '#198754',
 						},
 					}}
 				>
