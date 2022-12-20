@@ -48,7 +48,7 @@ const DashBoard = () => {
 					sx={{
 						width: 300,
 						height: 150,
-						backgroundColor: '#522b79',
+						backgroundColor: '#71C02B',
 						color: '#fff',
 						margin: '1rem',
 						padding: '0 0.7rem',
@@ -58,7 +58,7 @@ const DashBoard = () => {
 						justifyContent: 'space-between',
 						flexWrap: 'wrap',
 						'&:hover': {
-							backgroundColor: '#522b79',
+							backgroundColor: '#71C02B',
 						},
 					}}
 				>
@@ -67,13 +67,13 @@ const DashBoard = () => {
 							padding: '0 1rem',
 						}}
 					>
-						<Typography sx={{ color: '#dccbcb' }}>New Biodatas</Typography>
+						<Typography sx={{ color: '#fff' }}>New Biodatas</Typography>
 						<Typography
-							sx={{ fontSize: '1.5rem', margin: '0.2rem 0', color: '#c64d99' }}
+							sx={{ fontSize: '1.5rem', margin: '0.2rem 0', color: '#fff' }}
 						>
 							{counts?.biodataCount?.totalBiodataUploadedThisWeekCount}
 						</Typography>
-						<Typography sx={{ color: '#dccbcb' }}>(This Week)</Typography>
+						<Typography sx={{ color: '#fff' }}>(This Week)</Typography>
 					</Box>
 					<TodayIcon />
 				</Box>
@@ -83,7 +83,7 @@ const DashBoard = () => {
 					sx={{
 						width: 300,
 						height: 150,
-						backgroundColor: '#522b79',
+						backgroundColor: '#0D6EFD',
 						color: '#fff',
 						margin: '1rem',
 						padding: '0 0.7rem',
@@ -93,7 +93,7 @@ const DashBoard = () => {
 						justifyContent: 'space-between',
 						flexWrap: 'wrap',
 						'&:hover': {
-							backgroundColor: '#522b79',
+							backgroundColor: '#0D6EFD',
 						},
 					}}
 				>
@@ -102,13 +102,13 @@ const DashBoard = () => {
 							padding: '0 1rem',
 						}}
 					>
-						<Typography sx={{ color: '#dccbcb' }}>New Biodatas</Typography>
+						<Typography sx={{ color: '#fff' }}>New Biodatas</Typography>
 						<Typography
-							sx={{ fontSize: '1.5rem', margin: '0.2rem 0', color: '#c64d99' }}
+							sx={{ fontSize: '1.5rem', margin: '0.2rem 0', color: '#fff' }}
 						>
 							{counts?.biodataCount?.totalBiodataUploadedIn15DaysCount}
 						</Typography>
-						<Typography sx={{ color: '#dccbcb' }}>(Last 15 days)</Typography>
+						<Typography sx={{ color: '#fff' }}>(Last 15 days)</Typography>
 					</Box>
 					<DateRangeIcon />
 				</Box>
@@ -118,7 +118,7 @@ const DashBoard = () => {
 					sx={{
 						width: 300,
 						height: 150,
-						backgroundColor: '#522b79',
+						backgroundColor: '#FFC100',
 						color: '#fff',
 						margin: '1rem',
 						padding: '0 0.7rem',
@@ -128,7 +128,7 @@ const DashBoard = () => {
 						justifyContent: 'space-between',
 						flexWrap: 'wrap',
 						'&:hover': {
-							backgroundColor: '#522b79',
+							backgroundColor: '#FFC100',
 						},
 					}}
 				>
@@ -137,13 +137,13 @@ const DashBoard = () => {
 							padding: '0 1rem',
 						}}
 					>
-						<Typography sx={{ color: '#dccbcb' }}>New Biodatas</Typography>
+						<Typography sx={{ color: '#fff' }}>New Biodatas</Typography>
 						<Typography
-							sx={{ fontSize: '1.5rem', margin: '0.2rem 0', color: '#c64d99' }}
+							sx={{ fontSize: '1.5rem', margin: '0.2rem 0', color: '#fff' }}
 						>
 							{counts?.biodataCount?.totalBiodataUploadedInaMonthCount}
 						</Typography>
-						<Typography sx={{ color: '#dccbcb' }}>(This Month)</Typography>
+						<Typography sx={{ color: '#fff' }}>(This Month)</Typography>
 					</Box>
 					<InsertInvitationIcon />
 				</Box>
@@ -153,7 +153,7 @@ const DashBoard = () => {
 					sx={{
 						width: 300,
 						height: 150,
-						backgroundColor: '#522b79',
+						backgroundColor: '#71C02B',
 						color: '#fff',
 						margin: '1rem',
 						padding: '0 0.7rem',
@@ -163,7 +163,7 @@ const DashBoard = () => {
 						justifyContent: 'space-between',
 						flexWrap: 'wrap',
 						'&:hover': {
-							backgroundColor: '#522b79',
+							backgroundColor: '#71C02B',
 						},
 					}}
 				>
@@ -172,13 +172,13 @@ const DashBoard = () => {
 							padding: '0 1rem',
 						}}
 					>
-						<Typography sx={{ color: '#dccbcb' }}>New Biodatas</Typography>
+						<Typography sx={{ color: '#fff' }}>New Biodatas</Typography>
 						<Typography
-							sx={{ fontSize: '1.5rem', margin: '0.2rem 0', color: '#c64d99' }}
+							sx={{ fontSize: '1.5rem', margin: '0.2rem 0', color: '#fff' }}
 						>
 							{counts?.biodataCount?.totalBiodataUploadedInaYearCount}
 						</Typography>
-						<Typography sx={{ color: '#dccbcb' }}>(This Year)</Typography>
+						<Typography sx={{ color: '#fff' }}>(This Year)</Typography>
 					</Box>
 					<CalendarMonthIcon />
 				</Box>
@@ -187,7 +187,7 @@ const DashBoard = () => {
 					sx={{
 						width: 300,
 						height: 150,
-						backgroundColor: '#522b79',
+						backgroundColor: '#0D6EFD',
 						color: '#fff',
 						margin: '1rem',
 						padding: '0 0.7rem',
@@ -197,7 +197,7 @@ const DashBoard = () => {
 						justifyContent: 'space-between',
 						flexWrap: 'wrap',
 						'&:hover': {
-							backgroundColor: '#522b79',
+							backgroundColor: '#0D6EFD',
 						},
 					}}
 				>
@@ -206,9 +206,9 @@ const DashBoard = () => {
 							padding: '0 1rem',
 						}}
 					>
-						<Typography sx={{ color: '#dccbcb' }}>Total Biodatas</Typography>
+						<Typography sx={{ color: '#fff' }}>Total Biodatas</Typography>
 						<Typography
-							sx={{ fontSize: '1.5rem', margin: '0.2rem 0', color: '#c64d99' }}
+							sx={{ fontSize: '1.5rem', margin: '0.2rem 0', color: '#fff' }}
 						>
 							{counts?.biodataCount?.totalBiodataCount}
 						</Typography>
@@ -221,7 +221,7 @@ const DashBoard = () => {
 					sx={{
 						width: 300,
 						height: 150,
-						backgroundColor: '#522b79',
+						backgroundColor: '#FFC100',
 						color: '#fff',
 						margin: '1rem',
 						padding: '0 0.7rem',
@@ -231,7 +231,7 @@ const DashBoard = () => {
 						justifyContent: 'space-between',
 						flexWrap: 'wrap',
 						'&:hover': {
-							backgroundColor: '#522b79',
+							backgroundColor: '#FFC100',
 						},
 					}}
 				>
@@ -240,11 +240,11 @@ const DashBoard = () => {
 							padding: '0 1rem',
 						}}
 					>
-						<Typography sx={{ color: '#dccbcb' }}>
+						<Typography sx={{ color: '#fff' }}>
 							Total Male Biodatas
 						</Typography>
 						<Typography
-							sx={{ fontSize: '1.5rem', margin: '0.2rem 0', color: '#c64d99' }}
+							sx={{ fontSize: '1.5rem', margin: '0.2rem 0', color: '#fff' }}
 						>
 							{counts?.biodataCount?.totalMaleBiodataCount}
 						</Typography>
@@ -257,7 +257,7 @@ const DashBoard = () => {
 					sx={{
 						width: 300,
 						height: 150,
-						backgroundColor: '#522b79',
+						backgroundColor: '#71C02B',
 						color: '#fff',
 						margin: '1rem',
 						padding: '0 0.7rem',
@@ -267,7 +267,7 @@ const DashBoard = () => {
 						justifyContent: 'space-between',
 						flexWrap: 'wrap',
 						'&:hover': {
-							backgroundColor: '#522b79',
+							backgroundColor: '#71C02B',
 						},
 					}}
 				>
@@ -276,11 +276,11 @@ const DashBoard = () => {
 							padding: '0 1rem',
 						}}
 					>
-						<Typography sx={{ color: '#dccbcb' }}>
+						<Typography sx={{ color: '#fff' }}>
 							Total Female Biodatas
 						</Typography>
 						<Typography
-							sx={{ fontSize: '1.5rem', margin: '0.2rem 0', color: '#c64d99' }}
+							sx={{ fontSize: '1.5rem', margin: '0.2rem 0', color: '#fff' }}
 						>
 							{counts?.biodataCount?.totalFemaleBiodataCount}
 						</Typography>
@@ -293,7 +293,7 @@ const DashBoard = () => {
 					sx={{
 						width: 300,
 						height: 150,
-						backgroundColor: '#522b79',
+						backgroundColor: '#0D6EFD',
 						color: '#fff',
 						margin: '1rem',
 						padding: '0 0.7rem',
@@ -303,7 +303,7 @@ const DashBoard = () => {
 						justifyContent: 'space-between',
 						flexWrap: 'wrap',
 						'&:hover': {
-							backgroundColor: '#522b79',
+							backgroundColor: '#0D6EFD',
 						},
 					}}
 				>
@@ -312,9 +312,9 @@ const DashBoard = () => {
 							padding: '0 1rem',
 						}}
 					>
-						<Typography sx={{ color: '#dccbcb' }}>Total Users</Typography>
+						<Typography sx={{ color: '#fff' }}>Total Users</Typography>
 						<Typography
-							sx={{ fontSize: '1.5rem', margin: '0.2rem 0', color: '#c64d99' }}
+							sx={{ fontSize: '1.5rem', margin: '0.2rem 0', color: '#fff' }}
 						>
 							{counts?.totalUsersCount}
 						</Typography>
@@ -327,7 +327,7 @@ const DashBoard = () => {
 					sx={{
 						width: 300,
 						height: 150,
-						backgroundColor: '#522b79',
+						backgroundColor: '#FFC100',
 						color: '#fff',
 						margin: '1rem',
 						padding: '0 0.7rem',
@@ -337,7 +337,7 @@ const DashBoard = () => {
 						justifyContent: 'space-between',
 						flexWrap: 'wrap',
 						'&:hover': {
-							backgroundColor: '#522b79',
+							backgroundColor: '#FFC100',
 						},
 					}}
 				>
@@ -346,11 +346,11 @@ const DashBoard = () => {
 							padding: '0 1rem',
 						}}
 					>
-						<Typography sx={{ color: '#dccbcb' }}>
+						<Typography sx={{ color: '#fff' }}>
 							Total Unmarried Biodata
 						</Typography>
 						<Typography
-							sx={{ fontSize: '1.5rem', margin: '0.2rem 0', color: '#c64d99' }}
+							sx={{ fontSize: '1.5rem', margin: '0.2rem 0', color: '#fff' }}
 						>
 							{counts?.biodataCount?.totalUnmarriedBiodataCount}
 						</Typography>
@@ -363,7 +363,7 @@ const DashBoard = () => {
 					sx={{
 						width: 300,
 						height: 150,
-						backgroundColor: '#522b79',
+						backgroundColor: '#71C02B',
 						color: '#fff',
 						margin: '1rem',
 						padding: '0 0.7rem',
@@ -373,7 +373,7 @@ const DashBoard = () => {
 						justifyContent: 'space-between',
 						flexWrap: 'wrap',
 						'&:hover': {
-							backgroundColor: '#522b79',
+							backgroundColor: '#71C02B',
 						},
 					}}
 				>
@@ -382,11 +382,11 @@ const DashBoard = () => {
 							padding: '0 1rem',
 						}}
 					>
-						<Typography sx={{ color: '#dccbcb' }}>
+						<Typography sx={{ color: '#fff' }}>
 							Total Married Biodata
 						</Typography>
 						<Typography
-							sx={{ fontSize: '1.5rem', margin: '0.2rem 0', color: '#c64d99' }}
+							sx={{ fontSize: '1.5rem', margin: '0.2rem 0', color: '#fff' }}
 						>
 							{counts?.biodataCount?.totalMarriedBiodataCount}
 						</Typography>
@@ -399,7 +399,7 @@ const DashBoard = () => {
 					sx={{
 						width: 300,
 						height: 150,
-						backgroundColor: '#522b79',
+						backgroundColor: '#0D6EFD',
 						color: '#fff',
 						margin: '1rem',
 						padding: '0 0.7rem',
@@ -409,7 +409,7 @@ const DashBoard = () => {
 						justifyContent: 'space-between',
 						flexWrap: 'wrap',
 						'&:hover': {
-							backgroundColor: '#522b79',
+							backgroundColor: '#0D6EFD',
 						},
 					}}
 				>
@@ -418,11 +418,11 @@ const DashBoard = () => {
 							padding: '0 1rem',
 						}}
 					>
-						<Typography sx={{ color: '#dccbcb' }}>
+						<Typography sx={{ color: '#fff' }}>
 							Total Divorced Biodata
 						</Typography>
 						<Typography
-							sx={{ fontSize: '1.5rem', margin: '0.2rem 0', color: '#c64d99' }}
+							sx={{ fontSize: '1.5rem', margin: '0.2rem 0', color: '#fff' }}
 						>
 							{counts?.biodataCount?.totalDivorcedBiodataCount}
 						</Typography>
@@ -435,7 +435,7 @@ const DashBoard = () => {
 					sx={{
 						width: 300,
 						height: 150,
-						backgroundColor: '#522b79',
+						backgroundColor: '#FFC100',
 						color: '#fff',
 						margin: '1rem',
 						padding: '0 0.7rem',
@@ -445,7 +445,7 @@ const DashBoard = () => {
 						justifyContent: 'space-between',
 						flexWrap: 'wrap',
 						'&:hover': {
-							backgroundColor: '#522b79',
+							backgroundColor: '#FFC100',
 						},
 					}}
 				>
@@ -454,11 +454,11 @@ const DashBoard = () => {
 							padding: '0 1rem',
 						}}
 					>
-						<Typography sx={{ color: '#dccbcb' }}>
+						<Typography sx={{ color: '#fff' }}>
 							Total Widow Biodata
 						</Typography>
 						<Typography
-							sx={{ fontSize: '1.5rem', margin: '0.2rem 0', color: '#c64d99' }}
+							sx={{ fontSize: '1.5rem', margin: '0.2rem 0', color: '#fff' }}
 						>
 							{counts?.biodataCount?.totalWidowBiodataCount}
 						</Typography>
@@ -471,7 +471,7 @@ const DashBoard = () => {
 					sx={{
 						width: 300,
 						height: 150,
-						backgroundColor: '#522b79',
+						backgroundColor: '#0D6EFD',
 						color: '#fff',
 						margin: '1rem',
 						padding: '0 0.7rem',
@@ -481,7 +481,7 @@ const DashBoard = () => {
 						justifyContent: 'space-between',
 						flexWrap: 'wrap',
 						'&:hover': {
-							backgroundColor: '#522b79',
+							backgroundColor: '#0D6EFD',
 						},
 					}}
 				>
@@ -490,11 +490,11 @@ const DashBoard = () => {
 							padding: '0 1rem',
 						}}
 					>
-						<Typography sx={{ color: '#dccbcb' }}>
+						<Typography sx={{ color: '#fff' }}>
 							Total Widower Biodata
 						</Typography>
 						<Typography
-							sx={{ fontSize: '1.5rem', margin: '0.2rem 0', color: '#c64d99' }}
+							sx={{ fontSize: '1.5rem', margin: '0.2rem 0', color: '#fff' }}
 						>
 							{counts?.biodataCount?.totalWidowerBiodataCount}
 						</Typography>
