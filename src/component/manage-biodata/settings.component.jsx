@@ -3,8 +3,8 @@ import React from "react";
 const Settings = () => {
   return (
     <>
-      <form className="row g-3">
-        <h1>Manage Roles</h1>
+      <form className="row g-3 justify-content-center">
+        <h1 className="row g-3 justify-content-center">Manage Roles</h1>
         <div className="col-auto">
           <label for="exampleFormControlInput1" className="visually-hidden">
             Email
