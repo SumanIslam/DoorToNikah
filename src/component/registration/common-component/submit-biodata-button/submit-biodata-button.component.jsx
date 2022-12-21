@@ -22,22 +22,19 @@ const SubmitBiodataButton = ({ saved, candidatesInfo }) => {
 	const { setCandidatesInfo } = useRegistration();
 
   candidatesInfo = {...candidatesInfo, biodataId: auth?.biodataId}
-  
-  const handleClick = async (e) => {
-    e.preventDefault();
+
+	const handleClick = async (e) => {
+		e.preventDefault();
 
 		try {
-			const biodata = await httpSaveBiodata(candidatesInfo);
-			console.log(biodata);
+			await httpSaveBiodata(candidatesInfo);
 			setLoading(true);
+
 			// set candidates info in registration context
-			setCandidatesInfo(biodata);
+			setCandidatesInfo(candidatesInfo);
 
 			// set candidates info in local storage
-			localStorage.setItem(
-				'candidatesInfo',
-				JSON.stringify(biodata)
-			);
+			localStorage.setItem('candidatesInfo', JSON.stringify(candidatesInfo));
 			setTimeout(() => {
 				setLoading(false);
 				handleSuccess('Your Biodata is Saved SuccessFully');
@@ -50,7 +47,8 @@ const SubmitBiodataButton = ({ saved, candidatesInfo }) => {
 				handleError(errorMsg);
 			}, 2000);
 		}
-  }
+	};
+  
   return (
 		<div className='submit-btn-container'>
 			{saved &&
