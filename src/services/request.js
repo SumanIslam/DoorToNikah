@@ -31,6 +31,7 @@ export async function httpLogOutUser() {
 // biodata registration
 export async function httpSaveBiodata(candidatesInfo) {
 	const res = await axios.post(`${API_URL}/registration`, candidatesInfo);
+	console.log(res.data);
 	return res.data;
 }
 
