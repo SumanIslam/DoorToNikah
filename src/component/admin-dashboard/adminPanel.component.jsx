@@ -6,6 +6,7 @@ import RuleIcon from '@mui/icons-material/Rule';
 import ScoreboardIcon from "@mui/icons-material/Scoreboard";
 import ContactMailIcon from '@mui/icons-material/ContactMail';
 import SettingsIcon from "@mui/icons-material/Settings";
+import HomeIcon from '@mui/icons-material/Home';
 import MuiAppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import CssBaseline from "@mui/material/CssBaseline";
@@ -141,9 +142,14 @@ const AdminPanelComponent = (props) => {
 				navigate('manage-contact-request'),
 		},
 		{
-			text: 'Settings',
+			text: 'Manage Roles',
 			icon: <SettingsIcon />,
 			onClick: () => navigate('settings'),
+		},
+		{
+			text: 'Home',
+			icon: <HomeIcon />,
+			onClick: () => navigate('/'),
 		},
 	];
   const handleDrawerOpen = () => {
