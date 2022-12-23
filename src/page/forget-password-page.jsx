@@ -41,13 +41,14 @@ const ForgetPasswordPage = () => {
 		<>
 			<Header />
 			<ThemeProvider theme={theme}>
-				<Container component='main' maxWidth='xs'>
+				<Container component='main' maxWidth='xs' sx={{height: "60vh"}}>
 					<ToastContainer />
 					<Box
 						sx={{
 							marginTop: 8,
 							display: 'flex',
 							flexDirection: 'column',
+							justifyContent: 'center',
 							alignItems: 'center',
 						}}
 					>
