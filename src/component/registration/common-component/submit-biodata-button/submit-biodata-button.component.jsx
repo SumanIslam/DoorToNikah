@@ -3,6 +3,8 @@ import { useState } from 'react';
 // api
 import { httpSaveBiodata } from '../../../../services/request';
 
+// biodatas context
+import useRegistration from '../../../../hooks/useRegistration';
 // auth context
 import useAuth from '../../../../hooks/useAuth';
 
@@ -14,19 +16,25 @@ import { ToastContainer } from 'react-toastify';
 // styles
 import './submit-biodata.button.style.scss';
 
-const SubmitBiodataButton = ({ saved,candidatesInfo }) => {
+const SubmitBiodataButton = ({ saved, candidatesInfo }) => {
   const [loading, setLoading] = useState(false);
   const { auth } = useAuth();
+	const { setCandidatesInfo } = useRegistration();
 
   candidatesInfo = {...candidatesInfo, biodataId: auth?.biodataId}
-  
-  const handleClick = async (e) => {
-    e.preventDefault();
+
+	const handleClick = async (e) => {
+		e.preventDefault();
 
 		try {
-			const biodata = await httpSaveBiodata(candidatesInfo);
-			console.log(biodata);
+			await httpSaveBiodata(candidatesInfo);
 			setLoading(true);
+
+			// set candidates info in registration context
+			setCandidatesInfo(candidatesInfo);
+
+			// set candidates info in local storage
+			localStorage.setItem('candidatesInfo', JSON.stringify(candidatesInfo));
 			setTimeout(() => {
 				setLoading(false);
 				handleSuccess('Your Biodata is Saved SuccessFully');
@@ -39,7 +47,8 @@ const SubmitBiodataButton = ({ saved,candidatesInfo }) => {
 				handleError(errorMsg);
 			}, 2000);
 		}
-  }
+	};
+  
   return (
 		<div className='submit-btn-container'>
 			{saved &&

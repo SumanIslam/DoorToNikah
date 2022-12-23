@@ -12,18 +12,17 @@ import TextField from '@mui/material/TextField';
 import Typography from '@mui/material/Typography';
 
 // assets
-import Facebook from '../../asset/facebook.png';
-import Github from '../../asset/github.png';
-import Google from '../../asset/google.png';
 
-// auth context
+// auth, registration context
 import useAuth from '../../hooks/useAuth';
+import useRegistration from '../../hooks/useRegistration';
+
 
 // styles
 import './login.styles.scss';
 
 // request
-import { httpLoginUser } from '../../services/request';
+import { httpGetSingleBiodata, httpLoginUser } from '../../services/request';
 
 // react toastify
 import { toast, ToastContainer } from 'react-toastify';
@@ -32,6 +31,7 @@ import 'react-toastify/dist/ReactToastify.css';
 const Login = () => {
 	const navigate = useNavigate();
 	const { setAuth } = useAuth();
+	const { setCandidatesInfo } = useRegistration();
 
 	const handleSubmit = async (event) => {
 		event.preventDefault();
@@ -43,13 +43,31 @@ const Login = () => {
 		try {
 			const user = await httpLoginUser(userData);
 			setAuth({ ...userData, ...user });
-			
+			// save auth to local storage
+			localStorage.setItem(
+				'auth',
+				JSON.stringify({
+					userId: user.userId,
+					biodataId: user.biodataId,
+					roles: user.roles,
+					userName: user.userName,
+					email: userData.email,
+				})
+			);
+
+			// get biodata 
+			const biodata = await httpGetSingleBiodata(user.biodataId);
+			console.log(biodata);
+			// set biodata to registration context
+			setCandidatesInfo({ ...biodata });
+			// set biodata to local storage
+			localStorage.setItem('candidatesInfo', JSON.stringify(biodata));
+
 			toast.success(
 				`${
 					user.userName ? user.userName : 'congratulations'
 				}, You are logged in`
 			);
-
 			setTimeout(() => {
 				navigate('/');
 			}, 2000);
@@ -63,9 +81,6 @@ const Login = () => {
 
 	return (
 		<div className='login'>
-			<h1 className='loginTitle'>Choose a Login Method</h1>
-			<div className='wrapper'>
-				<div className='left'>
 					<ThemeProvider theme={theme}>
 						<Container component='main' maxWidth='xs'>
 							<ToastContainer />
@@ -93,6 +108,7 @@ const Login = () => {
 										margin='normal'
 										required
 										fullWidth
+										type='email'
 										id='email'
 										label='Email Address'
 										name='email'
@@ -119,7 +135,7 @@ const Login = () => {
 									</Button>
 									<Grid container>
 										<Grid item xs>
-											<Link to='/' className='link'>
+											<Link to='/forget-password' className='link'>
 												Forgot password?
 											</Link>
 										</Grid>
@@ -134,23 +150,6 @@ const Login = () => {
 						</Container>
 					</ThemeProvider>
 				</div>
-				<div className='or'>OR</div>
-				<div className='right'>
-					<div className='loginButton google'>
-						<img src={Google} alt='' className='icon' />
-						Google
-					</div>
-					<div className='loginButton facebook'>
-						<img src={Facebook} alt='' className='icon' />
-						Facebook
-					</div>
-					<div className='loginButton github'>
-						<img src={Github} alt='' className='icon' />
-						Github
-					</div>
-				</div>
-			</div>
-		</div>
 	);
 };
 

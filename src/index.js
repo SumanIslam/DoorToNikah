@@ -6,15 +6,21 @@ import reportWebVitals from './reportWebVitals';
 import { BrowserRouter } from 'react-router-dom';
 import AuthProvider from './context/auth.context';
 import RegistrationProvider from './context/registration.context';
+import BiodatasProvider from './context/biodatas.context';
+// scroll to top
+import ScrollToTop from './services/scrollToTop';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
 	<React.StrictMode>
 		<AuthProvider>
 			<RegistrationProvider>
-				<BrowserRouter>
-					<App />
-				</BrowserRouter>
+				<BiodatasProvider>
+					<BrowserRouter>
+						<ScrollToTop />
+						<App />
+					</BrowserRouter>
+				</BiodatasProvider>
 			</RegistrationProvider>
 		</AuthProvider>
 	</React.StrictMode>

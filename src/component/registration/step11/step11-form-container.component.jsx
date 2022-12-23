@@ -18,12 +18,12 @@ const Step11FormContainer = () => {
 
 	const [contactInfo, setContactInfo] = useState({
 		guardiansPhoneNumber:
-			candidatesInfo.contactInfo?.guardiansPhoneNumber || '',
+			candidatesInfo?.contactInfo?.guardiansPhoneNumber || '',
 		relationWithGuardian:
-			candidatesInfo.contactInfo?.relationWithGuardian || '',
-		EmailForResponse: candidatesInfo.contactInfo?.EmailForResponse || '',
+			candidatesInfo?.contactInfo?.relationWithGuardian || '',
+		EmailForResponse: candidatesInfo?.contactInfo?.EmailForResponse || '',
 		candidatesPhoneNumber:
-			candidatesInfo.contactInfo?.candidatesPhoneNumber || '',
+			candidatesInfo?.contactInfo?.candidatesPhoneNumber || '',
 	});
 
 	const [loading, setLoading] = useState(false);

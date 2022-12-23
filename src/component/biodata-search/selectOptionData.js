@@ -1,22 +1,38 @@
 export const searchingFor = {
 	label: 'আমি খুঁজছি',
-	selected: 'সকল বায়োডাটা',
-	dropdown: true,
-	options: ['পাত্রের বায়োডাটা', 'পাত্রীর বায়োডাটা'],
-}
+	selected: {
+		option: '',
+		value: '',
+	},
+	options: ['সকল বায়োডাটা', 'পাত্রের বায়োডাটা', 'পাত্রীর বায়োডাটা'],
+};
 
 export const maritalStatus = {
 	label: 'বৈবাহিক অবস্থা',
-	selected: 'সকল',
-	dropdown: true,
-	options: ['অবিবাহিত', 'বিবাহিত', 'ডিভোর্সড', 'বিধবা', 'বিপত্নীক'],
+	selected: {
+		option: '',
+		value: '',
+	},
+	options: ['সকল', 'অবিবাহিত', 'বিবাহিত', 'ডিভোর্সড', 'বিধবা', 'বিপত্নীক'],
+};
+
+export const mediumOfStudy = {
+	label: 'পড়াশোনার মাধ্যম',
+	selected: {
+		value: '',
+		option: '',
+	},
+	options: ['সকল', 'মাদ্রাসা', 'জেনারেল'],
 };
 
 export const allDivision = {
 	label: 'বিভাগ',
-	selected: 'সকল বিভাগ',
-	dropdown: true,
+	selected: {
+		option: '',
+		value: '',
+	},
 	options: [
+		'সকল বিভাগ',
 		'ঢাকা বিভাগ',
 		'চট্টগ্রাম বিভাগ',
 		'রাজশাহী বিভাগ',
@@ -29,8 +45,12 @@ export const allDivision = {
 };
 
 export const allDistrict = {
-	selected: 'সকল জেলা',
+	selected: {
+		option: '----',
+		value: '',
+	},
 	options: [
+		'সকল জেলা',
 		'বাগেরহাট',
 		'বান্দরবান',
 		'বরগুনা',
@@ -99,7 +119,10 @@ export const allDistrict = {
 }; 
 
 export const dhakaDistrict = {
-	selected: 'গাজীপুর',
+	selected: {
+		option: '----',
+		value: '',
+	},
 	options: [
 		'নরসিংদী',
 		'গাজীপুর',
@@ -118,7 +141,10 @@ export const dhakaDistrict = {
 }; 
 
 export const chittagongDistrict = {
-	selected: 'রাঙ্গামাটি',
+	selected: {
+		option: '----',
+		value: '',
+	},
 	options: [
 		'কুমিল্লা',
 		'ফেনী',
@@ -135,7 +161,10 @@ export const chittagongDistrict = {
 };
 
 export const rajshahiDistrict = {
-	selected: 'সিরাজগঞ্জ',
+	selected: {
+		option: '----',
+		value: '',
+	},
 	options: [
 		'সিরাজগঞ্জ',
 		'পাবনা',
@@ -149,7 +178,10 @@ export const rajshahiDistrict = {
 };
 
 export const khulnaDistrict = {
-	selected: 'যশোর',
+	selected: {
+		option: '----',
+		value: '',
+	},
 	options: [
 		'যশোর',
 		'সাতক্ষীরা',
@@ -164,18 +196,26 @@ export const khulnaDistrict = {
 	],
 };
 export const barishalDistrict = {
-	selected: 'ঝালকাঠী',
+	selected: {
+		option: '----',
+		value: '',
+	},
 	options: ['ঝালকাঠী', 'পটুয়াখালী', 'পিরোজপুর', 'বরিশাল', 'ভোলা', 'বরগুনা'],
 };
 
 export const sylhetDistrict = {
-	selected: 'মৌলভীবাজার',
-	dropdown: true,
+	selected: {
+		option: '----',
+		value: '',
+	},
 	options: ['সিলেট', 'মৌলভীবাজার', 'হবিগঞ্জ', 'সুনামগঞ্জ'],
 };
 
 export const rangpurDistrict = {
-	selected: 'পঞ্চগড়',
+	selected: {
+		option: '----',
+		value: '',
+	},
 	options: [
 		'পঞ্চগড়',
 		'দিনাজপুর',
@@ -189,7 +229,10 @@ export const rangpurDistrict = {
 };
 
 export const moymonsinghDistrict = {
-	selected: 'শেরপুর',
+	selected: {
+		option: '----',
+		value: '',
+	},
 	options: ['শেরপুর', 'ময়মনসিংহ', 'জামালপুর', 'নেত্রকোনা'],
 };
 

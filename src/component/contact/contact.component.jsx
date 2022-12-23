@@ -5,7 +5,6 @@ import "react-toastify/dist/ReactToastify.css";
 // style
 import "../../styles/utils.scss";
 import "./contact.scss";
-
 const Contact = () => {
   const form = useRef();
 
@@ -39,42 +38,46 @@ const Contact = () => {
       <div className="mlr-lg mb-5">
         <div>
           <div className="contact_paragraph">
-            <p className="contact-para">
+            <p>
               আপনার যে কোন জিজ্ঞাসা নিম্নোক্ত ফর্মে পূরণ করে আমাদের কাছে পাঠিয়ে
               দিন। আমরা শীঘ্রই আপনার সাথে যোগাযোগ করবো ইন শা আল্লাহ।
             </p>
           </div>
           <div className="contact-form-div">
             <form ref={form} onSubmit={sendEmail} className="contact-form">
-              <h4>নাম</h4>
+              <h6>নাম</h6>
               <input
                 type="text"
                 name="user_name"
                 className="input-field"
                 placeholder=""
+                required
               />
 
-              <h4>ইমেইল</h4>
+              <h6>ইমেইল</h6>
               <input
                 type="email"
                 name="user_email"
                 className="input-field"
                 placeholder=""
+                required
               />
 
-              <h4>বিষয়</h4>
+              <h6>বিষয়</h6>
               <input
                 type="text"
                 name="user_subject"
                 className="input-field"
                 placeholder=""
+                required
               />
 
-              <h4>আপনার বার্তা</h4>
+              <h6>আপনার বার্তা</h6>
               <textarea
                 name="message"
                 className="input-field textarea"
                 placeholder=""
+                required
               ></textarea>
               <button
                 type="submit"

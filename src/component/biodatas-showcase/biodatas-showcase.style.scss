@@ -1,0 +1,24 @@
+.biodatas-showcase {
+  background-color: #fff;
+  padding: 3rem 2rem;
+  font-family: 'SolaimanLipi' !important;
+
+  h2 {
+    font-size: 3rem;
+    margin-bottom: 2rem;
+  }
+
+  .showcase-short-profile {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+  .skeleton {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    flex-wrap: wrap;
+  }
+}

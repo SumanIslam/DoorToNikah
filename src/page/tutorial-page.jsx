@@ -5,12 +5,14 @@ import Tutorial from "../component/tutorial/tutorial.component";
 import Header from "../component/header/header.component";
 import Footer  from '../component/footer/footer.component';
 
+
 const TutorialPage = () => {
   return (
 		<>
 			<Header />
-            < Tutorial />
+      <Tutorial />
 			<Footer />
+			
 		</>
 	);
 }
