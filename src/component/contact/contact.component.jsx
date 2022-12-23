@@ -7,7 +7,7 @@ import "../../styles/utils.scss";
 import "./contact.scss";
 const Contact = () => {
   const form = useRef();
-
+ 
   const sendEmail = (e) => {
     e.preventDefault();
 
@@ -22,16 +22,15 @@ const Contact = () => {
         (result) => {
           console.log(result.text);
           console.log("Message Sent");
+          toast.success("Message has been sent. We will contact to you shortly.");
         },
         (error) => {
           console.log(error.text);
         }
       );
-      e.target.reset(); //reset
+    e.target.reset(); //reset
   };
 
-  const notify = () =>
-    toast.success("Message has been sent. We will contact to you shortly.");
 
   return (
     <div className="container pt-4 pb-5">
@@ -83,7 +82,6 @@ const Contact = () => {
                 type="submit"
                 value="Send"
                 className="contact-button"
-                onClick={notify}
               >
                 পাঠান
               </button>
