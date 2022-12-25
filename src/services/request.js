@@ -180,3 +180,11 @@ export async function httpGETContactRequest() {
 	console.log(res.data);
 	return res.data;
 }
+
+// save roles
+export async function httpPOSTAdminPrivilege(adminPrivilege) {
+	const res = await axios.post(`${API_URL}/users/admin-privilege`, adminPrivilege);
+
+	console.log(res.data);
+	return res.data;
+}
