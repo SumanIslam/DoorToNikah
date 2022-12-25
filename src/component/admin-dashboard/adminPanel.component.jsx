@@ -103,7 +103,7 @@ const Drawer = styled(MuiDrawer, {
 const AdminPanelComponent = (props) => {
   let navigate = useNavigate();
   const theme = useTheme();
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = React.useState(true);
 
 	const searchData = {
 		searchingFor: 'সকল বায়োডাটা',
