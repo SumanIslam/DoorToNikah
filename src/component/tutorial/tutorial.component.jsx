@@ -42,7 +42,7 @@ const Tutorial = () => {
 							></iframe>
 						</div>
 
-						<div className='title'>
+						{/* <div className='title'>
 							<h3 className='h3tag'>
 								জানুয়ারির ১, ২০২১ ওয়েবসাইট উদ্বোধনী অনুষ্ঠান
 							</h3>
@@ -57,7 +57,7 @@ const Tutorial = () => {
 								allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture'
 								allowFullScreen
 							></iframe>
-						</div>
+						</div> */}
 					</div>
 				</div>
 			</div>
