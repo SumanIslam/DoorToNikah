@@ -2,67 +2,98 @@ import React from "react";
 import { useLocation } from "react-router-dom";
 
 // styles
-import './contact-request-details.scss'
+import "./contact-request-details.scss";
 
 const ContactRequestDetails = () => {
   const location = useLocation();
   const request = location.state;
   console.log(request);
 
-  const {NagadNumber, bkashNumber, rocketNumber} = request;
-  
-  const paymentMethod = () =>{
-    if (NagadNumber === "" && bkashNumber === ""){
-      return "রকেট নাম্বারঃ " + rocketNumber;
-    }
-    else if (NagadNumber === "" && rocketNumber === ""){
-      return "বিকাশ নাম্বারঃ " + bkashNumber;
-    }
-    else {
-      return "নগদ নাম্বারঃ " + NagadNumber;
-    }
-  }
+  const { NagadNumber, bkashNumber, rocketNumber } = request;
 
-  const {NagadTransactionId, bkashTransactionId, rocketTransactionId} = request;
+  const paymentMethod = () => {
+    if (NagadNumber === "" && bkashNumber === "") {
+      return "রকেট নাম্বার";
+    } else if (NagadNumber === "" && rocketNumber === "") {
+      return "বিকাশ নাম্বার";
+    } else {
+      return "নগদ নাম্বার";
+    }
+  };
+  const paymentMethodNum = () => {
+    if (NagadNumber === "" && bkashNumber === "") {
+      return rocketNumber;
+    } else if (NagadNumber === "" && rocketNumber === "") {
+      return bkashNumber;
+    } else {
+      return NagadNumber;
+    }
+  };
 
-  const transactionID = () =>{
-    if (NagadTransactionId === "" && bkashTransactionId === ""){
+  const { NagadTransactionId, bkashTransactionId, rocketTransactionId } =
+    request;
+
+  const transactionID = () => {
+    if (NagadTransactionId === "" && bkashTransactionId === "") {
       return rocketTransactionId;
-    }
-    else if (NagadTransactionId === "" && rocketTransactionId === ""){
+    } else if (NagadTransactionId === "" && rocketTransactionId === "") {
       return bkashTransactionId;
-    }
-    else {
+    } else {
       return NagadTransactionId;
     }
-  }
+  };
 
   return (
-    <div className="card" style={{fontFamily: 'SolaimanLipi'}}>
-      <div className="card-header text-center">আবেদনকারীর পেমেন্ট ইনফরমেশন</div>
-      <ul className="list-group list-group-flush">
-        <li className="list-group-item">আবেদনকারীর নামঃ {request.userName}</li>
-        <li className="list-group-item">
-          আবেদনকারীর ই-মেইলঃ {request.userEmail}
-        </li>
-        <li className="list-group-item">
-          আবেদনকারীর মোবাইল নংঃ {request.userMobileNumber}
-        </li>
-        <li className="list-group-item">
-          বায়োডাটার সংখ্যাঃ {request.numberOfBiodata}
-        </li>
-        <li className="list-group-item">
-          বায়োডাটার তথ্যঃ {request.biodatasId}
-        </li>
-        <li className="list-group-item">টোটাল এমাউন্টঃ {request.totalCost}</li>
-        <li className="list-group-item"> {paymentMethod()}
-        </li>
-        <li className="list-group-item">
-          ট্রানজেকশন আইডিঃ {transactionID()}
-        </li>
-      </ul>
-      <button type="button" className="btn done-button">Done</button>
-    </div>
+    <>
+      <table className="bio-info-table">
+        <tr>
+          <td colSpan={2} className="category-title">
+            আবেদনকারীর পেমেন্ট ইনফরমেশন
+          </td>
+        </tr>
+        <tr>
+          <td>আবেদনকারীর নাম</td>
+          <td>{request.userName}</td>
+        </tr>
+        <tr>
+          <td>আবেদনকারীর ই-মেইল</td>
+          <td>{request.userEmail}</td>
+        </tr>
+        <tr>
+          <td>আবেদনকারীর মোবাইল নং</td>
+          <td>{request.userMobileNumber}</td>
+        </tr>
+        <tr>
+          <td>বায়োডাটার সংখ্যা</td>
+          <td>{request.numberOfBiodata}</td>
+        </tr>
+        <tr>
+          <td>বায়োডাটার তথ্য</td>
+          <td>{request.biodatasId}</td>
+        </tr>
+        <tr>
+          <td>টোটাল এমাউন্ট</td>
+          <td>{request.totalCost}</td>
+        </tr>
+        <tr>
+          <td>{paymentMethod()}</td>
+          <td>{paymentMethodNum()}</td>
+        </tr>
+        <tr>
+          <td>ট্রানজেকশন আইডি</td>
+          <td>{transactionID()}</td>
+        </tr>
+      </table>
+      <div className="text-center">
+        <button
+          type="button"
+          className="btn px-4"
+          style={{ backgroundColor: "#ad277c", color: "#fff" }}
+        >
+          Done
+        </button>
+      </div>
+    </>
   );
 };
 
