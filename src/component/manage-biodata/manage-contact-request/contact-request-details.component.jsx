@@ -1,13 +1,20 @@
 import React from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
+
+// api
+import { httpGETDoneContactRequest } from '../../../services/request'
 
 // styles
 import "./contact-request-details.scss";
 
+// react toastify
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 const ContactRequestDetails = () => {
+  const navigate = useNavigate();
   const location = useLocation();
   const request = location.state;
-  console.log(request);
 
   const { NagadNumber, bkashNumber, rocketNumber } = request;
 
@@ -43,9 +50,25 @@ const ContactRequestDetails = () => {
     }
   };
 
+  const handleClick = async(e) => {
+    e.preventDefault();
+    try {
+      const res = await httpGETDoneContactRequest(request.userEmail);
+      toast.success(res.msg)
+      setTimeout(() => {
+        navigate('/adminPanel/manage-contact-request');
+      }, 2500);
+    } catch(err) {
+      const errMsg = err.response.data.msg;
+      console.log(errMsg);
+      toast.error('Something Went Wrong, Try Again Later')
+    }
+  }
+
   return (
     <>
       <table className="bio-info-table">
+        <ToastContainer />
         <tr>
           <td colSpan={2} className="category-title">
             আবেদনকারীর পেমেন্ট ইনফরমেশন
@@ -89,6 +112,7 @@ const ContactRequestDetails = () => {
           type="button"
           className="btn px-4"
           style={{ backgroundColor: "#ad277c", color: "#fff" }}
+          onClick={handleClick}
         >
           Done
         </button>
