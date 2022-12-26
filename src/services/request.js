@@ -1,6 +1,6 @@
 import axios from 'axios';
-// const API_URL = 'http://localhost:5000/v1/api';
-const API_URL = 'https://doortonikahserver.onrender.com/v1/api';
+const API_URL = 'http://localhost:5000/v1/api';
+// const API_URL = 'https://doortonikahserver.onrender.com/v1/api';
 
 /* USER RELATED */
 // user signup
@@ -184,6 +184,22 @@ export async function httpGETContactRequest() {
 // save roles
 export async function httpPOSTAdminPrivilege(adminPrivilege) {
 	const res = await axios.post(`${API_URL}/users/admin-privilege`, adminPrivilege);
+
+	console.log(res.data);
+	return res.data;
+}
+
+// done contact request
+export async function httpGETDoneContactRequest(email) {
+	console.log(email);
+	const res = await axios.get(
+		`${API_URL}/contact-request/done`,
+		{
+			params: {
+				email: email,
+			},
+		}
+	);
 
 	console.log(res.data);
 	return res.data;
