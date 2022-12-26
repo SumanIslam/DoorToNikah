@@ -25,47 +25,47 @@ const CounterCard = () => {
   }, []);
 
   return (
-    <div className="container">
-      <div className="main-div">
-        <div className="card-div">
-          <img src={Couple} alt="couple" className="image-control" />
-          <h1 className="number" data-target="5000">
-            <CountUp end={counts.totalBiodataCount} />
-            <span className="Add">+</span>
-          </h1>
-          <p className="card-title">মোট দ্বীনদার পাত্র-পাত্রীর</p>
-          <p className="card-title">বায়োডাটা</p>
-        </div>
-        <div className="card-div">
-          <img src={Male} alt="male" className="image-control" />
-          <h1 className="number" data-target="1000">
-            <CountUp end={counts.totalMaleBiodataCount} />
-            <span className="Add">+</span>
-          </h1>
-          <p className="card-title">মোট পাত্রের</p>
-          <p className="card-title">বায়োডাটা</p>
-        </div>
-        <div className="card-div">
-          <img src={Female} alt="" className="image-control" />
-          <h1 className="number" data-target="7000">
-            <CountUp end={counts.totalFemaleBiodataCount} />
-            <span className="Add">+</span>
-          </h1>
-          <p className="card-title">মোট পাত্রীর</p>
-          <p className="card-title">বায়োডাটা</p>
-        </div>
-        <div className="card-div">
-          <img src={Ring} alt="" className="image-control" />
-          <h1 className="number" data-target="950">
-            <CountUp end={0} />
-            <span className="Add">+</span>
-          </h1>
-          <p className="card-title">সর্বমোট সফল</p>
-          <p className="card-title">বিবাহ</p>
-        </div>
-      </div>
-    </div>
-  );
+		<div className='container'>
+			<div className='main-div'>
+				<div className='card-div'>
+					<img src={Couple} alt='couple' className='image-control' />
+					<h1 className='number' data-target='5000'>
+						<CountUp end={counts.totalApprovedBiodataCount} />
+						<span className='Add'>+</span>
+					</h1>
+					<p className='card-title'>মোট দ্বীনদার পাত্র-পাত্রীর</p>
+					<p className='card-title'>বায়োডাটা</p>
+				</div>
+				<div className='card-div'>
+					<img src={Male} alt='male' className='image-control' />
+					<h1 className='number' data-target='1000'>
+						<CountUp end={counts.totalMaleApprovedBiodataCount} />
+						<span className='Add'>+</span>
+					</h1>
+					<p className='card-title'>মোট পাত্রের</p>
+					<p className='card-title'>বায়োডাটা</p>
+				</div>
+				<div className='card-div'>
+					<img src={Female} alt='' className='image-control' />
+					<h1 className='number' data-target='7000'>
+						<CountUp end={counts.totalFemaleApprovedBiodataCount} />
+						<span className='Add'>+</span>
+					</h1>
+					<p className='card-title'>মোট পাত্রীর</p>
+					<p className='card-title'>বায়োডাটা</p>
+				</div>
+				<div className='card-div'>
+					<img src={Ring} alt='' className='image-control' />
+					<h1 className='number' data-target='950'>
+						<CountUp end={0} />
+						<span className='Add'>+</span>
+					</h1>
+					<p className='card-title'>সর্বমোট সফল</p>
+					<p className='card-title'>বিবাহ</p>
+				</div>
+			</div>
+		</div>
+	);
 };
 
 export default CounterCard;
